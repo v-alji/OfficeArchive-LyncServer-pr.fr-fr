@@ -1,0 +1,115 @@
+---
+title: 'Lync Server 2013 : Vue d’ensemble de l’accès des utilisateurs'
+description: 'Lync Server 2013 : vue d’ensemble de l’accès des utilisateurs externes.'
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Overview of external user access
+ms:assetid: 97aded6c-5fa3-4225-95a6-9ad094d61654
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg398775(v=OCS.15)
+ms:contentKeyID: 48184934
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: d2900dde457da34c4438892878ae7ddb4f74723a
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "49394893"
+---
+# <a name="overview-of-external-user-access-in-lync-server-2013"></a><span data-ttu-id="ad562-103">Vue d’ensemble de l’accès des utilisateurs externes dans Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="ad562-103">Overview of external user access in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="ad562-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="ad562-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="ad562-105">_**Dernière modification de la rubrique :** 2013-11-07_</span><span class="sxs-lookup"><span data-stu-id="ad562-105">_**Topic Last Modified:** 2013-11-07_</span></span>
+
+<span data-ttu-id="ad562-106">Dans cette documentation, nous utilisons le terme *utilisateur externe* pour définir une grande catégorie d’utilisateurs qui communiquent avec vos utilisateurs de lync Server 2013 et de Lync 2013 en dehors du pare-feu.</span><span class="sxs-lookup"><span data-stu-id="ad562-106">In this documentation, we use the term *external user* to define a large category of users who communicate with your Lync Server 2013 and Lync 2013 users from outside the firewall.</span></span> <span data-ttu-id="ad562-107">Les utilisateurs externes qu’il est possible d’autoriser à communiquer Lync Server 2013 avec des utilisateurs internes (c’est-à-dire, les utilisateurs qui se connectent à Lync Server à partir du pare-feu) peuvent inclure les éléments suivants :</span><span class="sxs-lookup"><span data-stu-id="ad562-107">External users that you can authorize to communicate Lync Server 2013 with internal users (that is, users who sign in to Lync Server from inside the firewall) can include the following:</span></span>
+
+  - <span data-ttu-id="ad562-108">**Utilisateurs distants**   Les utilisateurs de votre organisation qui se connectent à Lync Server depuis l’extérieur du pare-feu.</span><span class="sxs-lookup"><span data-stu-id="ad562-108">**Remote users**   Users of your organization who sign in to Lync Server from outside the firewall.</span></span>
+
+  - <span data-ttu-id="ad562-109">**Utilisateurs fédérés**   Utilisateurs disposant d’un compte avec un client ou une organisation partenaire approuvé, par exemple Lync Server 2010, Lync Server 2013 ou Office Communications Server 2007 R2.</span><span class="sxs-lookup"><span data-stu-id="ad562-109">**Federated users**   Users who have an account with a trusted customer or partner organization, such as Lync Server 2010, Lync Server 2013 or Office Communications Server 2007 R2.</span></span> <span data-ttu-id="ad562-110">Les utilisateurs fédérés peuvent également être membres d’organisations partenaires définies utilisant le protocole XMPP (extensible Messaging and Presence Protocol) par le biais du proxy XMPP du serveur Edge et de la passerelle XMPP du serveur ou du pool frontal.</span><span class="sxs-lookup"><span data-stu-id="ad562-110">Federated users can also be members of defined partner organizations using extensible messaging and presence protocol (XMPP) by way of the XMPP proxy on the Edge Server and XMPP gateway on the Front End Server or pool.</span></span> <span data-ttu-id="ad562-111">Une relation d’approbation définie, appelée Fédération, n’est pas liée ou ne dépend pas d’une relation d’approbation des services de domaine Active Directory.</span><span class="sxs-lookup"><span data-stu-id="ad562-111">A defined trust relationship, called a federation, is not related to or dependent upon an Active Directory Domain Services trust relationship.</span></span>
+    
+    <div>
+    
+
+    > [!NOTE]  
+    > <span data-ttu-id="ad562-112">Date de fin de vie du 2014 juin pour AOL et Yahoo !</span><span class="sxs-lookup"><span data-stu-id="ad562-112">An end of life date of June 2014 for AOL and Yahoo!</span></span> <span data-ttu-id="ad562-113">a été annoncé.</span><span class="sxs-lookup"><span data-stu-id="ad562-113">has been announced.</span></span> <span data-ttu-id="ad562-114">Pour plus d’informations, voir <A href="lync-server-2013-support-for-public-instant-messenger-connectivity.md">prise en charge de la connectivité de messagerie instantanée publique dans Lync Server 2013</A>.</span><span class="sxs-lookup"><span data-stu-id="ad562-114">For details, see <A href="lync-server-2013-support-for-public-instant-messenger-connectivity.md">Support for public instant messenger connectivity in Lync Server 2013</A>.</span></span>
+
+    
+    </div>
+
+  - <span data-ttu-id="ad562-115">**Utilisateurs de la connectivité de messagerie instantanée publique**   Contacts que vos utilisateurs établi par le biais de services de connectivité de messagerie instantanée publics (Windows Live, Yahoo\!</span><span class="sxs-lookup"><span data-stu-id="ad562-115">**Public Instant Messaging Connectivity users**   Contacts that your users establish through public instant messaging connectivity services (Windows Live, Yahoo\!</span></span> <span data-ttu-id="ad562-116">et AOL).</span><span class="sxs-lookup"><span data-stu-id="ad562-116">and AOL).</span></span>
+
+  - <span data-ttu-id="ad562-117">**Utilisateurs mobiles**   Les utilisateurs qui sont membres de votre organisation qui utilisent un smartphone ou une tablette exécutant un client mobile Lync se connectent à votre déploiement interne et sont en mesure de communiquer avec les autres classes d’utilisateurs.</span><span class="sxs-lookup"><span data-stu-id="ad562-117">**Mobile users**   Users that are members of your organization that use a smart phone or tablet running a Lync Mobile client sign in to your internal deployment and are able to communicate with the other classes of users.</span></span> <span data-ttu-id="ad562-118">L’utilisateur mobile utilise les services de mobilité publiés par le biais du proxy inverse pour accéder au déploiement interne.</span><span class="sxs-lookup"><span data-stu-id="ad562-118">The mobile user uses mobility services that are published through the reverse proxy to access the internal deployment.</span></span> <span data-ttu-id="ad562-119">Pour plus d’informations sur les fonctionnalités disponibles pour Lync mobile, voir les tableaux de comparaison des clients mobiles à l’adresse [https://go.microsoft.com/fwlink/p/?LinkID=234777](https://go.microsoft.com/fwlink/p/?linkid=234777) .</span><span class="sxs-lookup"><span data-stu-id="ad562-119">For details on features and capabilities available to Lync Mobile , see the Mobile Client Comparison Tables at [https://go.microsoft.com/fwlink/p/?LinkID=234777](https://go.microsoft.com/fwlink/p/?linkid=234777).</span></span>
+
+  - <span data-ttu-id="ad562-120">**Utilisateurs anonymes**   Les utilisateurs qui n’ont pas de compte d’utilisateur dans les services de domaine Active Directory de votre organisation ou qui ont reçu des invitations à distance dans une conférence locale.</span><span class="sxs-lookup"><span data-stu-id="ad562-120">**Anonymous users**   Users who do not have a user account in your organization's Active Directory Domain Services or in a supported federated domain, but who have received invitations to participate remotely in an on-premises conference.</span></span>
+
+<span data-ttu-id="ad562-121">Votre déploiement Edge fournit un accès externe pour les types de communication suivants :</span><span class="sxs-lookup"><span data-stu-id="ad562-121">Your edge deployment provides external access for the following types of communication:</span></span>
+
+  - <span data-ttu-id="ad562-122">**Messagerie instantanée et présence**   Les utilisateurs externes autorisés peuvent participer aux conversations et conférences par messagerie instantanée, et ils peuvent obtenir des informations sur le statut de présence d’un autre utilisateur.</span><span class="sxs-lookup"><span data-stu-id="ad562-122">**IM and presence**   Authorized external users can participate in IM conversations and conferences, and they can get information about one another’s presence status.</span></span> <span data-ttu-id="ad562-123">Les utilisateurs de fournisseurs de services de messagerie instantanée publics peuvent participer à des conversations par messagerie instantanée avec des utilisateurs de Lync Server individuels au sein de votre organisation et accéder aux informations de présence, mais ils ne peuvent pas participer à des conférences par messagerie instantanée à l’aide de Lync Server.</span><span class="sxs-lookup"><span data-stu-id="ad562-123">Users of public IM service providers can participate in IM conversations with individual Lync Server users in your organization and access presence information, but they cannot participate in IM multiparty conferences using Lync Server.</span></span> <span data-ttu-id="ad562-124">Ce type de communication est strictement égal à égal.</span><span class="sxs-lookup"><span data-stu-id="ad562-124">It is strictly peer-to-peer communication.</span></span> <span data-ttu-id="ad562-125">Le transfert de fichiers n’est pas pris en charge pour les utilisateurs de fournisseurs de services de messagerie instantanée publics, et les communications audio/vidéo dans les communications d’égal à égal sont prises en charge pour les utilisateurs Windows Messenger 2011, mais pas pour les autres utilisateurs de fournisseurs de services de messagerie instantanée publics.</span><span class="sxs-lookup"><span data-stu-id="ad562-125">File transfer is not supported for users of public IM service providers, and audio/video in peer-to-peer communications is supported for Windows Messenger 2011 users, but not other users of public IM service providers.</span></span>
+    
+    <span data-ttu-id="ad562-126">Les protocoles SIP et XMPP sont tous deux pris en charge.</span><span class="sxs-lookup"><span data-stu-id="ad562-126">Both SIP and XMPP protocols are supported.</span></span> <span data-ttu-id="ad562-127">Pour fournir des services pour XMPP, voir [planification du protocole SIP, de la Fédération XMPP et de la messagerie instantanée publique dans Lync Server 2013](lync-server-2013-planning-for-sip-xmpp-federation-and-public-instant-messaging.md).</span><span class="sxs-lookup"><span data-stu-id="ad562-127">To provide services for XMPP, see [Planning for SIP, XMPP federation, and public instant messaging in Lync Server 2013](lync-server-2013-planning-for-sip-xmpp-federation-and-public-instant-messaging.md).</span></span>
+
+  - <span data-ttu-id="ad562-128">**Conférences Web**   Les utilisateurs externes autorisés peuvent participer à des conférences hébergées sur votre déploiement de Lync Server.</span><span class="sxs-lookup"><span data-stu-id="ad562-128">**Web conferencing**   Authorized external users can participate in conferences that are hosted on your Lync Server deployment.</span></span> <span data-ttu-id="ad562-129">Les utilisateurs distants, les utilisateurs fédérés et les utilisateurs anonymes peuvent être activés pour la participation à des conférences Web, mais les utilisateurs de messagerie instantanée publique ne peuvent pas participer à des conférences.</span><span class="sxs-lookup"><span data-stu-id="ad562-129">Remote users, federated users, and anonymous users can be enabled for participation in web conferencing, but public IM users cannot participate in conferences.</span></span> <span data-ttu-id="ad562-130">En fonction des options que vous sélectionnez, les utilisateurs activés pour les conférences Web peuvent participer au partage de bureau et d’application et peuvent agir en tant qu’organisateurs ou présentateurs de la réunion.</span><span class="sxs-lookup"><span data-stu-id="ad562-130">Depending on the options that you select, web conferencing-enabled users can participate in desktop and application sharing and can act as meeting organizers or presenters.</span></span>
+
+  - <span data-ttu-id="ad562-131">**Conférences A/V**   Les utilisateurs externes autorisés peuvent participer à des conférences audio et vidéo que votre déploiement de Lync Server héberge.</span><span class="sxs-lookup"><span data-stu-id="ad562-131">**A/V conferencing**   Authorized external users can participate in audio and video conferences that your Lync Server deployment hosts.</span></span> <span data-ttu-id="ad562-132">L’audio/vidéo dans les communications d’égal à égal est pris en charge pour les utilisateurs Windows Messenger 2011, mais pas pour les autres utilisateurs de fournisseurs de services de messagerie instantanée publics.</span><span class="sxs-lookup"><span data-stu-id="ad562-132">Audio/video in peer-to-peer communications is supported for Windows Messenger 2011 users, but not for other users of public IM service providers.</span></span>
+
+<span data-ttu-id="ad562-133">Afin de contrôler les communications, vous pouvez configurer une ou plusieurs stratégies qui déterminent la façon dont les utilisateurs internes et externes à votre organisation communiquent entre eux.</span><span class="sxs-lookup"><span data-stu-id="ad562-133">In order to control communications, you can configure one or more policies that define how users inside and outside your organization communicate with each other.</span></span> <span data-ttu-id="ad562-134">Vous pouvez également configurer les paramètres et appliquer des stratégies aux utilisateurs internes individuels ou à des types d’utilisateurs externes spécifiques pour contrôler les communications avec les utilisateurs externes.</span><span class="sxs-lookup"><span data-stu-id="ad562-134">You can also configure settings and apply policies for individual internal users or for specific types of external users to control communications with external users.</span></span>
+
+<span data-ttu-id="ad562-135">Rôles Lync Server 2013 utilisés pour fournir un accès externe :</span><span class="sxs-lookup"><span data-stu-id="ad562-135">Lync Server 2013 roles that are used to provide external access:</span></span>
+
+<span data-ttu-id="ad562-136">**Serveur de périphérie**   Le serveur de périphérie est un serveur ou une grappe de serveurs qui exécute les services permettant l’accès externe à la messagerie instantanée et aux services de présence, de conférence, audio/vidéo et autres médias (par exemple, les services de transfert de fichiers).</span><span class="sxs-lookup"><span data-stu-id="ad562-136">**Edge Server**   The Edge Server is a server or a pool of servers that run the services that allow external access to IM and presence, conferencing, audio/video, and other media (for example, file transfer) services.</span></span> <span data-ttu-id="ad562-137">Le cas échéant, vous pouvez configurer le serveur de périphérie pour qu’il se fédérer avec d’autres déploiements Lync Server ou Office Communications Server 2007 R2, ainsi que d’autres déploiements de XMPP.</span><span class="sxs-lookup"><span data-stu-id="ad562-137">Optionally, you can configure the Edge Server to federate with other Lync Server or Office Communications Server 2007 R2 deployments, and other XMPP deployments.</span></span> <span data-ttu-id="ad562-138">La fonctionnalité de connectivité de messagerie instantanée publique optionnelle est activée et configurée via le serveur Edge.</span><span class="sxs-lookup"><span data-stu-id="ad562-138">The optional public IM connectivity feature is enabled and configured through the Edge Server.</span></span>
+
+<span data-ttu-id="ad562-139">**Directeur**   Il s’agit d’un serveur ou d’un pool de serveurs facultatif exécutant le rôle directeur du 2013 serveur Lync Server, qui préauthentifie les demandes des utilisateurs et achemine les demandes au serveur frontal ou au pool frontal des utilisateurs, mais n’a pas de compte d’utilisateur particulier.</span><span class="sxs-lookup"><span data-stu-id="ad562-139">**Director**   The Director is an optional server or server pool running the Lync Server 2013 Director role that pre-authenticates user requests and routes requests to the users’ home Front End Server or Front End pool, but does not home any user accounts.</span></span>
+
+<span data-ttu-id="ad562-140">**Proxy inverse**   Un proxy inverse est un terme général pour les serveurs spécialisés qui publient des ressources disponibles sur le réseau interne et récupèrent les informations relatives aux clients à partir de la ressource publiée.</span><span class="sxs-lookup"><span data-stu-id="ad562-140">**Reverse Proxy**   A reverse proxy is a general term for specialized servers that publish resources available on the internal network and retrieve information for clients from the published resource.</span></span> <span data-ttu-id="ad562-141">Lync Server 2013 utilise le proxy inverse pour publier un certain nombre de fonctionnalités, telles que les réunions de conférence, les lieux de participation de conférence, le carnet d’adresses, l’extension de la liste de distribution, le téléchargement du contenu de la réunion, les mises à jour de l’appareil, les services de mobilité, etc.</span><span class="sxs-lookup"><span data-stu-id="ad562-141">Lync Server 2013 uses the reverse proxy to publish a number of features, such as conferencing meetings, conference join locations, the address book, distribution list expansion, downloading meeting content, device updates, Mobility services, and more.</span></span> <span data-ttu-id="ad562-142">Tout proxy inverse susceptible de satisfaire les exigences de publication des emplacements de ressources nécessaires peut être utilisé.</span><span class="sxs-lookup"><span data-stu-id="ad562-142">Any reverse proxy that can meet the requirements for publishing the necessary resource locations can be used.</span></span> <span data-ttu-id="ad562-143">Le 2010 de Microsoft Forefront Threat Management Gateway (TMG) est utilisé comme exemple dans le cadre de l’illustration des règles de publication nécessaires, mais qu’il n’est pas nécessaire de Forefront TMG 2010.</span><span class="sxs-lookup"><span data-stu-id="ad562-143">Microsoft Forefront Threat Management Gateway (TMG) 2010 is used as an example for the purposes of illustrating the publishing rules necessary, but Forefront TMG 2010 is not required.</span></span>
+
+<div>
+
+
+> [!IMPORTANT]  
+> <span data-ttu-id="ad562-144">Lync Server 2013 prend en charge les protocoles IPv4 et IPv6.</span><span class="sxs-lookup"><span data-stu-id="ad562-144">Lync Server 2013 supports both IPv4 and IPv6.</span></span> <span data-ttu-id="ad562-145">Windows Server &nbsp; 2008 &nbsp; R2, windows server 2012 et windows server 2012 R2 utilisent une pile double capable d’utiliser simultanément IPv4 et IPv6.</span><span class="sxs-lookup"><span data-stu-id="ad562-145">Windows Server&nbsp;2008&nbsp;R2, Windows Server 2012, and Windows Server 2012 R2 use a dual stack that can use both IPv4 and IPv6 concurrently.</span></span> <span data-ttu-id="ad562-146">C’est important en raison de la nature de la transition d’un déploiement entre IPv4 et IPv6.</span><span class="sxs-lookup"><span data-stu-id="ad562-146">This is important because of the transitional nature of a deployment moving from IPv4 to IPv6.</span></span> <span data-ttu-id="ad562-147">IPv4 peut être pris en charge dans certains domaines, qui peuvent être utilisés dans d’autres parties du déploiement IPv6.</span><span class="sxs-lookup"><span data-stu-id="ad562-147">IPv4 can be supported in some areas, where in other areas of the deployment, IPv6 can be used.</span></span> <span data-ttu-id="ad562-148">C’est particulièrement important pour les déploiements Internet et interne.</span><span class="sxs-lookup"><span data-stu-id="ad562-148">This is especially important where the Internet and internal deployments are concerned.</span></span> <span data-ttu-id="ad562-149">Les clients externes doivent communiquer par le biais du proxy inverse pour utiliser les services tels que la mobilité, les réunions, le téléchargement du carnet d’adresses, etc.</span><span class="sxs-lookup"><span data-stu-id="ad562-149">External clients must communicate through the reverse proxy to use services such as mobility, meetings, address book download, and others.</span></span> <span data-ttu-id="ad562-150">Pour l’instant, les versions de Forefront Threat Management 2010 et Internet Security et Acceleration Server 2006 ne prennent pas en charge l’adressage IPv6, quelle que soit la version du système d’exploitation sur laquelle elles sont déployées.</span><span class="sxs-lookup"><span data-stu-id="ad562-150">Currently, Forefront Threat Management Gateway 2010 and Internet Security and Acceleration Server 2006 do not support IPv6 addressing, regardless of the operating system version that they are deployed on.</span></span> <span data-ttu-id="ad562-151">Vous devez planifier en conséquence en ce qui concerne l’utilisation de IPv6 et D’ipv4 en ce qui concerne les clients externes.</span><span class="sxs-lookup"><span data-stu-id="ad562-151">You must plan accordingly in relation to your use of IPv6 and IPv4 as they relate to external clients.</span></span>
+
+
+
+<span data-ttu-id="ad562-152"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="ad562-152"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+

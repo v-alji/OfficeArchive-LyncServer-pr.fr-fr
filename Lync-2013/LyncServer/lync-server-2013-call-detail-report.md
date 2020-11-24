@@ -1,0 +1,275 @@
+---
+title: 'Lync Server 2013 : rapport Détails des appels'
+description: 'Lync Server 2013 : rapport Détails des appels.'
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Call Detail Report
+ms:assetid: 38862e35-3fec-41b9-a035-0b301942d446
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg558637(v=OCS.15)
+ms:contentKeyID: 48183843
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: d72ae6c1c1ec869041eee5b0dc35941c33609710
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "49394805"
+---
+# <a name="call-detail-report-in-lync-server-2013"></a><span data-ttu-id="2a153-103">Rapport Détails des appels dans Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="2a153-103">Call Detail Report in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="2a153-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="2a153-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="2a153-105">_**Dernière modification de la rubrique :** 2014-02-05_</span><span class="sxs-lookup"><span data-stu-id="2a153-105">_**Topic Last Modified:** 2014-02-05_</span></span>
+
+<span data-ttu-id="2a153-106">Le rapport Détails de l’appel fournit un examen détaillé d’un appel individuel. ce rapport inclut presque toutes les mesures et les statistiques de qualité de performance collectées par Lync Server, divisées en sections de rapport, telles que :</span><span class="sxs-lookup"><span data-stu-id="2a153-106">The Call Detail Report provides a detailed look at an individual call; the report includes nearly all the Quality of Experience metrics and statistics collected by Lync Server, divided into report sections such as:</span></span>
+
+  - <span data-ttu-id="2a153-107">Informations d’appel</span><span class="sxs-lookup"><span data-stu-id="2a153-107">Call Information</span></span>
+
+  - <span data-ttu-id="2a153-108">Mesures du signal et du périphérique de l’appelant</span><span class="sxs-lookup"><span data-stu-id="2a153-108">Caller Device and Signal Metrics</span></span>
+
+  - <span data-ttu-id="2a153-109">Mesures du signal et du périphérique de l’appelé</span><span class="sxs-lookup"><span data-stu-id="2a153-109">Callee Device and Signal metrics</span></span>
+
+  - <span data-ttu-id="2a153-110">Événement client de l’appelant</span><span class="sxs-lookup"><span data-stu-id="2a153-110">Caller Client Event</span></span>
+
+  - <span data-ttu-id="2a153-111">Événement client de l’appelé</span><span class="sxs-lookup"><span data-stu-id="2a153-111">Callee Client Event</span></span>
+
+  - <span data-ttu-id="2a153-112">Flux de données audio (de l’appelant vers l’appelé)</span><span class="sxs-lookup"><span data-stu-id="2a153-112">Audio Stream (Caller to Callee)</span></span>
+
+  - <span data-ttu-id="2a153-113">Flux de données vidéo (de l’appelant vers l’appelé)</span><span class="sxs-lookup"><span data-stu-id="2a153-113">Video Stream (Caller to Callee)</span></span>
+
+  - <span data-ttu-id="2a153-114">Flux de données audio (de l’appelé vers l’appelant)</span><span class="sxs-lookup"><span data-stu-id="2a153-114">Audio Stream (Callee to Caller)</span></span>
+
+  - <span data-ttu-id="2a153-115">Flux de données vidéo (de l’appelé vers l’appelant)</span><span class="sxs-lookup"><span data-stu-id="2a153-115">Video Stream (Callee to Caller)</span></span>
+
+<span data-ttu-id="2a153-p101">Gardez à l’esprit que les catégories et les mesures qui figurent dans un rapport donné dépendent de deux facteurs : du type de session et du type des points de terminaison utilisés dans la session. Par exemple, un appel audio ne fait l’objet d’aucune mesure de flux de données vidéo, car il n’en comporte pas. De même, il peut arriver qu’un rapport répertorie des statistiques sur l’appelant mais pas sur l’appelé. En règle générale, cela est dû au fait que l’appelé utilise un appareil non compatible SIP. La génération de statistiques à la fin d’un appel est une tâche qui incombe aux points de terminaison. Or, un téléphone cellulaire (qui n’a pas connaissance de SIP ni des statistiques SIP) n’est pas capable de fournir ce type d’information. Si vous appelez une personne et qu’elle vous répond sur son téléphone cellulaire, vous n’obtiendrez pas de rapport de ce téléphone à la fin de l’appel.</span><span class="sxs-lookup"><span data-stu-id="2a153-p101">Keep in mind that the categories and the metrics you see on a given report depend on two things: the type of session and the type of endpoints used in the session. For example, an audio-only call will not report metrics for video streams; that's because the call didn't have a video stream. Likewise, you might have a report that lists caller statistics but not callee statistics. That's typically because the callee was not using a SIP-compliant device. Endpoints are responsible for reporting statistics at the end of a call; however, a cell phone (which knows nothing about SIP or SIP statistics) is unable to report that kind of information. If you call someone and they answer you on their cell phone, you will not get a report from that cell phone when the call ends.</span></span>
+
+<span data-ttu-id="2a153-122">Le rapport sur le détail de l’appel s’avère particulièrement utile pour identifier les causes exactes des problèmes de qualité des médias rencontrés lors d’un appel donné.</span><span class="sxs-lookup"><span data-stu-id="2a153-122">The Call Detail Report is most useful when you are trying to determine exactly why a given call experienced media quality problems.</span></span>
+
+<div>
+
+## <a name="accessing-the-call-detail-report"></a><span data-ttu-id="2a153-123">Accès au rapport sur le détail de l’appel</span><span class="sxs-lookup"><span data-stu-id="2a153-123">Accessing the Call Detail Report</span></span>
+
+<span data-ttu-id="2a153-124">Le rapport sur le détail de l’appel est accessible à partir des rapports suivants :</span><span class="sxs-lookup"><span data-stu-id="2a153-124">The Call Detail Report can be accessed from any of the following reports:</span></span>
+
+  - <span data-ttu-id="2a153-125">Le [rapport d’emplacement dans Lync Server 2013](lync-server-2013-location-report.md) (en cliquant sur le volume des appels ou la métrique de faible pourcentage d’appels)</span><span class="sxs-lookup"><span data-stu-id="2a153-125">The [Location Report in Lync Server 2013](lync-server-2013-location-report.md) (by clicking either the Call volume or the Poor call percentage metric)</span></span>
+
+  - <span data-ttu-id="2a153-126">[Rapport synthèse qualité multimédia dans Lync Server 2013](lync-server-2013-media-quality-summary-report.md) (en cliquant sur le volume des appels ou sur le pourcentage d’appels médiocre)</span><span class="sxs-lookup"><span data-stu-id="2a153-126">The [Media Quality Summary Report in Lync Server 2013](lync-server-2013-media-quality-summary-report.md) (by clicking either the Call volume or Poor call percentage metric)</span></span>
+
+  - <span data-ttu-id="2a153-127">Pour plus d’informations sur le [rapport qualité multimédia dans Lync server 2013](lync-server-2013-media-quality-comparison-report.md) (en cliquant sur le [rapport liste d’appels dans Lync Server 2013](lync-server-2013-call-list-report.md) , puis sur la métrique de détail).</span><span class="sxs-lookup"><span data-stu-id="2a153-127">The [Media Quality Comparison Report in Lync Server 2013](lync-server-2013-media-quality-comparison-report.md) (by clicking the [Call List Report in Lync Server 2013](lync-server-2013-call-list-report.md) and then clicking the Detail metric).</span></span>
+
+  - <span data-ttu-id="2a153-128">[Rapport sur les performances du serveur dans Lync Server 2013](lync-server-2013-server-performance-report.md) (en cliquant sur le volume des appels ou en utilisant une métrique de pourcentage médiocre)</span><span class="sxs-lookup"><span data-stu-id="2a153-128">The [Server Performance Report in Lync Server 2013](lync-server-2013-server-performance-report.md) (by clicking either the Call volume or Poor call percentage metric)</span></span>
+
+  - <span data-ttu-id="2a153-129">[Rapport de liste d’appels dans Lync Server 2013](lync-server-2013-call-list-report.md) (en cliquant sur la métrique de détail)</span><span class="sxs-lookup"><span data-stu-id="2a153-129">The [Call List Report in Lync Server 2013](lync-server-2013-call-list-report.md) (by clicking the Detail metric)</span></span>
+
+<span data-ttu-id="2a153-130">Dans le rapport Détails de l’appel, vous pouvez accéder au [rapport sur les appareils dans Lync Server 2013](lync-server-2013-device-report.md) en cliquant sur l’une des mesures suivantes :</span><span class="sxs-lookup"><span data-stu-id="2a153-130">From within the Call Detail Report you can access the [Device Report in Lync Server 2013](lync-server-2013-device-report.md) by clicking either of the following metrics:</span></span>
+
+  - <span data-ttu-id="2a153-131">Périphérique de capture</span><span class="sxs-lookup"><span data-stu-id="2a153-131">Capture device</span></span>
+
+  - <span data-ttu-id="2a153-132">Périphérique de rendu</span><span class="sxs-lookup"><span data-stu-id="2a153-132">Render device</span></span>
+
+<span data-ttu-id="2a153-133">Vous pouvez aussi accéder au Rapport de tendance générale de la qualité des médias serveur en cliquant sur la mesure Serveur Edge A/V.</span><span class="sxs-lookup"><span data-stu-id="2a153-133">You can also access the Server Media Quality Trend Report by clicking the A/V edge server metric.</span></span>
+
+</div>
+
+<div>
+
+## <a name="making-the-best-use-of-the-call-detail-report"></a><span data-ttu-id="2a153-134">Utilisation optimale du rapport sur le détail de l’appel</span><span class="sxs-lookup"><span data-stu-id="2a153-134">Making the Best Use of the Call Detail Report</span></span>
+
+<span data-ttu-id="2a153-p102">En règle générale, le rapport sur le détail de l’appel comprend plus de 250 mesures différentes, avec notamment les éléments Dérive d’horodatage du microphone, Durée du SNR faible et Durée de l’écho au point de terminaison. Si vous ne vous rappelez pas de la fonction de l’une de ces nombreuses mesures, placez le curseur de la souris sur l’étiquette de la mesure ; vous devriez obtenir une info-bulle décrivant cette mesure.</span><span class="sxs-lookup"><span data-stu-id="2a153-p102">The Call Detail Report typically includes over 250 different metrics, including such items as Microphone timestamp drift, Low SNR time, and Near end to echo time. If you can't remember what all of these metrics actually measure, try holding your mouse over the metric label; often-times, a tooltip will appear describing that metric.</span></span>
+
+<span data-ttu-id="2a153-137">Si vous rencontrez des problèmes en localisant une métrique, tapez une partie de l’étiquette métrique dans la zone de recherche, puis cliquez sur Rechercher.</span><span class="sxs-lookup"><span data-stu-id="2a153-137">If you have problems locating a metric, type part of the metric label in the search box and then click Find.</span></span> <span data-ttu-id="2a153-138">Par exemple, si vous ne trouvez pas la métrique de l’inversion basse, tapez SNR dans la zone de recherche, puis cliquez sur Rechercher.</span><span class="sxs-lookup"><span data-stu-id="2a153-138">For example, if you can't find the Low SNR time metric, type SNR in the search box and then click Find.</span></span>
+
+<span data-ttu-id="2a153-p104">Notez que le rapport effectue uniquement le suivi des informations concernant un appel. L’appel proprement dit n’est pas enregistré.</span><span class="sxs-lookup"><span data-stu-id="2a153-p104">Note that the report only tracks information about a call. The call itself is not recorded.</span></span>
+
+</div>
+
+<div>
+
+## <a name="filters"></a><span data-ttu-id="2a153-141">Filtres</span><span class="sxs-lookup"><span data-stu-id="2a153-141">Filters</span></span>
+
+<span data-ttu-id="2a153-p105">Aucun. Vous ne pouvez pas filtrer le rapport sur le détail de l’appel.</span><span class="sxs-lookup"><span data-stu-id="2a153-p105">None. You cannot filter the Call Detail Report.</span></span>
+
+</div>
+
+<div>
+
+## <a name="metrics"></a><span data-ttu-id="2a153-144">Mesures</span><span class="sxs-lookup"><span data-stu-id="2a153-144">Metrics</span></span>
+
+<span data-ttu-id="2a153-145">Le tableau ci-dessous liste les informations fournies dans le rapport sur le détail de l’appel pour chaque appel.</span><span class="sxs-lookup"><span data-stu-id="2a153-145">The following table lists the information provided in the Call Detail Report for each call.</span></span>
+
+### <a name="call-detail-report-metrics"></a><span data-ttu-id="2a153-146">Mesures du rapport sur le détail de l’appel</span><span class="sxs-lookup"><span data-stu-id="2a153-146">Call Detail Report Metrics</span></span>
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span data-ttu-id="2a153-147">Nom</span><span class="sxs-lookup"><span data-stu-id="2a153-147">Name</span></span></th>
+<th><span data-ttu-id="2a153-148">Est-il possible d’effectuer un tri sur cet élément ?</span><span class="sxs-lookup"><span data-stu-id="2a153-148">Can you sort on this item?</span></span></th>
+<th><span data-ttu-id="2a153-149">Description</span><span class="sxs-lookup"><span data-stu-id="2a153-149">Description</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><span data-ttu-id="2a153-150"><strong>PAI de l’appelant</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-150"><strong>Caller PAI</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-151">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-151">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-p106">PAI (P-Asserted-Identity) de l’utilisateur qui a initié l’appel. La PAI sert à transmettre l’identité prouvée d’un utilisateur au sein d’un réseau approuvé.</span><span class="sxs-lookup"><span data-stu-id="2a153-p106">P-Asserted-Identity of the user who initiated the call. The P-Asserted-Identity is used to convey the proven identity of a user within a trusted network.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="2a153-154"><strong>URI de l’appelant</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-154"><strong>Caller URI</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-155">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-155">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-156">Adresse SIP de l’utilisateur qui a initié l’appel.</span><span class="sxs-lookup"><span data-stu-id="2a153-156">SIP address of the user who initiated the call.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="2a153-157"><strong>Point de terminaison de l’appelant</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-157"><strong>Caller endpoint</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-158">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-158">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-159">Appareil utilisé pour passer l’appel.</span><span class="sxs-lookup"><span data-stu-id="2a153-159">Device used to make the call.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="2a153-160"><strong>Agent utilisateur de l’appelant</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-160"><strong>Caller user agent</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-161">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-161">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-162">Logiciel utilisé sur l’appareil utilisé pour passer l’appel.</span><span class="sxs-lookup"><span data-stu-id="2a153-162">Software used on the device that made the call.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="2a153-163"><strong>Début de l’appel</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-163"><strong>Call start</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-164">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-164">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-165">Date et heure où l’appel a été passé.</span><span class="sxs-lookup"><span data-stu-id="2a153-165">Date and time that the call was initially placed.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="2a153-166"><strong>Appel de contournement du serveur de médiation</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-166"><strong>Mediation Server bypass call</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-167">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-167">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-168">Indique si l’appel connecté à une passerelle vocale RTC ou IP-PBX qualifié sans passer par le serveur de médiation.</span><span class="sxs-lookup"><span data-stu-id="2a153-168">Indicates whether the call connected to a PSTN voice gateway or qualified IP-PBX without passing through the Mediation Server.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="2a153-169"><strong>SE de l’appelant</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-169"><strong>Caller OS</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-170">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-170">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-171">Système d’exploitation de l’ordinateur de l’appelant.</span><span class="sxs-lookup"><span data-stu-id="2a153-171">Operating system of the caller's computer.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="2a153-172"><strong>UC de l’appelant</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-172"><strong>Caller CPU</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-173">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-173">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-174">UC installée dans l’ordinateur de l’utilisateur qui a passé l’appel.</span><span class="sxs-lookup"><span data-stu-id="2a153-174">CPU installed in the computer of the user who initiated the call.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="2a153-175"><strong>Numéro principal de l’UC de l’appelant</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-175"><strong>Caller CPU core number</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-176">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-176">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-177">Numéro de processeur dans l’ordinateur utilisé par la personne qui a passé l’appel.</span><span class="sxs-lookup"><span data-stu-id="2a153-177">Processor number in the computer used by the person who initiated the call.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="2a153-178"><strong>Vitesse de l’UC de l’appelant</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-178"><strong>Caller CPU speed</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-179">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-179">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-180">Vitesse d’horloge de l’UC de l’ordinateur utilisé par la personne qui a initié l’appel.</span><span class="sxs-lookup"><span data-stu-id="2a153-180">Clock speed of the CPU of the computer used by the person who initiated the call.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="2a153-181"><strong>Virtualisation de l’UC de l’appelant</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-181"><strong>Caller CPU virtualization</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-182">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-182">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-183">Virtualisation (le cas échéant) utilisée sur l’ordinateur utilisé par la personne qui a initié l’appel.</span><span class="sxs-lookup"><span data-stu-id="2a153-183">Virtualization (if any) used on the computer used by the person who initiated the call.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="2a153-184"><strong>PAI de l’appelé</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-184"><strong>Callee PAI</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-185">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-185">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-p107">PAI (P-Asserted-Identity) de l’utilisateur qui a été invité à participer à l’appel. La PAI sert à transmettre l’identité prouvée d’un utilisateur au sein d’un réseau approuvé.</span><span class="sxs-lookup"><span data-stu-id="2a153-p107">P-Asserted-Identity of the user who was invited to join the call. The P-Asserted-Identity is used to convey the proven identity of a user within a trusted network.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="2a153-188"><strong>URI de l’appelé</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-188"><strong>Callee URI</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-189">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-189">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-190">Adresse SIP de l’utilisateur appelé.</span><span class="sxs-lookup"><span data-stu-id="2a153-190">SIP address of the user who was called.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="2a153-191"><strong>Point de terminaison de l’appelé</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-191"><strong>Callee endpoint</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-192">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-192">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-193">Appareil utilisé pour recevoir l’appel.</span><span class="sxs-lookup"><span data-stu-id="2a153-193">Device used to receive the call.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="2a153-194"><strong>Agent utilisateur de l’appelé</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-194"><strong>Callee user agent</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-195">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-195">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-196">Logiciel utilisé sur l’appareil qui a reçu l’appel.</span><span class="sxs-lookup"><span data-stu-id="2a153-196">Software used on the device that received the call.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="2a153-197"><strong>Durée</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-197"><strong>Duration</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-198">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-198">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-199">Durée de l’appel.</span><span class="sxs-lookup"><span data-stu-id="2a153-199">Length of time for the call.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="2a153-200"><strong>Indicateur d’avertissement de déviation du trafic multimédia</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-200"><strong>Media bypass warning flag</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-201">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-201">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-202">Avertissement paru quand le serveur de médiation a été contourné.</span><span class="sxs-lookup"><span data-stu-id="2a153-202">Warning issued when the Mediation Server was bypassed.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="2a153-203"><strong>SE de l’appelé</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-203"><strong>Callee OS</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-204">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-204">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-205">Système d’exploitation de l’ordinateur de l’appelé.</span><span class="sxs-lookup"><span data-stu-id="2a153-205">Operating system of the computer for the user who was called.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="2a153-206"><strong>UC de l’appelé</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-206"><strong>Callee CPU</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-207">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-207">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-208">UC installée dans l’ordinateur de l’utilisateur qui a été appelé.</span><span class="sxs-lookup"><span data-stu-id="2a153-208">CPU installed in the computer of the user who was called.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="2a153-209"><strong>Numéro principal de l’UC de l’appelé</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-209"><strong>Callee core number</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-210">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-210">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-211">Numéro de processeur dans l’ordinateur utilisé par la personne qui a été appelée.</span><span class="sxs-lookup"><span data-stu-id="2a153-211">Processor number in the computer used by the person who was called.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="2a153-212"><strong>Vitesse de l’UC de l’appelé</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-212"><strong>Callee CPU speed</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-213">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-213">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-214">Vitesse d’horloge de l’UC de l’ordinateur utilisé par la personne qui a été appelée.</span><span class="sxs-lookup"><span data-stu-id="2a153-214">Clock speed of the CPU of the computer used by the person who was called.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="2a153-215"><strong>Virtualisation de l’UC de l’appelé</strong></span><span class="sxs-lookup"><span data-stu-id="2a153-215"><strong>Callee CPU virtualization</strong></span></span></p></td>
+<td><p><span data-ttu-id="2a153-216">Non</span><span class="sxs-lookup"><span data-stu-id="2a153-216">No</span></span></p></td>
+<td><p><span data-ttu-id="2a153-217">Virtualisation (le cas échéant) utilisée sur l’ordinateur utilisé par la personne qui a été appelée.</span><span class="sxs-lookup"><span data-stu-id="2a153-217">Virtualization (if any) used on the computer used by the person who was called.</span></span></p></td>
+</tr>
+</tbody>
+</table><span data-ttu-id="2a153-218">
+
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="2a153-218">
+
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+
