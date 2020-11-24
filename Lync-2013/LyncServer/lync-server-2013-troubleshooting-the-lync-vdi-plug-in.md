@@ -1,0 +1,106 @@
+---
+title: 'Lync Server 2013 : résolution des problèmes du plug-in Lync VDI'
+description: 'Lync Server 2013 : résolution des problèmes du plug-in Lync VDI.'
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Troubleshooting the Lync VDI plug-in
+ms:assetid: 183c9449-b907-409c-b5ed-b02af3bd93ee
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ204713(v=OCS.15)
+ms:contentKeyID: 48183525
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 3cd2c0e3c8a47225f00ce280706dea2287e4dc8b
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "49394316"
+---
+# <a name="troubleshooting-the-lync-vdi-plug-in-in-lync-server-2013"></a>Résoudre les problèmes du plug-in Lync VDI dans Lync Server 2013
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**Dernière modification de la rubrique :** 2012-10-10_
+
+<div>
+
+## <a name="troubleshooting-issues-with-installing-the-lync-vdi-plug-in-on-a-thin-client"></a>Résolution des problèmes liés à l’installation du plug-in Lync VDI sur un client léger
+
+Si vous rencontrez des problèmes lors de l’installation du plug-in VDI sur un client léger, vérifiez les points suivants :
+
+  - Assurez-vous que l’espace est suffisant dans le dossier que vous avez spécifié dans les variables système TEMP et TMP.
+
+  - Assurez-vous que la protection en écriture est désactivée. Reportez-vous à la documentation du fabricant de votre périphérique pour en savoir plus.
+
+</div>
+
+<div>
+
+## <a name="troubleshooting-issues-with-pairing"></a>Résolution des problèmes liés au jumelage
+
+Lorsque le jumelage enfichable VDI échoue, l’icône de jumelage en bas à droite s’affiche sous la forme d’un « X » rouge, comme illustré ci-dessous :
+
+![Icône VDI de Lync montrant une jumelage réussie](images/JJ204948.303d618c-4bc8-41c4-8553-2475de0d395e(OCS.15).png "Icône VDI de Lync montrant une jumelage réussie")
+
+Voici quelques raisons possibles d’échecs et des actions correctives que vous pouvez effectuer.
+
+  - **L’utilisateur a entré des informations d’identification incorrectes au moment de la connexion.**
+    
+    L’utilisateur doit se déconnecter de Lync et se reconnecter avec les informations d’identification appropriées. La boîte de dialogue de jumelage réapparaît et indique si le jumelage a réussi.
+
+  - **Une autre instance du client Bureau à distance est en cours d’exécution.**
+    
+    S’ils utilisent une connexion Bureau à distance dans Windows, les utilisateurs doivent procéder comme suit :
+    
+    1.  Démarrez le Gestionnaire des tâches : appuyez sur **Alt+Ctrl+Suppr**, puis cliquez sur **Démarrer le Gestionnaire des tâches**.
+    
+    2.  Cliquez sur l’onglet **Processus** et recherchez tous les processus nommés **mstsc.exe** dans la liste.
+    
+    3.  Mettez chaque processus **mstsc.exe** en surbrillance et cliquez sur **Arrêter le processus**. 
+    
+    4.  Démarrez une nouvelle session Bureau à distance et réessayez de vous connecter. 
+
+  - **Les fichiers nécessaires n’ont pas été installés correctement.**
+    
+    Une fois que le plug-in est installé sur l’ordinateur local, les fichiers suivants doivent figurer sous C : \\ Program Files \\ Microsoft Office \\ Office15 (ou la lettre de lecteur appropriée) :
+    
+      - LyncVdiPlugin.dll
+    
+      - UcVdi.dll
+    
+    S’il existe des problèmes avec le jumelage d’infrastructure VDI, assurez-vous que ces fichiers sont présents sur l’ordinateur local.
+
+  - **Le client Lync s’exécute sur l’ordinateur local.**
+    
+    Pour utiliser le plug-in Lync VDI, un client Lync ne doit pas être en cours d’exécution sur l’ordinateur local ; sinon, le jumelage échoue. En règle générale, l’utilisateur ne doit pas installer un client Lync sur l’ordinateur local.
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+
