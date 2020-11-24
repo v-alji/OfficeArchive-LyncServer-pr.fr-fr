@@ -1,0 +1,225 @@
+---
+title: Configurer la passerelle XMPP sur Lync Server 2013
+description: Configurer la passerelle XMPP sur Lync Server 2013.
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+audience: Admin
+f1.keywords:
+- NOCSH
+TOCTitle: Configure XMPP gateway on Lync Server 2013
+ms:assetid: c70282e0-b502-47e2-a0be-a32eb1faf99d
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ721881(v=OCS.15)
+ms:contentKeyID: 49733816
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 78765237e737dea29d77230d6b0eecdb0348cb41
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "49394432"
+---
+# <a name="configure-xmpp-gateway-on-lync-server-2013"></a><span data-ttu-id="ea2c9-103">Configurer la passerelle XMPP sur Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="ea2c9-103">Configure XMPP gateway on Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="ea2c9-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="ea2c9-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="ea2c9-105">_**Dernière modification de la rubrique :** 2013-10-28_</span><span class="sxs-lookup"><span data-stu-id="ea2c9-105">_**Topic Last Modified:** 2013-10-28_</span></span>
+
+<span data-ttu-id="ea2c9-106">Les étapes finales de la migration de votre passerelle XMPP sont de configurer des certificats pour le serveur Edge Lync Server 2013, de déployer la passerelle Lync Server 2013 XMPP et de mettre à jour les enregistrements DNS pour la passerelle XMPP.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-106">The final steps for migrating your XMPP Gateway are to configure certificates for the Lync Server 2013 Edge Server, deploy the Lync Server 2013 XMPP Gateway, and update the DNS records for the XMPP Gateway.</span></span> <span data-ttu-id="ea2c9-107">Ces étapes doivent être effectuées en parallèle pour réduire le temps de mise en service de votre passerelle XMPP.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-107">These steps should be performed in parallel to minimize the down time of your XMPP Gateway.</span></span> <span data-ttu-id="ea2c9-108">Tous les utilisateurs doivent être déplacés vers votre déploiement de Microsoft Lync Server 2013 avant d’effectuer ces étapes.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-108">All users must be moved to your Microsoft Lync Server 2013 deployment before performing these steps.</span></span>
+
+<div class=" ">
+
+
+> [!IMPORTANT]  
+> <span data-ttu-id="ea2c9-109">La Fédération XMPP n’est pas prise en charge pour les utilisateurs hébergés sur des appareils de succursales survivables.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-109">XMPP federation is not supported for users who are homed on survivable branch appliances.</span></span> <span data-ttu-id="ea2c9-110">Cela s’applique aussi bien aux informations de présence qu’à l’échange de messages INSTANTANÉs.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-110">This applies to both seeing presence information and exchanging IM messages.</span></span>
+
+
+
+</div>
+
+<div>
+
+## <a name="configure-xmpp-gateway-certificates-on-the-lync-server-2013-edge-server"></a><span data-ttu-id="ea2c9-111">Configurer des certificats de passerelle XMPP sur le serveur Edge Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="ea2c9-111">Configure XMPP Gateway Certificates on the Lync Server 2013 Edge Server</span></span>
+
+1.  <span data-ttu-id="ea2c9-112">Sur le serveur Edge, dans l’Assistant Déploiement, en regard de l' **étape 3 : demandez, installez ou attribuez des certificats**, cliquez de **nouveau sur exécuter**.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-112">On the Edge Server, in the Deployment Wizard, next to **Step 3: Request, Install, or Assign Certificates**, click **Run again**.</span></span>
+    
+    <div class=" ">
+    
+
+    > [!TIP]  
+    > <span data-ttu-id="ea2c9-113">Si vous déployez le serveur Edge pour la première fois, vous verrez exécuter au lieu de réexécuter.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-113">If you are deploying the Edge Server for the first time, you will see Run instead of Run Again.</span></span>
+
+    
+    </div>
+
+2.  <span data-ttu-id="ea2c9-114">Dans la page **Tâches se rapportant aux certificats disponibles**, cliquez sur **Créer une demande de certificat**.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-114">On the **Available Certificate Tasks** page, click **Create a new certificate request**.</span></span>
+
+3.  <span data-ttu-id="ea2c9-115">Dans la page **demande de certificat** , cliquez sur certificat de **bord externe**.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-115">On the **Certificate Request** page, click **External Edge Certificate**.</span></span>
+
+4.  <span data-ttu-id="ea2c9-116">Dans la page de **demande retardée ou immédiate** , activez la case à cocher **préparer la demande maintenant, puis l’envoyer plus tard** .</span><span class="sxs-lookup"><span data-stu-id="ea2c9-116">On the **Delayed or Immediate Request** page, select the **Prepare the request now, but send it later** check box.</span></span>
+
+5.  <span data-ttu-id="ea2c9-117">Dans la page **fichier de demande de certificat** , tapez le chemin d’accès complet et le nom du fichier dans lequel la demande doit être enregistrée (par exemple, c : \\ CERT \_ l' \_ Edge. cer).</span><span class="sxs-lookup"><span data-stu-id="ea2c9-117">On the **Certificate Request File** page, type the full path and file name of the file to which the request is to be saved (for example, c:\\cert\_exernal\_edge.cer).</span></span>
+
+6.  <span data-ttu-id="ea2c9-118">Dans la page **spécifier un modèle de certificat secondaire** , pour utiliser un modèle autre que le modèle par défaut du serveur Web, activez la case à cocher utiliser un autre **modèle de certificat pour l’autorité de certification sélectionnée** .</span><span class="sxs-lookup"><span data-stu-id="ea2c9-118">On the **Specify Alternate Certificate Template** page, to use a template other than the default WebServer template, select the **Use alternative certificate template for the selected certification authority** check box.</span></span>
+
+7.  <span data-ttu-id="ea2c9-119">Dans la page **paramètres de nom et de sécurité** , procédez comme suit :</span><span class="sxs-lookup"><span data-stu-id="ea2c9-119">On the **Name and Security Settings** page, do the following:</span></span>
+    
+    1.  <span data-ttu-id="ea2c9-120">Dans **nom convivial**, tapez un nom d’affichage pour le certificat.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-120">In **Friendly name**, type a display name for the certificate.</span></span>
+    
+    2.  <span data-ttu-id="ea2c9-121">En **longueur**, spécifiez la longueur en bits (en général, la valeur par défaut 2048).</span><span class="sxs-lookup"><span data-stu-id="ea2c9-121">In **Bit length**, specify the bit length (typically, the default of 2048).</span></span>
+    
+    3.  <span data-ttu-id="ea2c9-122">Vérifiez que la case à cocher **marquer le certificat en tant que clé publique en tant qu’export** est activée.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-122">Verify that the **Mark certificate private key as exportable** check box is selected.</span></span>
+
+8.  <span data-ttu-id="ea2c9-123">Dans la page informations sur l' **organisation** , tapez le nom de l’organisation et l’unité d’organisation (par exemple, une division ou un service).</span><span class="sxs-lookup"><span data-stu-id="ea2c9-123">On the **Organization Information** page, type the name for the organization and the organizational unit (for example, a division or department).</span></span>
+
+9.  <span data-ttu-id="ea2c9-124">Dans la page **informations géographiques** , spécifiez les informations d’emplacement.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-124">On the **Geographical Information** page, specify the location information.</span></span>
+
+10. <span data-ttu-id="ea2c9-125">Sur la page nom de l’objet **/nom** de l’objet, les informations à remplir automatiquement par l’Assistant sont affichées.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-125">On the **Subject Name/Subject Alternate Names** page, the information to be automatically populated by the wizard is displayed.</span></span> <span data-ttu-id="ea2c9-126">Si d’autres noms d’objet sont nécessaires, vous pouvez les spécifier au cours des deux étapes suivantes.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-126">If additional subject alternative names are needed, you specify them in the next two steps.</span></span>
+
+11. <span data-ttu-id="ea2c9-127">Dans la page Configuration du protocole **SIP sur le nom de l’objet** , activez la case à cocher Domain pour ajouter un SIP.\<sipdomain\></span><span class="sxs-lookup"><span data-stu-id="ea2c9-127">On the **SIP Domain Setting on Subject Alternate Names (SANs)** page, select the domain check box to add a sip.\<sipdomain\></span></span> <span data-ttu-id="ea2c9-128">entrée de la liste autres noms d’objet.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-128">entry to the subject alternative names list.</span></span>
+
+12. <span data-ttu-id="ea2c9-129">Dans la page **configurez** d’autres noms d’objet, spécifiez d’autres noms d’objet obligatoires.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-129">On the **Configure Additional Subject Alternate Names** page, specify any additional subject alternative names that are required.</span></span>
+    
+    <div class=" ">
+    
+
+    > [!TIP]  
+    > <span data-ttu-id="ea2c9-130">Si le proxy XMPP est installé, le nom de domaine par défaut (par exemple, contoso.com) est renseigné dans les entrées du SAN.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-130">If the XMPP proxy is installed, by default the domain name (such as contoso.com) is populated in the SAN entries.</span></span> <span data-ttu-id="ea2c9-131">Si vous avez besoin d’entrées supplémentaires, ajoutez-les à cette étape.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-131">If you require more entries, add them in this step.</span></span>
+
+    
+    </div>
+
+13. <span data-ttu-id="ea2c9-132">Dans la page Résumé de la **demande** , passez en revue les informations de certificat à utiliser pour générer la requête.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-132">On the **Request Summary** page, review the certificate information to be used to generate the request.</span></span>
+
+14. <span data-ttu-id="ea2c9-133">À la fin de l’exécution des commandes, vous pouvez **consulter le journal** ou cliquer sur suivant pour continuer.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-133">After the commands finish running, you can **View Log**, or click Next to continue.</span></span>
+
+15. <span data-ttu-id="ea2c9-134">Dans la page **fichier de demande de certificat** , vous pouvez afficher le fichier de demande de signature de certificat généré (CSR) en cliquant sur **Afficher** ou quitter l’Assistant Certificat en cliquant sur **Terminer**.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-134">On the **Certificate Request File** page, you can view the generated certificate signing request (CSR) file by clicking **View** or exit the Certificate Wizard by clicking **Finish**.</span></span>
+
+16. <span data-ttu-id="ea2c9-135">Copiez le fichier de demande et envoyez-le à votre autorité de certification publique.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-135">Copy the request file and submit to your public certification authority.</span></span>
+
+17. <span data-ttu-id="ea2c9-136">Après avoir reçu, importé et attribué le certificat public, vous devez arrêter et redémarrer les services Edge Server.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-136">After receiving, importing and assigning the public certificate, you must stop and restart the Edge Server services.</span></span> <span data-ttu-id="ea2c9-137">Pour cela, entrez dans la console de gestion de Lync Server :</span><span class="sxs-lookup"><span data-stu-id="ea2c9-137">You do this by typing in the Lync Server Management console:</span></span>
+    
+        Stop-CsWindowsService
+
+      &nbsp;
+    
+        Start-CsWindowsService
+
+</div>
+
+<div>
+
+## <a name="configure-a-new-lync-server-2013-xmpp-gateway"></a><span data-ttu-id="ea2c9-138">Configurer une nouvelle passerelle XMPP Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="ea2c9-138">Configure a new Lync Server 2013 XMPP Gateway</span></span>
+
+1.  <span data-ttu-id="ea2c9-139">Ouvrez le Paneau de configuration Lync Server.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-139">Open Lync Server Control Panel.</span></span>
+
+2.  <span data-ttu-id="ea2c9-140">Dans la barre de navigation gauche, cliquez sur **Fédération et accès externe** , puis sur **partenaires fédérés de XMPP**.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-140">In the left navigation bar, click **Federation and External Access** and then click **XMPP Federated Partners**.</span></span>
+
+3.  <span data-ttu-id="ea2c9-141">Pour créer une nouvelle configuration, cliquez sur **nouveau**.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-141">To create a new configuration, click **New**.</span></span>
+
+4.  <span data-ttu-id="ea2c9-142">Définissez les paramètres suivants :</span><span class="sxs-lookup"><span data-stu-id="ea2c9-142">Define the following settings:</span></span>
+
+5.  <span data-ttu-id="ea2c9-143">**Domaine principal**    (obligatoire).</span><span class="sxs-lookup"><span data-stu-id="ea2c9-143">**Primary domain**    (Required).</span></span> <span data-ttu-id="ea2c9-144">Le domaine principal est le domaine de base du partenaire XMPP.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-144">The primary domain is the base domain of the XMPP partner.</span></span> <span data-ttu-id="ea2c9-145">Par exemple, vous devez entrer **fabrikam.com** pour le nom de domaine de partenaire XMPP.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-145">For example, you would enter **fabrikam.com** for the XMPP partner domain name.</span></span> <span data-ttu-id="ea2c9-146">Il s’agit d’une entrée obligatoire.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-146">This is a required entry.</span></span>
+
+6.  <span data-ttu-id="ea2c9-147">**Description**   La description est destinée aux notes ou autres informations d’identification pour cette configuration particulière.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-147">**Description**   The description is for notes or other identifying information for this particular configuration.</span></span> <span data-ttu-id="ea2c9-148">Cette entrée est facultative.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-148">This entry is optional.</span></span>
+
+7.  <span data-ttu-id="ea2c9-149">**Domaines supplémentaires**   Les domaines supplémentaires sont des domaines qui font partie du domaine de votre partenaire XMPP qui doivent être inclus dans le cadre de la communication XMPP autorisée.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-149">**Additional domains**   Additional domains are domains that are a part of your XMPP partner’s domain that should be included as part of the allowed XMPP communication.</span></span> <span data-ttu-id="ea2c9-150">Par exemple, si le domaine principal est **fabrikam.com**, vous répertoriez tous les autres domaines sous fabrikam.com que vous communiquerez par le biais de la fonction XMPP.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-150">For example, if the primary domain is **fabrikam.com**, then you would list all other domains that are under fabrikam.com that you will communicate with by way of XMPP.</span></span>
+
+8.  <span data-ttu-id="ea2c9-151">**Type de partenaire**   Ce **paramètre** est obligatoire.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-151">**Partner type**   The **Partner type** is a required setting.</span></span> <span data-ttu-id="ea2c9-152">Vous devez choisir l’une des options suivantes pour décrire et mettre en œuvre les contacts qui peuvent être ajoutés.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-152">You must choose one of the following to describe and enforce what contacts can be added.</span></span> <span data-ttu-id="ea2c9-153">Vous pouvez sélectionner l’une des opérations suivantes :</span><span class="sxs-lookup"><span data-stu-id="ea2c9-153">You can select from:</span></span>
+    
+      - <span data-ttu-id="ea2c9-154">**Fédéré**   Un type de partenaire **fédéré** représente un niveau élevé de confiance entre le déploiement de Lync Server et le partenaire XMPP.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-154">**Federated**   A **Federated** partner type represents a high level of trust between the Lync Server deployment and the XMPP partner.</span></span>  <span data-ttu-id="ea2c9-155">Ce type de partenariat est recommandé pour la Fédération avec des serveurs XMPP au sein de la même entreprise ou pour lesquels une relation professionnelle est établie.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-155">This partner type is recommended for federating with XMPP servers within the same enterprise or where there is an established business relationship.</span></span>  <span data-ttu-id="ea2c9-156">Les contacts XMPP dans les partenaires fédérés peuvent :</span><span class="sxs-lookup"><span data-stu-id="ea2c9-156">XMPP contacts in Federated partners can:</span></span>
+        
+        1.  <span data-ttu-id="ea2c9-157">Ajoutez des contacts Lync et consultez leur statut de présence sans autorisation expresse de l’utilisateur Lync.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-157">Add Lync contacts and view their presence without express authorization from the Lync user.</span></span>
+        
+        2.  <span data-ttu-id="ea2c9-158">Envoyez des messages instantanés à vos contacts Lync, que l’utilisateur de Lync les a ajoutés à leur liste de contacts ou non.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-158">Send instant messages to Lync contacts whether or not the Lync user has added them into their contact list.</span></span>
+        
+        3.  <span data-ttu-id="ea2c9-159">Afficher les notes de statut d’un utilisateur Lync.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-159">See a Lync user’s status notes.</span></span>
+    
+      - <span data-ttu-id="ea2c9-160">**Vérification publique**   Un fournisseur **certifié public** est un fournisseur XMPP public qui est approuvé pour vérifier l’identité de ses utilisateurs.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-160">**Public verified**   A **Public verified** partner is a public XMPP provider that is trusted to verify the identity of its users.</span></span>  <span data-ttu-id="ea2c9-161">Les contacts XMPP dans les réseaux validés publics peuvent ajouter des contacts Lync et afficher leur présence et leur envoyer des messages instantanés sans autorisation expresse des utilisateurs Lync.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-161">XMPP contacts in Public Verified networks can add Lync contacts and view their presence and send instant messages to them without express authorization from the Lync users.</span></span>  <span data-ttu-id="ea2c9-162">Les contacts XMPP dans les réseaux validés publique ne voient jamais les notes d’état des utilisateurs Lync.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-162">XMPP contacts in public verified networks never see a Lync users’ status notes.</span></span>  <span data-ttu-id="ea2c9-163">Ce paramètre n’est pas recommandé.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-163">This setting is not recommended.</span></span>
+    
+      - <span data-ttu-id="ea2c9-164">**Public non vérifié**   Un partenaire non **vérifié public** est un fournisseur XMPP public qui n’est pas approuvé pour vérifier l’identité de ses utilisateurs.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-164">**Public unverified**   A **Public unverified** partner is a public XMPP provider that is not trusted to verify the identity of its users.</span></span>  <span data-ttu-id="ea2c9-165">Les utilisateurs de XMPP sur des réseaux publics non vérifiés ne peuvent pas communiquer avec des utilisateurs de Lync, sauf si l’utilisateur de Lync les a expressément autorisés en les ajoutant à la liste des contacts.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-165">XMPP users on Public Unverified networks cannot communicate with Lync users unless the Lync user has expressly authorized them by adding them to the contact list.</span></span>  <span data-ttu-id="ea2c9-166">Les utilisateurs de XMPP sur les réseaux publics non vérifiés ne voient jamais les notes d’état des utilisateurs Lync.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-166">XMPP users on public unverified networks never see Lync users’ status notes.</span></span>  <span data-ttu-id="ea2c9-167">Ce paramètre est recommandé pour toutes les fédérations avec les fournisseurs XMPP publics tels que Google Talk.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-167">This setting is recommended for any federation with public XMPP providers such as Google Talk.</span></span>
+
+9.  <span data-ttu-id="ea2c9-168">**Type de connexion :** Définit les différentes règles et paramètres de dialback.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-168">**Connection Type:** Defines the various rules and dialback settings.</span></span>
+    
+      - <span data-ttu-id="ea2c9-169">**Négociation TLS**   Définit les règles de négociation TLS.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-169">**TLS Negotiation**   Defines the TLS negotiation rules.</span></span> <span data-ttu-id="ea2c9-170">Un service XMPP peut nécessiter le protocole TLS, peut rendre TLS facultatif ou vous définissez que TLS n’est pas pris en charge.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-170">An XMPP service can require TLS, can make TLS optional, or you define that TLS is not supported.</span></span> <span data-ttu-id="ea2c9-171">Le choix de l’option facultative quitte le service XMPP pour une décision de demande obligatoire.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-171">Choosing Optional leaves the requirement up to the XMPP service for a mandatory-to-negotiate decision.</span></span> <span data-ttu-id="ea2c9-172">Pour afficher tous les paramètres et détails possibles relatifs aux négociations SASL, TLS et Dialback, y compris les configurations d’erreur non valides et connues, voir [paramètres de négociation des partenaires fédérés de XMPP dans Lync Server 2013](lync-server-2013-negotiation-settings-for-xmpp-federated-partners.md).</span><span class="sxs-lookup"><span data-stu-id="ea2c9-172">To view all possible settings and details for SASL, TLS and Dialback negotiation –including not valid and known error configurations - see [Negotiation settings for XMPP federated partners in Lync Server 2013](lync-server-2013-negotiation-settings-for-xmpp-federated-partners.md).</span></span>
+        
+          - <span></span>  
+            <span data-ttu-id="ea2c9-173">**Obligatoire**   Le service XMPP nécessite une négociation TLS.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-173">**Required**   The XMPP service requires TLS negotiation.</span></span>
+        
+          - <span></span>  
+            <span data-ttu-id="ea2c9-174">**Facultatif**   Le service XMPP indique que TLS est requis pour négocier.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-174">**Optional**   The XMPP service indicates that TLS is mandatory-to-negotiate.</span></span>
+        
+          - <span></span>  
+            <span data-ttu-id="ea2c9-175">**Non pris en charge**   Le service XMPP ne prend pas en charge le protocole TLS.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-175">**Not Supported**   The XMPP service does not support TLS.</span></span>
+    
+      - <span data-ttu-id="ea2c9-176">**Négociation SASL**   Définit les règles de négociation SASL.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-176">**SASL negotiation**   Defines the SASL negotiation rules.</span></span> <span data-ttu-id="ea2c9-177">Un service XMPP peut être requis pour rendre SASL une option de SASL, ou vous définissez que SASL n’est pas pris en charge.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-177">An XMPP service can require SASL, can make SASL optional, or you define that SASL is not supported.</span></span> <span data-ttu-id="ea2c9-178">Le choix facultatif pour une décision d’obligation de négociation est requis par le service XMPP du partenaire.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-178">Choosing Optional leaves the requirement up to the partner XMPP service for a mandatory-to-negotiate decision.</span></span>
+        
+          - <span></span>  
+            <span data-ttu-id="ea2c9-179">**Obligatoire**   Le service XMPP nécessite une négociation SASL.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-179">**Required**   The XMPP service requires SASL negotiation.</span></span>
+        
+          - <span></span>  
+            <span data-ttu-id="ea2c9-180">**Facultatif**   Le service XMPP indique que SASL est requis pour négocier.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-180">**Optional**   The XMPP service indicates that SASL is mandatory-to-negotiate.</span></span>
+        
+          - <span></span>  
+            <span data-ttu-id="ea2c9-181">**Non pris en charge**   Le service XMPP ne prend pas en charge SASL.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-181">**Not Supported**   The XMPP service does not support SASL.</span></span>
+    
+      - <span data-ttu-id="ea2c9-182">**Service de support dialback Negotiation** Le processus de négociation du serveur de support dialback utilise le DNS (Domain Name System) et un serveur faisant autorité pour vérifier que la requête provient d’un partenaire XMPP valide.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-182">**Support server dialback negotiation** The support server dialback negotiation process uses the domain name system (DNS) and an authoritative server to verify that the request came from a valid XMPP partner.</span></span> <span data-ttu-id="ea2c9-183">Pour ce faire, le serveur d’origine crée un message d’un type spécifique avec une clé dialback générée et recherche le serveur de réception dans DNS.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-183">To do this, the originating server creates a message of a specific type with a generated dialback key and looks up the receiving server in DNS.</span></span> <span data-ttu-id="ea2c9-184">Le serveur d’origine envoie la clé dans un flux XML à la recherche DNS résultante, le serveur de réception en principe.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-184">The originating server sends the key in an XML stream to the resulting DNS lookup, presumably the receiving server.</span></span> <span data-ttu-id="ea2c9-185">Dès réception de la clé via le flux XML, le serveur de réception ne répond pas au serveur d’origine, mais envoie la clé à un serveur faisant autorité connu.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-185">On receipt of the key over the XML stream, the receiving server does not respond to the originating server, but sends the key to a known authoritative server.</span></span> <span data-ttu-id="ea2c9-186">Le serveur faisant autorité vérifie que la clé est valide ou n’est pas valide.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-186">The authoritative server verifies that the key is either valid or not valid.</span></span> <span data-ttu-id="ea2c9-187">Si ce n’est pas le cas, le serveur de réception ne répond pas au serveur d’origine.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-187">If not valid, the receiving server does not respond to the originating server.</span></span> <span data-ttu-id="ea2c9-188">Si la clé est valide, le serveur de réception informe le serveur d’origine qu’elle est valide et qu’elle peut commencer.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-188">If the key is valid, the receiving server informs the originating server that the identity and key is valid and the conversation can commence.</span></span>
+        
+        <span data-ttu-id="ea2c9-189">Il existe deux États valides pour la **négociation Dialback**:</span><span class="sxs-lookup"><span data-stu-id="ea2c9-189">There are two valid states for **Dialback negotiation**:</span></span>
+        
+          - <span></span>  
+            <span data-ttu-id="ea2c9-190">**Vrai**   Le serveur XMPP est configuré pour utiliser la négociation Dialback si une requête doit être reçue d’un serveur d’origine.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-190">**True**   The XMPP server is configured to use Dialback negotiation if a request should be received from an originating server.</span></span>
+        
+          - <span></span>  
+            <span data-ttu-id="ea2c9-191">**Faux**   Le serveur XMPP n’est pas configuré pour utiliser la négociation Dialback et, si une requête doit être reçue d’un serveur d’origine, il est ignoré.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-191">**False**   The XMPP server is not configured to use Dialback negotiation and if a request should be received from an originating server, it will be ignored.</span></span>
+
+10. <span data-ttu-id="ea2c9-192">Cliquez sur **valider** pour enregistrer les modifications apportées à la stratégie de site ou d’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-192">Click **Commit** to save your changes to the site or user policy.</span></span>
+
+</div>
+
+<div>
+
+## <a name="update-dns-records-for-lync-server-2013-xmpp-gateway"></a><span data-ttu-id="ea2c9-193">Mettre à jour les enregistrements DNS pour Lync Server 2013 passerelle XMPP</span><span class="sxs-lookup"><span data-stu-id="ea2c9-193">Update DNS Records for Lync Server 2013 XMPP Gateway</span></span>
+
+1.  <span data-ttu-id="ea2c9-194">Pour configurer DNS pour la Fédération XMPP, ajoutez l’enregistrement SRV suivant à votre DNS externe : \_ XMPP-Server. \_ TCP.\<domain name\></span><span class="sxs-lookup"><span data-stu-id="ea2c9-194">To configure DNS for XMPP federation, you add the following SRV record to your external DNS:\_xmpp-server.\_tcp.\<domain name\></span></span> <span data-ttu-id="ea2c9-195">L’enregistrement SRV sera résolu vers le nom de domaine complet d’accès Edge du serveur Edge, avec une valeur de port de 5269.</span><span class="sxs-lookup"><span data-stu-id="ea2c9-195">The SRV record will resolve to the Access Edge FQDN of the Edge server, with a port value of 5269.</span></span>
+
+<span data-ttu-id="ea2c9-196"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="ea2c9-196"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+

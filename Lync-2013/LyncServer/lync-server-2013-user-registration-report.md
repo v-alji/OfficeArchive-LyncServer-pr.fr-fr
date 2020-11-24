@@ -1,0 +1,276 @@
+---
+title: 'Lync Server 2013 : rapport sur l’inscription des utilisateurs'
+description: 'Lync Server 2013 : rapport sur l’inscription des utilisateurs.'
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: User Registration Report
+ms:assetid: 151d5cc9-cc1b-4cfa-be9c-55ebe321f7a4
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg558614(v=OCS.15)
+ms:contentKeyID: 48183486
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 7adb8ef7e94a24f0fd088f12e009fc9d63f3be9d
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "49394304"
+---
+# <a name="user-registration-report-in-lync-server-2013"></a><span data-ttu-id="e3a0e-103">Rapport sur l’inscription des utilisateurs dans Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="e3a0e-103">User Registration Report in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="e3a0e-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="e3a0e-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="e3a0e-105">_**Dernière modification de la rubrique :** 2012-10-21_</span><span class="sxs-lookup"><span data-stu-id="e3a0e-105">_**Topic Last Modified:** 2012-10-21_</span></span>
+
+<span data-ttu-id="e3a0e-106">Le rapport sur l’inscription des utilisateurs fournit une vue d’ensemble de l’activité de connexion des utilisateurs, en particulier des informations sur le nombre d’utilisateurs connectés à Microsoft Lync Server 2013 pendant une période spécifiée (horaire, quotidienne, hebdomadaire, mensuel).</span><span class="sxs-lookup"><span data-stu-id="e3a0e-106">The User Registration Report provides an overview of user logon activity, most notably information about the number of users who logged on to Microsoft Lync Server 2013 during a specified time period (hourly, daily, weekly, monthly).</span></span> <span data-ttu-id="e3a0e-107">N’oubliez pas que le rapport vous indique uniquement le nombre de personnes qui ont ouvert une session.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-107">Keep in mind that the report only tells you how many people logged on.</span></span> <span data-ttu-id="e3a0e-108">Il ne vous apprend pas *qui* a ouvert une session.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-108">It does not tell you *which* people logged on.</span></span> <span data-ttu-id="e3a0e-109">Les rapports d’analyse ne fournissent pas d’informations sur les utilisateurs spécifiques utilisant Lync Server 2013 (et ceux qui ne le sont pas).</span><span class="sxs-lookup"><span data-stu-id="e3a0e-109">Monitoring Reports do not provide information about which specific users are using Lync Server 2013 (and which ones are not).</span></span> <span data-ttu-id="e3a0e-110">Vous pouvez toutefois obtenir des informations approximatives sur les utilisateurs à l’aide du rapport d’activité de l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-110">However, you can get a rough estimate of user information by using the User Activity Report.</span></span>
+
+<span data-ttu-id="e3a0e-111">Lorsqu’il donne des informations sur les ouvertures de session d’utilisateurs, le rapport d’enregistrement de l’utilisateur établit deux distinctions importantes.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-111">When providing information about user logons, the User Registration Report draws two important distinctions.</span></span> <span data-ttu-id="e3a0e-112">Tout d’abord, il décompose les ouvertures de session en deux catégories principales : ouvertures de session internes et ouvertures de session externes.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-112">First, it breaks logons down into two primary categories: internal logons and external logons.</span></span> <span data-ttu-id="e3a0e-113">Les ouvertures de session internes représentent les utilisateurs qui ont ouvert une session à l’intérieur du pare-feu de votre organisation (c’est-à-dire tout en étant connecté au réseau d’entreprise).</span><span class="sxs-lookup"><span data-stu-id="e3a0e-113">Internal logons represent users who logged on from inside your organization's firewall (that is, while connected to the corporate network).</span></span> <span data-ttu-id="e3a0e-114">Les ouvertures de session externes représentent les utilisateurs qui se sont connectés depuis l’extérieur du pare-feu par le biais d’un serveur Edge (par exemple, un utilisateur qui s’est connecté à partir d’un cafés Internet compte comme une connexion externe).</span><span class="sxs-lookup"><span data-stu-id="e3a0e-114">External logons represent users who logged on from outside the firewall through an Edge Server (for example, a user who logged on from an Internet café counts as an external logon).</span></span> <span data-ttu-id="e3a0e-115">Si vous devez connaître le nombre d’utilisateurs qui ouvrent une session à l’extérieur du pare-feu, le rapport d’enregistrement de l’utilisateur peut vous donner cette information.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-115">If you need to know how many of your users are logging on from outside the firewall, the User Registration Report can provide you with this information.</span></span>
+
+<span data-ttu-id="e3a0e-116">En outre, le rapport d’enregistrement de l’utilisateur note le nombre d’utilisateurs *actifs* qui étaient présents pendant une période donnée.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-116">In addition, the User Registration Report notes how many *active* users were present during a given time period.</span></span> <span data-ttu-id="e3a0e-117">Un utilisateur actif est un utilisateur qui a participé à une session de messagerie instantanée, a participé à une réunion Lync, a émis ou reçu un appel téléphonique ou a utilisé Lync Server pendant la période écoulée.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-117">An active user is a user who took part in an instant messaging (IM) session, participated in a Lync Meeting, made or received a phone call, or otherwise used Lync Server during that period of time.</span></span> <span data-ttu-id="e3a0e-118">Un utilisateur actif est différent d’un utilisateur qui a ouvert une session, mais qui n’a jamais utilisé le système.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-118">This is different from a user who logged on, but never actually used the system.</span></span>
+
+<div>
+
+## <a name="accessing-the-user-registration-report"></a><span data-ttu-id="e3a0e-119">Accès au rapport d’enregistrement de l’utilisateur</span><span class="sxs-lookup"><span data-stu-id="e3a0e-119">Accessing the User Registration Report</span></span>
+
+<span data-ttu-id="e3a0e-p104">Vous ne pouvez accéder au rapport d’enregistrement de l’utilisateur qu’à partir de la page d’accueil des rapports de surveillance. Le rapport d’enregistrement de l’utilisateur n’est lié à aucun autre rapport.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-p104">You access the User Registration Report only from the Monitoring Reports home page. The User Registration Report does not link to any other reports.</span></span>
+
+</div>
+
+<div>
+
+## <a name="making-the-best-use-of-the-user-registration-report"></a><span data-ttu-id="e3a0e-122">Utilisation optimale du rapport d’enregistrement de l’utilisateur</span><span class="sxs-lookup"><span data-stu-id="e3a0e-122">Making the Best Use of the User Registration Report</span></span>
+
+<span data-ttu-id="e3a0e-123">Après avoir déployé Lync Server, vous devez répondre aux questions fréquemment posées : Comment savoir si mes utilisateurs utilisent réellement cette nouvelle technologie ?</span><span class="sxs-lookup"><span data-stu-id="e3a0e-123">After you've deployed Lync Server one commonly-asked question is this: How do I know if my users are actually using this new technology?</span></span> <span data-ttu-id="e3a0e-124">Même s’il est quelque peu limité à cet égard, le rapport d’enregistrement de l’utilisateur peut vous aider à répondre à cette question.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-124">Although it has a few limitations in this regard, the User Registration Report can help you answer this question.</span></span> <span data-ttu-id="e3a0e-125">Pour déterminer si des utilisateurs utilisent ou non Lync Server, vous devez effectuer deux opérations.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-125">To determine whether or not users are using Lync Server, you need to do two things.</span></span> <span data-ttu-id="e3a0e-126">Récupérez d’abord la valeur de la mesure Utilisateurs uniques par ouverture de session dans le rapport d’enregistrement de l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-126">First, get the value of the Unique logon users metric from the User Registration Report.</span></span> <span data-ttu-id="e3a0e-127">Cette valeur indique le nombre d’utilisateurs distincts qui se sont connectés à Lync Server.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-127">This value tells you how many distinct individuals logged on to Lync Server.</span></span>
+
+<span data-ttu-id="e3a0e-128">Par comparaison, la métrique total des ouvertures de session indique le nombre total de fois où quiconque s’est connecté à Lync Server.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-128">By comparison, the Total logons metric shows how many total times anyone logged on to Lync Server.</span></span> <span data-ttu-id="e3a0e-129">Par exemple, supposons que Ken Myer s’est connecté à Lync Server cinq fois par jour.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-129">For example, suppose Ken Myer logged on to Lync Server five different times in a single day.</span></span> <span data-ttu-id="e3a0e-130">Dans ce cas, cinq ouvertures de session distinctes sont comptabilisées pour Ken Myer dans la mesure Nombre total d’ouvertures de session, mais une seule ouverture de session est comptabilisée dans la mesure Utilisateurs uniques par ouverture de session.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-130">In that case, Ken Myer would count as five separate logon sessions for the Total logons metric, but just one logon user for the Unique logon users metric.</span></span> <span data-ttu-id="e3a0e-131">De même, il n’est pas rare qu’un utilisateur ouvre une session sur plusieurs périphériques ou depuis plusieurs emplacements.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-131">Likewise, it's not uncommon for a user to log on from multiple devices or multiple locations.</span></span> <span data-ttu-id="e3a0e-132">Par exemple, l’utilisateur peut se connecter à l’aide d’un ordinateur de bureau, d’un ordinateur portable et peut disposer d’un téléphone IP qui ouvre automatiquement une session sur Lync Server.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-132">For example, a user can log on using her desktop computer, her laptop computer, and she can have an IP phone that automatically logs on to Lync Server.</span></span> <span data-ttu-id="e3a0e-133">Dans cet exemple, nous avons un utilisateur unique avec trois ouvertures de session.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-133">In this example, there is one unique user with three logons.</span></span>
+
+<span data-ttu-id="e3a0e-134">Pour mieux expliquer la différence entre le nombre total d’ouvertures de session et les utilisateurs uniques par ouverture de session, examinez les ouvertures de session pour une période donnée dans le tableau suivant.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-134">To further explain the difference between total logons and unique logons, consider the logons for a given time period in the following table.</span></span>
+
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span data-ttu-id="e3a0e-135">Utilisateur</span><span class="sxs-lookup"><span data-stu-id="e3a0e-135">User</span></span></th>
+<th><span data-ttu-id="e3a0e-136">Date/heure d’ouverture de session</span><span class="sxs-lookup"><span data-stu-id="e3a0e-136">Logon time</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><span data-ttu-id="e3a0e-137">Ken Myer</span><span class="sxs-lookup"><span data-stu-id="e3a0e-137">Ken Myer</span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-138">7/7/2012 8:45 AM</span><span class="sxs-lookup"><span data-stu-id="e3a0e-138">7/7/2012 8:45 AM</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="e3a0e-139">Ken Myer</span><span class="sxs-lookup"><span data-stu-id="e3a0e-139">Ken Myer</span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-140">7/7/2012 8:46 AM</span><span class="sxs-lookup"><span data-stu-id="e3a0e-140">7/7/2012 8:46 AM</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="e3a0e-141">Pilar Ackerman</span><span class="sxs-lookup"><span data-stu-id="e3a0e-141">Pilar Ackerman</span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-142">7/7/2012 9:17 AM</span><span class="sxs-lookup"><span data-stu-id="e3a0e-142">7/7/2012 9:17 AM</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="e3a0e-143">Ken Myer</span><span class="sxs-lookup"><span data-stu-id="e3a0e-143">Ken Myer</span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-144">7/7/2012 9:22 AM</span><span class="sxs-lookup"><span data-stu-id="e3a0e-144">7/7/2012 9:22 AM</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="e3a0e-145">Pilar Ackerman</span><span class="sxs-lookup"><span data-stu-id="e3a0e-145">Pilar Ackerman</span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-146">7/7/2012 9:31 AM</span><span class="sxs-lookup"><span data-stu-id="e3a0e-146">7/7/2012 9:31 AM</span></span></p></td>
+</tr>
+</tbody>
+</table>
+
+
+<span data-ttu-id="e3a0e-p107">Notez qu’il y a cinq ouvertures de session au total, mais qu’il n’y a que deux utilisateurs uniques par ouverture de session : Ken Myer (qui a ouvert une session trois fois) et Pilar Ackerman (qui a ouvert une session deux fois). Cela illustre la différence entre les ouvertures de session et les utilisateurs uniques par ouverture de session.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-p107">Notice that there is a total of five logons; however, there are only two unique logon users: Ken Myer (who logged on three times) and Pilar Ackerman (who logged on twice). That's the difference between logons and unique logon users.</span></span>
+
+<span data-ttu-id="e3a0e-149">En plus de connaître le nombre d’ouvertures de session uniques, vous devez connaître le nombre total d’utilisateurs qui ont été activés pour Lync Server.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-149">In addition to knowing the number of unique logons, you need to know the total number of users who have been enabled for Lync Server.</span></span> <span data-ttu-id="e3a0e-150">Cette valeur peut être récupérée en ouvrant Lync Server 2013 Management Shell et en exécutant la commande Windows PowerShell suivante :</span><span class="sxs-lookup"><span data-stu-id="e3a0e-150">That value can be retrieved by opening the Lync Server 2013 Management Shell and running the following Windows PowerShell command:</span></span>
+
+    (Get-CsUser).Count
+
+<span data-ttu-id="e3a0e-151">Si la commande précédente renvoie une valeur de 1 236 et que la métrique des utilisateurs de connexion unique renvoie une valeur moyenne de 667, qui vous suggère qu’un peu plus de la moitié de vos utilisateurs est en train de se connecter au système chaque jour (667 divisé par 1 236, soit approximativement 54%).</span><span class="sxs-lookup"><span data-stu-id="e3a0e-151">If the preceding command returns a value of 1,236 and Unique logon users metric returns an average value of 667, that suggests that a little over half of your users enable for Lync are actually logging on to the system each day (that is, 667 divided by 1,236, which is approximately 54%).</span></span>
+
+<div>
+
+
+> [!WARNING]  
+> <span data-ttu-id="e3a0e-152">Gardez à l’esprit que les mesures d’ouverture de session enregistrent les utilisateurs qui ont ouvert une session pendant la période spécifiée.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-152">Keep in mind that the logon metrics record users who actually logged on during the specified time period.</span></span> <span data-ttu-id="e3a0e-153">Elles ne gardent pas trace des utilisateurs qui avaient déjà ouvert une session sur le système.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-153">They don't keep track of users who were already logged on to the system.</span></span> <span data-ttu-id="e3a0e-154">Par exemple, si votre mesure Utilisateurs uniques par ouverture de session indique 667 ouvertures de session et que vous avez 1 236 utilisateurs, cela suggère qu’environ la moitié de vos utilisateurs ouvrent une session sur le système.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-154">For example, if your Unique logon users metric shows 667 logons and you have 1,236 users, that suggests that about half your users are logging on to the system.</span></span> <span data-ttu-id="e3a0e-155">Cependant, supposons que 300 utilisateurs avaient déjà ouvert une session sur le système au moment où vous avez commencé à regarder les données d’ouverture de session.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-155">However, suppose 300 users were already logged on to the system at the time you began checking the logon data.</span></span> <span data-ttu-id="e3a0e-156">Cela signifie que vous avez réellement reçu une connexion de plus de 1 000 utilisateurs à Lync Server, ce qui signifie que plus près de 80% de vos utilisateurs ont été connectés.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-156">That would mean that you actually had nearly 1,000 users logged on to Lync Server, which would mean that closer to 80% of your users were logged on.</span></span>
+
+
+
+</div>
+
+<span data-ttu-id="e3a0e-157">Vous devez également comparer la valeur Utilisateurs uniques par ouverture de session avec la valeur de la mesure Utilisateurs actifs uniques.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-157">You should also compare the Unique logon users value with the value of the Unique active users metric.</span></span> <span data-ttu-id="e3a0e-158">La métrique utilisateurs actifs uniques indique le nombre d’utilisateurs uniques qui ont réellement utilisé Lync Server : ils ont effectué un appel téléphonique, ils ont rejoint une réunion Lync ou ont participé à une session de messagerie instantanée.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-158">The Unique active users metric tells you how many unique users actually used Lync Server: they made a phone call, they joined a Lync Meeting, or they participated in an IM session.</span></span> <span data-ttu-id="e3a0e-159">Il s’agit d’informations utiles, car Microsoft Lync 2013 peut être configuré pour démarrer automatiquement chaque fois qu’un utilisateur démarre Windows.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-159">This is useful information, because Microsoft Lync 2013 can be configured to automatically start each time a user starts Windows.</span></span> <span data-ttu-id="e3a0e-160">Pour cette raison, il est possible que vous disposiez d’un grand nombre d’utilisateurs qui se connectent automatiquement à Lync quand ils se connectent à Windows tous les jours, mais qu’ils n’utilisent jamais réellement Lync Server pendant cette période.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-160">Because of that, you might have a large number of users who automatically log on to Lync when they log on to Windows each day, but then never actually use Lync Server during that time period.</span></span>
+
+<span data-ttu-id="e3a0e-161">La métrique unique des utilisateurs actifs fournit également des données plus significatives au sein d’une organisation dans laquelle les utilisateurs ne ferment pas de fenêtre à la fin de la journée.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-161">The Unique active users metric also provides more meaningful data in an organization where users typically do not log off Windows at the end of the day.</span></span> <span data-ttu-id="e3a0e-162">Au lieu de cela, ils verrouillent simplement leur ordinateur et laissent Windows et Lync en cours d’exécution.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-162">Instead, they simply lock their computers and leave Windows and Lync running.</span></span> <span data-ttu-id="e3a0e-163">Dans ce cas, vous pouvez vous retrouver avec un nombre d’ouvertures de session par jour très restreint, car vos utilisateurs ont ouvert leur session plusieurs jours auparavant et ne l’ont jamais fermée.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-163">In a situation like that, you might end up with very few logons per day because your users logged on several days ago and never logged off.</span></span> <span data-ttu-id="e3a0e-164">Toutefois, les utilisateurs actifs uniques vous indiquent si les utilisateurs utilisent activement Lync ou un autre client Lync Server.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-164">However, Unique active users tells you whether users are actively using Lync or another Lync Server client.</span></span>
+
+</div>
+
+<div>
+
+## <a name="filters"></a><span data-ttu-id="e3a0e-165">Filtres</span><span class="sxs-lookup"><span data-stu-id="e3a0e-165">Filters</span></span>
+
+<span data-ttu-id="e3a0e-166">Les filtres vous offrent la possibilité de retourner un ensemble de données mieux ciblées ou de visualiser les données retournées de différentes manières.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-166">Filters provide a way for you to return a more finely targeted set of data or to view the returned data in different ways.</span></span> <span data-ttu-id="e3a0e-167">Par exemple, le rapport sur l’inscription des utilisateurs vous permet d’afficher les données de l’ensemble de votre pool d’inscriptions et de vos serveurs Edge, ou d’afficher les données d’un pool individuel.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-167">For example, the User Registration Report enables you to view data for all your Registrar pool and Edge Servers or to view data for an individual pool.</span></span> <span data-ttu-id="e3a0e-168">Vous pouvez également choisir le mode de groupement des données.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-168">You can also choose how data should be grouped.</span></span> <span data-ttu-id="e3a0e-169">Dans ce cas, les enregistrements sont groupés par heure, jour, semaine ou mois.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-169">In this case, registrations grouped by hour, day, week, or month.</span></span>
+
+<span data-ttu-id="e3a0e-170">Le tableau qui suit dresse la liste des filtres que vous pouvez utiliser avec le rapport d’enregistrement de l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-170">The following table lists the filters that you can use with the User Registration Report.</span></span>
+
+### <a name="user-registration-report-filters"></a><span data-ttu-id="e3a0e-171">Filtres du rapport d’enregistrement de l’utilisateur</span><span class="sxs-lookup"><span data-stu-id="e3a0e-171">User Registration Report Filters</span></span>
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span data-ttu-id="e3a0e-172">Nom</span><span class="sxs-lookup"><span data-stu-id="e3a0e-172">Name</span></span></th>
+<th><span data-ttu-id="e3a0e-173">Description</span><span class="sxs-lookup"><span data-stu-id="e3a0e-173">Description</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><span data-ttu-id="e3a0e-174"><strong>De</strong></span><span class="sxs-lookup"><span data-stu-id="e3a0e-174"><strong>From</strong></span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-p113">Date/heure de début de la période. Pour afficher les données par heures, entrez à la fois la date et l’heure de début comme suit :</span><span class="sxs-lookup"><span data-stu-id="e3a0e-p113">Start date and time for the time range. To view data by hours, enter both the start date and time as follows:</span></span></p>
+<p><span data-ttu-id="e3a0e-177">7/7/2012 1:00 PM</span><span class="sxs-lookup"><span data-stu-id="e3a0e-177">7/7/2012 1:00 PM</span></span></p>
+<p><span data-ttu-id="e3a0e-p114">Si vous ne précisez aucune heure de début, le rapport commence automatiquement à midi (12:00 AM) à la date du jour défini. Pour afficher les données par jour, entrez simplement la date :</span><span class="sxs-lookup"><span data-stu-id="e3a0e-p114">If you do not enter a start time, the report automatically begins at 12:00 AM on the specified day. To view data by day, enter just the date:</span></span></p>
+<p><span data-ttu-id="e3a0e-180">7/7/2012</span><span class="sxs-lookup"><span data-stu-id="e3a0e-180">7/7/2012</span></span></p>
+<p><span data-ttu-id="e3a0e-181">Pour afficher les données par semaine ou mois, entrez une date tombant un jour quelconque de la semaine ou du mois que vous souhaitez visualiser (nul besoin d’entrer le premier jour de la semaine ou du mois) :</span><span class="sxs-lookup"><span data-stu-id="e3a0e-181">To view by week or by month, enter a date that falls anywhere within the week or month that you want to view (you do not have to enter the first day of the week or month):</span></span></p>
+<p><span data-ttu-id="e3a0e-182">7/3/2012</span><span class="sxs-lookup"><span data-stu-id="e3a0e-182">7/3/2012</span></span></p>
+<p><span data-ttu-id="e3a0e-183">Les semaines s’étalent toujours du dimanche au samedi.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-183">Weeks always run from Sunday through Saturday.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="e3a0e-184"><strong>À</strong></span><span class="sxs-lookup"><span data-stu-id="e3a0e-184"><strong>To</strong></span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-p115">Date/heure de fin de la période. Pour afficher les données par heures, entrez à la fois la date et l’heure de fin comme suit :</span><span class="sxs-lookup"><span data-stu-id="e3a0e-p115">End date and time for the time range. To view data by hours, enter both the end date and time as follows:</span></span></p>
+<p><span data-ttu-id="e3a0e-187">7/7/2012 1:00 PM</span><span class="sxs-lookup"><span data-stu-id="e3a0e-187">7/7/2012 1:00 PM</span></span></p>
+<p><span data-ttu-id="e3a0e-p116">Si vous ne précisez aucune heure de fin, le rapport se termine automatiquement à midi (12:00 AM) à la date du jour défini. Pour afficher les données par jour, entrez simplement la date :</span><span class="sxs-lookup"><span data-stu-id="e3a0e-p116">If you do not enter an end time, the report automatically ends at 12:00 AM on the specified day. To view data by day, enter just the date:</span></span></p>
+<p><span data-ttu-id="e3a0e-190">7/7/2012</span><span class="sxs-lookup"><span data-stu-id="e3a0e-190">7/7/2012</span></span></p>
+<p><span data-ttu-id="e3a0e-191">Pour afficher les données par semaine ou mois, entrez une date tombant un jour quelconque de la semaine ou du mois que vous souhaitez visualiser (nul besoin d’entrer le premier jour de la semaine ou du mois) :</span><span class="sxs-lookup"><span data-stu-id="e3a0e-191">To view by week or by month, enter a date that falls anywhere within the week or month that you want to view (you do not have to enter the first day of the week or month):</span></span></p>
+<p><span data-ttu-id="e3a0e-192">7/3/2012</span><span class="sxs-lookup"><span data-stu-id="e3a0e-192">7/3/2012</span></span></p>
+<p><span data-ttu-id="e3a0e-193">Les semaines s’étalent toujours du dimanche au samedi.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-193">Weeks always run from Sunday through Saturday.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="e3a0e-194"><strong>Intervalle</strong></span><span class="sxs-lookup"><span data-stu-id="e3a0e-194"><strong>Interval</strong></span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-p117">Intervalle de temps. Sélectionnez l’une des options suivantes :</span><span class="sxs-lookup"><span data-stu-id="e3a0e-p117">Time interval. Select one of the following:</span></span></p>
+<ul>
+<li><p><span data-ttu-id="e3a0e-197">Toutes les heures (il est possible d’afficher un maximum de 25 heures)</span><span class="sxs-lookup"><span data-stu-id="e3a0e-197">Hourly (a maximum of 25 hours can be displayed)</span></span></p></li>
+<li><p><span data-ttu-id="e3a0e-198">Tous les jours (il est possible d’afficher un maximum de 31 jours)</span><span class="sxs-lookup"><span data-stu-id="e3a0e-198">Daily (a maximum of 31 days can be displayed)</span></span></p></li>
+<li><p><span data-ttu-id="e3a0e-199">Toutes les semaines (il est possible d’afficher un maximum de 12 semaines)</span><span class="sxs-lookup"><span data-stu-id="e3a0e-199">Weekly (a maximum of 12 weeks can be displayed)</span></span></p></li>
+<li><p><span data-ttu-id="e3a0e-200">Tous les mois (il est possible d’afficher un maximum de 12 mois)</span><span class="sxs-lookup"><span data-stu-id="e3a0e-200">Monthly (a maximum of 12 months can be displayed)</span></span></p></li>
+</ul>
+<p><span data-ttu-id="e3a0e-201">Si la période comprise entre les dates de début et de fin dépasse le nombre maximal de valeurs autorisé pour l’intervalle sélectionné, seul le nombre maximal de valeurs (à compter de la date de début) s’affiche.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-201">If the start and end dates exceed the maximum number of values allowed for the selected interval, only the maximum number of values (starting from the start date) are displayed.</span></span> <span data-ttu-id="e3a0e-202">Par exemple, si vous sélectionnez l’intervalle quotidien avec une date de début de 7/7/2012 et une date de fin de 2/28/2012, les données sont affichées pour les jours de 8/7/2012 12:00 AM à 9/7/2012 12:00 AM (c’est-à-dire un total de 31 jours de données).</span><span class="sxs-lookup"><span data-stu-id="e3a0e-202">For example, if you select the Daily interval with a start date of 7/7/2012 and an end date of 2/28/2012, data is displayed for the days 8/7/2012 12:00 AM to 9/7/2012 12:00 AM (that is, a total of 31 days' worth of data).</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="e3a0e-203"><strong>Pool</strong></span><span class="sxs-lookup"><span data-stu-id="e3a0e-203"><strong>Pool</strong></span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-204">Nom de domaine complet (FQDN) du pool de serveurs d’inscriptions.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-204">Fully qualified domain name (FQDN) of the Registrar pool or Edge Server.</span></span> <span data-ttu-id="e3a0e-205">Vous pouvez soit sélectionner un pool particulier, soit cliquer sur <strong>[Tous]</strong> pour afficher les données de tous les pools.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-205">You can either select an individual pool or choose <strong>[All]</strong> to view data for all the pools.</span></span> <span data-ttu-id="e3a0e-206">Cette liste déroulante se renseigne automatiquement en fonction des enregistrements que contient la base de données.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-206">This drop-down list is automatically populated for you based on the records in the database.</span></span></p></td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+
+<div>
+
+## <a name="metrics"></a><span data-ttu-id="e3a0e-207">Mesures</span><span class="sxs-lookup"><span data-stu-id="e3a0e-207">Metrics</span></span>
+
+<span data-ttu-id="e3a0e-208">Le tableau qui suit répertorie les informations fournies dans le rapport d’enregistrement de l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-208">The following table lists the information provided in the User Registration Report.</span></span>
+
+### <a name="user-registration-report-metrics"></a><span data-ttu-id="e3a0e-209">Mesures du rapport d’enregistrement de l’utilisateur</span><span class="sxs-lookup"><span data-stu-id="e3a0e-209">User Registration Report Metrics</span></span>
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span data-ttu-id="e3a0e-210">Nom</span><span class="sxs-lookup"><span data-stu-id="e3a0e-210">Name</span></span></th>
+<th><span data-ttu-id="e3a0e-211">Est-il possible d’effectuer un tri sur cet élément ?</span><span class="sxs-lookup"><span data-stu-id="e3a0e-211">Can you sort on this item?</span></span></th>
+<th><span data-ttu-id="e3a0e-212">Description</span><span class="sxs-lookup"><span data-stu-id="e3a0e-212">Description</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><span data-ttu-id="e3a0e-213"><strong>Toutes les heures</strong></span><span class="sxs-lookup"><span data-stu-id="e3a0e-213"><strong>Hourly</strong></span></span></p>
+<p><span data-ttu-id="e3a0e-214"><strong>Jour</strong></span><span class="sxs-lookup"><span data-stu-id="e3a0e-214"><strong>Daily</strong></span></span></p>
+<p><span data-ttu-id="e3a0e-215"><strong>Toutes les semaines</strong></span><span class="sxs-lookup"><span data-stu-id="e3a0e-215"><strong>Weekly</strong></span></span></p>
+<p><span data-ttu-id="e3a0e-216"><strong>Mois</strong></span><span class="sxs-lookup"><span data-stu-id="e3a0e-216"><strong>Monthly</strong></span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-217">Non</span><span class="sxs-lookup"><span data-stu-id="e3a0e-217">No</span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-218">Indique l’intervalle de temps que vous avez sélectionné dans la barre d’outils des filtres.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-218">Indicates the time interval that you selected on the filter toolbar.</span></span> <span data-ttu-id="e3a0e-219">Le cas échéant, vous pouvez cliquer sur un intervalle de temps donné pour afficher des informations détaillées pour cet intervalle.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-219">Where applicable, you can click a given time interval to view detailed information for that interval.</span></span> <span data-ttu-id="e3a0e-220">Par exemple, si vous utilisez l’intervalle quotidien et que vous cliquez sur 7/7/2012, vous pouvez voir une répartition horaire de l’activité d’inscription des utilisateurs à cette date.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-220">For example, if you are using the Daily interval and you click 7/7/2012, you see an hourly breakdown of user registration activity for that date.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="e3a0e-221"><strong>Nombre total d’ouvertures de sessions</strong></span><span class="sxs-lookup"><span data-stu-id="e3a0e-221"><strong>Total logons</strong></span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-222">Non</span><span class="sxs-lookup"><span data-stu-id="e3a0e-222">No</span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-223">Nombre total d’ouvertures de sessions réussies.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-223">Total number of successful logon sessions.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="e3a0e-224"><strong>Ouvertures de sessions internes</strong></span><span class="sxs-lookup"><span data-stu-id="e3a0e-224"><strong>Internal logons</strong></span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-225">Non</span><span class="sxs-lookup"><span data-stu-id="e3a0e-225">No</span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-226">Nombre total d’ouvertures de sessions dans le réseau interne.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-226">Total number of logons within the internal network.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="e3a0e-227"><strong>Ouvertures de sessions externes</strong></span><span class="sxs-lookup"><span data-stu-id="e3a0e-227"><strong>External logons</strong></span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-228">Non</span><span class="sxs-lookup"><span data-stu-id="e3a0e-228">No</span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-229">Nombre total d’ouvertures de sessions de l’extérieur du réseau interne, à l’aide du serveur Edge.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-229">Total number of logons from outside the internal network, using the Edge Server.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="e3a0e-230"><strong>Utilisateurs uniques par ouverture de session</strong></span><span class="sxs-lookup"><span data-stu-id="e3a0e-230"><strong>Unique logon users</strong></span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-231">Non</span><span class="sxs-lookup"><span data-stu-id="e3a0e-231">No</span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-p121">Nombre total d’utilisateurs qui ont ouvert au moins une session. Un utilisateur qui a ouvert plusieurs sessions compte pour un utilisateur, exactement comme une personne qui a ouvert une seule session.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-p121">Total number of users who had at least one logon session. A user who had multiple logon sessions counts as one user, the same as a person who had just a single logon session.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="e3a0e-234"><strong>Utilisateurs actifs uniques</strong></span><span class="sxs-lookup"><span data-stu-id="e3a0e-234"><strong>Unique active users</strong></span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-235">Non</span><span class="sxs-lookup"><span data-stu-id="e3a0e-235">No</span></span></p></td>
+<td><p><span data-ttu-id="e3a0e-p122">Nombre total d’utilisateurs qui ont été impliqués dans une session P2P ou de conférence. Un utilisateur qui a ouvert plusieurs sessions compte pour un utilisateur, exactement comme une personne qui a ouvert une seule session.</span><span class="sxs-lookup"><span data-stu-id="e3a0e-p122">Total number of users who were involved in a peer-to-peer or conferencing session. A user who had multiple sessions counts as one user, the same as a person who had just a single session.</span></span></p></td>
+</tr>
+</tbody>
+</table><span data-ttu-id="e3a0e-238">
+
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="e3a0e-238">
+
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+
