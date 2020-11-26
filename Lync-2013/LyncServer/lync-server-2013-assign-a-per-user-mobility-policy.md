@@ -1,0 +1,116 @@
+---
+title: 'Lync Server 2013 : affecter une stratégie de mobilité par utilisateur'
+description: 'Lync Server 2013 : attribuez une stratégie de mobilité par utilisateur.'
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Assign a per-user mobility policy
+ms:assetid: d8bf997f-4bc7-48d3-973b-323505f55e9d
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ721902(v=OCS.15)
+ms:contentKeyID: 49733836
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 9b17c58cf3477002a7fa43035b72c77963663316
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49440499"
+---
+# <a name="assign-a-per-user-mobility-policy-in-lync-server-2013"></a><span data-ttu-id="e1492-103">Affecter une stratégie de mobilité par utilisateur dans Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="e1492-103">Assign a per-user mobility policy in Lync Server 2013</span></span>
+
+ 
+
+
+<span data-ttu-id="e1492-104">La stratégie de mobilité est l’un des paramètres individuels d’un compte d’utilisateur que vous pouvez configurer dans le panneau de configuration de Lync Server ou Lync Server Management Shell.</span><span class="sxs-lookup"><span data-stu-id="e1492-104">The mobility policy is one of the individual settings of a user account that you can configure in Lync Server Control Panel or Lync Server Management Shell.</span></span>
+
+## <a name="to-assign-a-per-user-mobility-policy-with-lync-server-control-panel"></a><span data-ttu-id="e1492-105">Pour attribuer une stratégie de mobilité par utilisateur avec le panneau de configuration de Lync Server</span><span class="sxs-lookup"><span data-stu-id="e1492-105">To assign a per-user mobility policy with Lync Server Control Panel</span></span>
+
+1.  <span data-ttu-id="e1492-106">À partir d’un compte d’utilisateur auquel est affecté le rôle CsUserAdministrator ou CsAdministrator, ouvrez une session sur un ordinateur de votre déploiement interne.</span><span class="sxs-lookup"><span data-stu-id="e1492-106">From a user account that is assigned to the CsUserAdministrator role or the CsAdministrator role, log on to any computer in your internal deployment.</span></span>
+
+2.  <span data-ttu-id="e1492-107">Ouvrez une fenêtre de navigateur, puis entrez l’URL d’administration pour ouvrir le panneau de configuration de Lync Server.</span><span class="sxs-lookup"><span data-stu-id="e1492-107">Open a browser window, and then enter the Admin URL to open the Lync Server Control Panel.</span></span> <span data-ttu-id="e1492-108">Pour plus d’informations sur les différentes méthodes que vous pouvez utiliser pour démarrer le panneau de configuration de Lync Server, voir [ouvrir les outils d’administration de Lync server 2013](lync-server-2013-open-lync-server-administrative-tools.md).</span><span class="sxs-lookup"><span data-stu-id="e1492-108">For details about the different methods you can use to start Lync Server Control Panel, see [Open Lync Server 2013 administrative tools](lync-server-2013-open-lync-server-administrative-tools.md).</span></span>
+
+3.  <span data-ttu-id="e1492-109">Dans la barre de navigation de gauche, cliquez sur **Utilisateurs**.</span><span class="sxs-lookup"><span data-stu-id="e1492-109">In the left navigation bar, click **Users**.</span></span>
+
+4.  <span data-ttu-id="e1492-110">Recherchez un utilisateur à l’aide de l’une des méthodes suivantes :</span><span class="sxs-lookup"><span data-stu-id="e1492-110">Use one of the following methods to locate a user:</span></span>
+    
+      - <span data-ttu-id="e1492-111">Dans la zone **Rechercher des utilisateurs**, tapez le début ou l’intégralité du nom d’affichage, du prénom, du nom de famille, du nom de compte SAM, de l’adresse SIP (Session Initiation Protocol) ou de l’URI de ligne du compte d’utilisateur, puis cliquez sur **Rechercher**.</span><span class="sxs-lookup"><span data-stu-id="e1492-111">In the **Search users** box, type all or the first portion of the display name, first name, last name, Security Accounts Manager (SAM) account name, SIP address, or line Uniform Resource Identifier (URI) of the user account, and then click **Find**.</span></span>
+    
+      - <span data-ttu-id="e1492-112">Si vous avez enregistré une requête, cliquez sur l’icône **Ouvrir une requête**, puis sur **Rechercher** dans la boîte de dialogue **Ouvrir** pour rechercher la requête (un fichier .usf).</span><span class="sxs-lookup"><span data-stu-id="e1492-112">If you have a saved query, click the **Open query** icon, use the **Open** dialog box to retrieve the query (a .usf file), and then click **Find**.</span></span>
+
+5.  <span data-ttu-id="e1492-113">(Facultatif) Indiquez des critères de recherche supplémentaires pour affiner les résultats :</span><span class="sxs-lookup"><span data-stu-id="e1492-113">(Optional) Specify additional search criteria to narrow the results:</span></span>
+    
+    1.  <span data-ttu-id="e1492-114">Cliquez sur **Ajouter un filtre**.</span><span class="sxs-lookup"><span data-stu-id="e1492-114">Click **Add Filter**.</span></span>
+    
+    2.  <span data-ttu-id="e1492-115">Entrez la propriété utilisateur en tapant son nom ou en cliquant sur la flèche de la liste déroulante.</span><span class="sxs-lookup"><span data-stu-id="e1492-115">Enter the user property by typing it or by clicking the arrow in the drop-down list to select the property.</span></span>
+    
+    3.  <span data-ttu-id="e1492-116">Dans la liste déroulante **Égal à**, cliquez sur l’opérateur (par exemple, **Égal à** ou **Pas égal à**).</span><span class="sxs-lookup"><span data-stu-id="e1492-116">In the **Equal to** drop-down list, click the operator (for example, **Equal to** or **Not equal to**).</span></span>
+    
+    4.  <span data-ttu-id="e1492-117">Selon la propriété utilisateur que vous avez sélectionnée, entrez le critère que vous souhaitez utiliser pour filtrer les résultats de recherche en le tapant ou en cliquant sur la flèche dans la liste déroulante.</span><span class="sxs-lookup"><span data-stu-id="e1492-117">Depending on the user property you selected, enter the criteria you want to use to filter the search results by typing it or by clicking the arrow in the drop-down list.</span></span>
+        
+
+        > [!TIP]  
+        > <span data-ttu-id="e1492-118">Pour ajouter des clauses de recherche supplémentaires à la requête, cliquez sur <STRONG>Ajouter un filtre</STRONG>.</span><span class="sxs-lookup"><span data-stu-id="e1492-118">To add additional search clauses to your query, click <STRONG>Add Filter</STRONG>.</span></span>
+
+    
+    5.  <span data-ttu-id="e1492-119">Cliquez sur **Rechercher**.</span><span class="sxs-lookup"><span data-stu-id="e1492-119">Click **Find**.</span></span>
+
+6.  <span data-ttu-id="e1492-120">Cliquez sur un utilisateur dans les résultats, puis sur **Action** et sur **Attribuer des stratégies**.</span><span class="sxs-lookup"><span data-stu-id="e1492-120">Click a user in the search results, click **Action**, and then click **Assign policies**.</span></span>
+    
+
+    > [!TIP]  
+    > <span data-ttu-id="e1492-121">Si vous voulez appliquer la même stratégie de mobilité par utilisateur à plusieurs utilisateurs, sélectionnez plusieurs utilisateurs dans les résultats de la recherche, cliquez sur <STRONG>actions</STRONG>, puis sur <STRONG>affecter des stratégies</STRONG>.</span><span class="sxs-lookup"><span data-stu-id="e1492-121">If you want the same per-user mobility policy to apply to multiple users, select multiple users in the search results, then click <STRONG>Actions</STRONG>, and then click <STRONG>Assign policies</STRONG>.</span></span>
+
+
+
+7.  <span data-ttu-id="e1492-122">Dans **attribution de stratégies** de **mobilité**, effectuez l’une des opérations suivantes :</span><span class="sxs-lookup"><span data-stu-id="e1492-122">In **Assign Policies**, under **Mobility policy**, do one of the following:</span></span>
+    
+
+    > [!NOTE]  
+    > <span data-ttu-id="e1492-123">Dans la mesure où il existe plusieurs stratégies que vous pouvez configurer dans <STRONG>affecter des stratégies</STRONG>, l’option <STRONG> &lt; &gt; rester en</STRONG> cours est activée par défaut pour chaque stratégie dans la boîte de dialogue.</span><span class="sxs-lookup"><span data-stu-id="e1492-123">Because there are multiple policies that you can configure in <STRONG>Assign Policies</STRONG>, <STRONG>&lt;Keep as is&gt;</STRONG> is selected by default for every policy in the dialog box.</span></span> <span data-ttu-id="e1492-124">Continuez à utiliser la stratégie précédemment attribuée à l’utilisateur sans apporter de modification au paramètre.</span><span class="sxs-lookup"><span data-stu-id="e1492-124">Continue using the policy previously assigned to the user by making no changes to this setting.</span></span>
+
+    
+      - <span data-ttu-id="e1492-125">Activez cette option **\<Automatic\>** pour autoriser Lync Server 2013 à choisir automatiquement la stratégie de niveau global ou, s’il est défini, la stratégie au niveau du site.</span><span class="sxs-lookup"><span data-stu-id="e1492-125">Select **\<Automatic\>** to allow Lync Server 2013 to automatically choose either the global-level policy or, if defined, the site-level policy.</span></span>
+    
+      - <span data-ttu-id="e1492-126">Cliquez sur le nom d’une stratégie de mobilité par utilisateur que vous avez précédemment définie dans la page **stratégie de mobilité** .</span><span class="sxs-lookup"><span data-stu-id="e1492-126">Click the name of a per-user mobility policy you previously defined on the **Mobility Policy** page.</span></span>
+        
+
+        > [!TIP]  
+        > <span data-ttu-id="e1492-127">Pour vous aider à décider quelle stratégie attribuer, après avoir cliqué sur un nom de stratégie, cliquez sur <STRONG>Afficher</STRONG> pour afficher les droits et autorisations des utilisateurs définis dans la stratégie.</span><span class="sxs-lookup"><span data-stu-id="e1492-127">To help you decide the policy you want to assign, after you click a policy name, click <STRONG>View</STRONG> to view the user rights and permissions defined in the policy.</span></span>
+
+
+
+8.  <span data-ttu-id="e1492-128">Lorsque vous avez terminé, cliquez sur **OK**.</span><span class="sxs-lookup"><span data-stu-id="e1492-128">When you are finished, click **OK**.</span></span>
+
+## <a name="assigning-a-per-user-mobility-policy-by-using-windows-powershell-cmdlets"></a><span data-ttu-id="e1492-129">Attribution d’une stratégie de mobilité Per-User à l’aide des cmdlets Windows PowerShell</span><span class="sxs-lookup"><span data-stu-id="e1492-129">Assigning a Per-User Mobility Policy by Using Windows PowerShell Cmdlets</span></span>
+
+<span data-ttu-id="e1492-130">Vous pouvez attribuer des stratégies de mobilité par utilisateur à l’aide de Windows PowerShell et de l’applet **de passe Grant-CsMobilityPolicy** .</span><span class="sxs-lookup"><span data-stu-id="e1492-130">You can assign per-user mobility policies by using Windows PowerShell and the **Grant-CsMobilityPolicy** cmdlet.</span></span> <span data-ttu-id="e1492-131">Vous pouvez exécuter cette applet de commande sur Lync Server 2013 Management Shell ou à partir d’une session distante de Windows PowerShell.</span><span class="sxs-lookup"><span data-stu-id="e1492-131">You can run this cmdlet from the Lync Server 2013 Management Shell or from a remote session of Windows PowerShell.</span></span> <span data-ttu-id="e1492-132">Pour plus d’informations sur l’utilisation de Windows PowerShell distant pour vous connecter à Lync Server, voir l’article de blog Lync Server Windows PowerShell « démarrage rapide : gestion de Microsoft Lync Server 2010 à l’aide de Remote PowerShell » [https://go.microsoft.com/fwlink/p/?linkId=255876](https://go.microsoft.com/fwlink/p/?linkid=255876) .</span><span class="sxs-lookup"><span data-stu-id="e1492-132">For details about using remote Windows PowerShell to connect to Lync Server, see the Lync Server Windows PowerShell blog article "Quick Start: Managing Microsoft Lync Server 2010 Using Remote PowerShell" at [https://go.microsoft.com/fwlink/p/?linkId=255876](https://go.microsoft.com/fwlink/p/?linkid=255876).</span></span>
+
+## <a name="to-assign-a-per-user-mobility-policy-to-a-single-user"></a><span data-ttu-id="e1492-133">Pour attribuer une stratégie de mobilité par utilisateur à un utilisateur unique</span><span class="sxs-lookup"><span data-stu-id="e1492-133">To assign a per-user mobility policy to a single user</span></span>
+
+  - <span data-ttu-id="e1492-134">La commande suivante affecte le RedmondMobilityPolicy de stratégie de mobilité par utilisateur à l’utilisateur Ken Myer.</span><span class="sxs-lookup"><span data-stu-id="e1492-134">The following command assigns the per-user mobility policy RedmondMobilityPolicy to the user Ken Myer.</span></span>
+    
+        Grant-CsMobilityPolicy -Identity "Ken Myer" -PolicyName "RedmondMobilityPolicy"
+
+## <a name="to-assign-a-per-user-mobility-policy-to-multiple-users"></a><span data-ttu-id="e1492-135">Pour attribuer une stratégie de mobilité par utilisateur à plusieurs utilisateurs</span><span class="sxs-lookup"><span data-stu-id="e1492-135">To assign a per-user mobility policy to multiple users</span></span>
+
+  - <span data-ttu-id="e1492-136">La commande suivante affecte le RedmondMobilityPolicy de stratégie de mobilité par utilisateur à tous les utilisateurs actuellement affectés à la stratégie NorthAmericaMobilityPolicy.</span><span class="sxs-lookup"><span data-stu-id="e1492-136">The following command assigns the per-user mobility policy RedmondMobilityPolicy to all the users who are currently assigned the policy NorthAmericaMobilityPolicy.</span></span> <span data-ttu-id="e1492-137">Pour plus d’informations sur le paramètre de filtre utilisé dans cette commande, voir [Get-Csuser](https://technet.microsoft.com/library/gg398125\(v=ocs.15\)).</span><span class="sxs-lookup"><span data-stu-id="e1492-137">For details about the Filter parameter used in this command, see [Get-CsUser](https://technet.microsoft.com/library/gg398125\(v=ocs.15\)).</span></span>
+    
+        Get-CsUser -Filter {MobilityPolicy -eq "NorthAmericaMobilityPolicy"} | Grant-CsMobilityPolicy -PolicyName "RedmondMobilityPolicy"
+
+## <a name="to-unassign-a-per-user-mobility-policy"></a><span data-ttu-id="e1492-138">Pour annuler l’affectation d’une stratégie de mobilité par utilisateur</span><span class="sxs-lookup"><span data-stu-id="e1492-138">To unassign a per-user mobility policy</span></span>
+
+  - <span data-ttu-id="e1492-139">La commande suivante annule l’affectation d’une stratégie de mobilité par utilisateur précédemment affectée à Ken Myer.</span><span class="sxs-lookup"><span data-stu-id="e1492-139">The following command unassigns any per-user mobility policy previously assigned to Ken Myer.</span></span> <span data-ttu-id="e1492-140">Une fois l’affectation de la stratégie par utilisateur annulée, Ken Myer sera automatiquement géré en utilisant la stratégie globale ou, le cas échéant, sa stratégie de site local.</span><span class="sxs-lookup"><span data-stu-id="e1492-140">After the per-user policy is unassigned, Ken Myer will automatically be managed by using the global policy or, if one exists, his local site policy.</span></span> <span data-ttu-id="e1492-141">Une stratégie de site est prioritaire sur la stratégie globale.</span><span class="sxs-lookup"><span data-stu-id="e1492-141">A site policy takes precedence over the global policy.</span></span>
+    
+        Grant-CsMobilityPolicy -Identity "Ken Myer" -PolicyName $Null
+
+<span data-ttu-id="e1492-142">Pour plus d’informations, consultez la rubrique [Grant-CsMobilityPolicy](https://technet.microsoft.com/library/hh690038\(v=ocs.15\)).</span><span class="sxs-lookup"><span data-stu-id="e1492-142">For details, see [Grant-CsMobilityPolicy](https://technet.microsoft.com/library/hh690038\(v=ocs.15\)).</span></span>
+
+## <a name="see-also"></a><span data-ttu-id="e1492-143">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="e1492-143">See Also</span></span>
+
+
+[<span data-ttu-id="e1492-144">Configuration de la stratégie de mobilité dans Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="e1492-144">Configuring mobility policy in Lync Server 2013</span></span>](lync-server-2013-configuring-mobility-policy.md)
+
