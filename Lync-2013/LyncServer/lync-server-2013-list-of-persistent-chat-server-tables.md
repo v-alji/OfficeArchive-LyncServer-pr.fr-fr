@@ -1,0 +1,260 @@
+---
+title: 'Lync Server 2013 : Liste des tables de serveur de conversation permanente'
+description: 'Lync Server 2013 : liste des tables serveur de chat permanent.'
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: List of Persistent Chat Server tables
+ms:assetid: 26c9e271-3516-4d90-b930-70fec4e359ea
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg558628(v=OCS.15)
+ms:contentKeyID: 48183659
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 838e6d8f83b137923075851b29df4c602a487391
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49426584"
+---
+# <a name="list-of-persistent-chat-server-tables-in-lync-server-2013"></a>Liste des tables de serveur de conversation permanente dans Lync Server 2013
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**Dernière modification de la rubrique :** 2012-10-06_
+
+Le schéma de base de données de chat permanent se compose des tables suivantes.
+
+<div>
+
+## <a name="active-directory-sync"></a>Synchronisation Active Directory
+
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Table</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><a href="lync-server-2013-tbladcookie.md">tblADCookie dans Lync Server 2013</a></p></td>
+<td><p>Contient les cookies de synchronisation LDAP (Lightweight Directory Access Protocol) actuels. Chaque ligne correspond à un domaine AD FS (Active Directory Domain Services), qui permet de surveiller activement le serveur de chat permanent. (Seuls les domaines Active Directory pertinents pour le serveur Chat permanent sont représentés dans ce tableau.)</p></td>
+</tr>
+<tr class="even">
+<td><p><a href="lync-server-2013-tblprincipalmemberdifference.md">tblPrincipalMemberDifference dans Lync Server 2013</a></p></td>
+<td><p>Contient des modifications d’appartenance au groupe (à la fois ajoutées et supprimées) qui n’ont pas encore été traitées par les étapes ultérieures de synchronisation Active Directory et qui est utilisée lors de la première étape de la synchronisation Active Directory.</p>
+<p>Les modifications d’appartenance sont stockées, traitées, ou les deux, uniquement pour les groupes qui sont répertoriés dans la table tblPrincipal ou qui ont déjà des membres dans la liste.</p></td>
+</tr>
+<tr class="odd">
+<td><p><a href="lync-server-2013-tbladupdates.md">tblADUpdates dans Lync Server 2013</a></p></td>
+<td><p>Contient des modifications apportées aux services de domaine Active Directory (AD DS) qui n’ont pas encore été traitées par les étapes ultérieures de synchronisation Active Directory et qui est utilisée lors de la première étape de la synchronisation Active Directory.</p>
+<p>Les modifications apportées à Active Directory sont stockées, traitées, ou les deux, uniquement pour les principaux figurant déjà dans la table tblPrincipal.</p></td>
+</tr>
+<tr class="even">
+<td><p><a href="lync-server-2013-tblprincipalmembers.md">tblPrincipalMembers dans Lync Server 2013</a></p></td>
+<td><p>Contient des appartenances principales.</p></td>
+</tr>
+<tr class="odd">
+<td><p><a href="lync-server-2013-tblprincipalmeta.md">tblPrincipalMeta dans Lync Server 2013</a></p></td>
+<td><p>Contient les principaux qui doivent être actualisés à partir d’Active Directory.</p></td>
+</tr>
+<tr class="even">
+<td><p><a href="lync-server-2013-tblskippedaffiliations.md">tblSkippedAffiliations dans Server 2013</a></p></td>
+<td><p>Contient des affiliations qui n’ont pas pu être actualisées pour une raison quelconque, généralement en raison d’erreurs d’accès à Active Directory.</p>
+<p>Ce tableau est à des fins d’information uniquement. Son contenu n’est pas utilisé.</p>
+<p>Les principaux dotés d’affiliations qui n’ont pas pu être actualisés correctement sont conservés dans la table tblPrincipalMeta et ont une nouvelle chance d’être actualisées.</p></td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+
+<div>
+
+## <a name="principals-affiliations-nodes-scopes-and-roles"></a>Principaux, affiliations, nœuds, étendues et rôles
+
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Table</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><a href="lync-server-2013-tblprincipaltype.md">tblPrincipalType dans Lync Server 2013</a></p></td>
+<td><p>Contient des types de principaux pour classer ce qui se trouve dans la table tblPrincipal. Ce tableau est statique. Elle est configurée lors de la création de la base de données et n’est pas modifiée.</p></td>
+</tr>
+<tr class="even">
+<td><p><a href="lync-server-2013-tblprincipal.md">tblPrincipal dans Lync Server 2013</a></p></td>
+<td><p>Contient tous les principaux (utilisateurs, dossiers, groupes, etc.). Le serveur de chat permanent gère ce point comme une liste hétérogène plate. Différentes colonnes sont basées sur le type de chaque principal.</p>
+<p>La plupart de ces éléments principaux sont des copies mises en cache d’objets stockés dans Active Directory. La création de la copie mise en cache dans la table principale de ces objets Active Directory est appelée mise en <em>service</em>.</p>
+<p>Certains éléments principaux sont créés de manière plus agressive que d’autres, et certains objets Active Directory sont entièrement ignorés.</p></td>
+</tr>
+<tr class="odd">
+<td><p><a href="lync-server-2013-tblprincipalaffiliations.md">tblPrincipalAffiliations dans Lync Server 2013</a></p></td>
+<td><p>Contient des affiliations principales qui décrivent les appartenances aux groupes de sécurité Active Directory, aux conteneurs Active Directory, etc.</p></td>
+</tr>
+<tr class="even">
+<td><p><a href="lync-server-2013-tblnode.md">tblNode dans Lync Server 2013</a></p></td>
+<td><p>Contient le nœud catégorie, tel qu’il est géré dans le panneau de configuration de Lync Server.</p></td>
+</tr>
+<tr class="odd">
+<td><p><a href="lync-server-2013-tblroletype.md">tblRoleType dans Lync Server 2013</a></p></td>
+<td><p>Contient des types de rôles et leurs jeux d’autorisations associés. Cette table de choix est statique.</p></td>
+</tr>
+<tr class="even">
+<td><p><a href="lync-server-2013-tblscopeprincipal.md">tblScopePrincipal dans Lync Server 2013</a></p></td>
+<td><p>Contient les étendues attribuées aux nœuds.</p></td>
+</tr>
+<tr class="odd">
+<td><p><a href="lync-server-2013-tblprincipalrole.md">tblPrincipalRole dans Lync Server 2013</a></p></td>
+<td><p>Contient les rôles attribués aux nœuds.</p></td>
+</tr>
+<tr class="even">
+<td><p><a href="lync-server-2013-tblsiopwhitelist.md">tblSiopWhiteList dans Lync Server 2013</a></p></td>
+<td><p>Contient les compléments enregistrés qui peuvent être associés à des nœuds.</p></td>
+</tr>
+<tr class="odd">
+<td><p><a href="lync-server-2013-tblenumattribute.md">tblEnumAttribute dans Lync Server 2013</a></p></td>
+<td><p>Contient uniquement les &quot; attributs de visibilité &quot; et de comportement encodés &quot; &quot; utilisés dans la table tblNode.</p></td>
+</tr>
+<tr class="even">
+<td><p><a href="lync-server-2013-tblenumvalue.md">tblEnumValue dans Lync Server 2013</a></p></td>
+<td><p>Contient les valeurs des attributs de &quot; comportement et de visibilité encodés &quot; utilisés dans la table tblNode.</p></td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+
+<div>
+
+## <a name="invites-chats-and-other-client-support"></a>Invitations, discussions et autres clients pris en charge
+
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Table</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><a href="lync-server-2013-tblprincipalinvites.md">tblPrincipalInvites dans Lync Server 2013</a></p></td>
+<td><p>Contient des invitations pour tous les utilisateurs approvisionnés du système pour tous les nœuds avec l’option d’invitation automatique activée.</p></td>
+</tr>
+<tr class="even">
+<td><p><a href="lync-server-2013-tblchat.md">tblChat dans Lync Server 2013</a></p></td>
+<td><p>Contient tous les messages de discussion.</p></td>
+</tr>
+<tr class="odd">
+<td><p><a href="lync-server-2013-tbllastinviteid.md">tblLastInviteId dans Lync Server 2013</a></p></td>
+<td><p>Contient le dernier ID d’invitation généré (et utilisé dans la table tblPrincipalInvites) pour chaque utilisateur.</p></td>
+</tr>
+<tr class="even">
+<td><p><a href="lync-server-2013-tbllastchatid.md">tblLastChatId dans Lync Server 2013</a></p></td>
+<td><p>Contient le dernier ID de chat qui a été généré (et utilisé dans la table tblChat) pour chaque utilisateur.</p></td>
+</tr>
+<tr class="odd">
+<td><p><a href="lync-server-2013-tblpreference.md">tblPreference dans Lync Server 2013</a></p></td>
+<td><p>Contient les préférences client de l’utilisateur (utilisé par les clients hérités uniquement).</p></td>
+</tr>
+<tr class="even">
+<td><p><a href="lync-server-2013-tblfiletoken.md">tblFileToken dans Lync Server 2013</a></p></td>
+<td><p>Contient des jetons temporaires aux fins de transfert de fichiers. Chaque fois qu’un fichier est chargé ou téléchargé, le service Chat permanent génère un jeton qu’utilise le client pour accéder au magasin de fichiers du service Web.</p></td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+
+<div>
+
+## <a name="server-support"></a>Prise en charge du serveur
+
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Table</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><a href="lync-server-2013-tblserveridentity.md">tblServerIdentity dans Lync Server 2013</a></p></td>
+<td><p>Contient les serveurs actifs dans le pool de serveurs de chat permanent.</p></td>
+</tr>
+<tr class="even">
+<td><p><a href="lync-server-2013-tbladminlock.md">tblAdminLock dans Lync Server 2013</a></p></td>
+<td><p>Contient le verrouillage de l’administrateur pour exécuter des commandes d’administrateur. L’entrée de révision système dans la table tblSystemRevision est incrémentée après chaque libération du verrou.</p></td>
+</tr>
+<tr class="odd">
+<td><p><a href="lync-server-2013-tblsystemrevision.md">tblSystemRevision dans Lync Server 2013</a></p></td>
+<td><p>Contient l’entrée du numéro de révision utilisée (en même temps que la table tblAdminLock) permettant de réaliser une cohérence entre plusieurs serveurs.</p></td>
+</tr>
+<tr class="even">
+<td><p><a href="lync-server-2013-tblactivepeers.md">tblActivePeers dans Lync Server 2013</a></p></td>
+<td><p>Contient des connexions d’égal à égal actuelles entre les services de chat permanents.</p></td>
+</tr>
+<tr class="odd">
+<td><p><a href="lync-server-2013-tblconfig.md">tblConfig dans Lync Server 2013</a></p></td>
+<td><p>Contient la configuration du serveur de chat permanent non prise en charge.</p></td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+
