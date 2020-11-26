@@ -1,0 +1,76 @@
+---
+title: 'Lync Server 2013 : examen du rapport de synthèse'
+description: 'Lync Server 2013 : examen du rapport de synthèse.'
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Reviewing the Summary Report
+ms:assetid: 22d480ea-cd64-4d09-99fe-96e997570844
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg558626(v=OCS.15)
+ms:contentKeyID: 51541459
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: b07a730de6874e1cf6665cedea2ec7f950e8d165
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49442363"
+---
+# <a name="reviewing-the-summary-report-in-lync-server-2013"></a>Examen du rapport de synthèse dans Lync Server 2013
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**Dernière modification de la rubrique :** 2013-02-21_
+
+Le rapport d’administration de Lync Server est le premier des quatre rapports intéressants qui décrivent en détail votre conception. Les informations contenues dans ce rapport et les trois autres rapports associés constituent une excellente documentation pour les équipes de technologie d’information :
+
+![Rapport d’administration Synthèse générale](images/Gg558626.9c529ef7-cb1b-4ce1-a8bc-3ec79aba2377(OCS.15).jpg "Rapport d’administration Synthèse générale")
+
+  - Rapport des certificats
+
+  - Rapport du pare-feu
+
+  - Rapport DNS
+
+Le rapport récapitulatif répertorie des informations de configuration générales relatives à votre réseau de périmètre. Vous y trouverez des informations sur l’emplacement, le nom de domaine complet (FQDN), l’adresse IP, le type de réseau et des commentaires spécifiques à un rôle donné.
+
+Le concepteur ainsi que chacune des équipes chargées de déployer, de gérer et d’assurer la maintenance de l’infrastructure devraient vérifier ce rapport récapitulatif afin de limiter le nombre d’erreurs.
+
+<div>
+
+## <a name="see-also"></a>Voir aussi
+
+
+[Consultation des rapports de l’administrateur dans Lync Server 2013](lync-server-2013-reviewing-the-administrator-reports.md)  
+  
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+

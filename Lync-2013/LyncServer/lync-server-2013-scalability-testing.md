@@ -1,0 +1,62 @@
+---
+title: Test de l’évolutivité de Lync Server 2013
+description: Tests d’évolutivité de Lync Server 2013.
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Scalability testing
+ms:assetid: bf41bac6-d4ec-4de6-9a44-a82d01a87279
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ205226(v=OCS.15)
+ms:contentKeyID: 48185289
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 73b4ab8726de7ea068ed60fedf104b01fe91ac1b
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49442123"
+---
+# <a name="scalability-testing-in-lync-server-2013"></a>Tests d’évolutivité dans Lync Server 2013
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**Dernière modification de la rubrique :** 2012-10-01_
+
+Lync Server 2013 fournit l’infrastructure de serveur pour toutes les communications en temps réel de Lync Server, notamment la messagerie instantanée (mi) et la présence, la Conférence et la voix entreprise. Cela inclut toutes les fonctionnalités qui utilisent les ressources matérielles d’un pool Lync Server 2013 et, par conséquent, affectent les performances et l’évolutivité. Toutes les organisations n’utilisent pas toutes les fonctionnalités de manière égale.
+
+Par exemple, certaines organisations peuvent utiliser la vidéo dans les conférences de manière très importante alors que d’autres peuvent avoir peu ou pas d’utilisation de la vidéo. Certaines organisations préfèrent le partage de diapositives PowerPoint au partage d’application, tandis que d’autres préfèrent. Les organisations qui déploient une voix entreprise peuvent ou ne peuvent pas utiliser énormément l’application Response Group. La plupart des organisations déploient des serveurs de contrôle, mais pas la plupart d’entre eux déploient des serveurs d’archivage. De plus, les organisations n’ont pas toutes les mêmes infrastructures, notamment les capacités matérielles, les capacités du réseau, ainsi que le nombre de pools et de tailles de pools déployés. La diversité des fonctionnalités et de l’infrastructure repose sur le défi des tests d’évolutivité : il n’est pas possible de simuler toutes les combinaisons possibles de fonctionnalités et d’infrastructures.
+
+Pour déterminer la prise en charge de l’évolutivité de Lync Server, nous effectuons des tests en utilisant toutes les fonctionnalités du serveur Lync en même temps, en fonction d’un modèle d’utilisation moyenne (modèle utilisateur). Pour déterminer un modèle utilisateur approprié pour des charges de travail Lync Server, nous analysons de nombreux points de données, notamment les enquêtes de clients, les commentaires tirés du programme d’amélioration de l’utilisation de Microsoft, les données d’utilisation de Lync Server du département informatique interne de Microsoft et les données tirées de notre service Live Meeting. Dans de nombreux cas, le modèle utilisateur a une polarisation pour des charges plus lourdes afin de fournir une marge confortable pour l’utilisation au sein d’une organisation.
+
+Dans nos tests d’évolutivité, nous configurerons les pools Lync Server 2013 conformément aux spécifications matérielles et logicielles recommandées, notamment les composants d’infrastructure, tels que les services de domaine Active Directory (AD FS), les équilibreurs de charge matérielle et les pare-feu. Nous configurerons les environnements de serveur Lync de la même façon que possible dans les environnements réels. L’outil de stress et de performance de Lync Server 2013 est ensuite utilisé pour simuler le chargement de Lync Server 2013 (en fonction de notre modèle d’utilisateur). .
+
+Nous effectuons plusieurs itérations des tests d’évolutivité (y compris les séries de tests sur trois semaines). Nous utilisons les résultats de tous les tests pour vous aider à optimiser les performances et à vérifier la prise en charge des numéros de modularité dans notre modèle d’utilisateur.
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+
