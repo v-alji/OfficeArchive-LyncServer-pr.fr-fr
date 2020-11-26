@@ -1,0 +1,85 @@
+---
+title: 'Lync Server 2013 : Configuration technique requise pour la déviation du trafic multimédia'
+description: 'Lync Server 2013 : exigences techniques de contournement de média.'
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Technical requirements for media bypass
+ms:assetid: 6162a204-0e7c-460a-8eb2-e592c6590a8a
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg398435(v=OCS.15)
+ms:contentKeyID: 48184321
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: dee594139031966342fcec2bc1296a603055b4cc
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49423434"
+---
+# <a name="technical-requirements-for-media-bypass-in-lync-server-2013"></a><span data-ttu-id="f527f-103">Configuration technique requise pour la déviation du trafic multimédia dans Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="f527f-103">Technical requirements for media bypass in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="f527f-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="f527f-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="f527f-105">_**Dernière modification de la rubrique :** 2012-09-21_</span><span class="sxs-lookup"><span data-stu-id="f527f-105">_**Topic Last Modified:** 2012-09-21_</span></span>
+
+<span data-ttu-id="f527f-106">Pour chaque appel au RTC, le serveur de médiation détermine si les éléments multimédias du point de terminaison Lync de l’origine peuvent être envoyés directement à un homologue de serveur de médiation sans traverser le serveur de médiation.</span><span class="sxs-lookup"><span data-stu-id="f527f-106">For each call to the PSTN, the Mediation Server determines whether media from the Lync endpoint of origin can be sent directly to a Mediation Server peer without traversing the Mediation Server.</span></span> <span data-ttu-id="f527f-107">L’homologue peut être une passerelle PSTN, un système IP-PBX ou un contrôleur SBC (Session Border Controller) pour un fournisseur de services de téléphonie Internet (ITSP) associé à la jonction entre le serveur de médiation où l’appel est routé.</span><span class="sxs-lookup"><span data-stu-id="f527f-107">The peer can be a PSTN gateway, IP-PBX, or Session Border Controller (SBC) at an Internet telephony service provider (ITSP) that is associated with the trunk between the Mediation Server where the call is routed.</span></span>
+
+<span data-ttu-id="f527f-108">La déviation du trafic multimédia peut être utilisée lorsque les conditions suivantes sont remplies :</span><span class="sxs-lookup"><span data-stu-id="f527f-108">Media bypass can be employed when the following requirements are met:</span></span>
+
+  - <span data-ttu-id="f527f-109">Un homologue de serveur de médiation doit prendre en charge les fonctionnalités nécessaires à la dérivation de média multimédia, c’est la possibilité de gérer plusieurs réponses correspondantes (appelées « boîtes de dialogue précoce »).</span><span class="sxs-lookup"><span data-stu-id="f527f-109">A Mediation Server peer must support the necessary capabilities for media bypass, the most important being the ability to handle multiple forked responses (known as “early dialogs”).</span></span> <span data-ttu-id="f527f-110">Contactez le fabricant de votre passerelle ou système PBX, ou votre fournisseur ITSP, pour obtenir la valeur du nombre maximal de boîtes de dialogue préliminaires que la passerelle, PBX ou SBC peut accepter.</span><span class="sxs-lookup"><span data-stu-id="f527f-110">Contact the manufacturer of your gateway or PBX, or your ITSP, to obtain the value for the maximum number of early dialogs that the gateway, PBX, or SBC can accept.</span></span>
+
+  - <span data-ttu-id="f527f-111">L’homologue du serveur de médiation doit accepter le trafic multimédia directement à partir des points de terminaison Lync.</span><span class="sxs-lookup"><span data-stu-id="f527f-111">The Mediation Server peer must accept media traffic directly from Lync endpoints.</span></span> <span data-ttu-id="f527f-112">De nombreux ITSPs permettent à l’SBC de recevoir le trafic uniquement à partir du serveur de médiation.</span><span class="sxs-lookup"><span data-stu-id="f527f-112">Many ITSPs allow their SBC to receive traffic only from the Mediation Server.</span></span> <span data-ttu-id="f527f-113">Contactez votre ITSP pour déterminer si l’application SBC accepte le trafic multimédia directement depuis les points de terminaison Lync.</span><span class="sxs-lookup"><span data-stu-id="f527f-113">Contact your ITSP to determine whether its SBC accepts media traffic directly from Lync endpoints.</span></span>
+
+  - <span data-ttu-id="f527f-114">Les clients Lync et un serveur de médiation doivent être bien connectés, ce qui signifie qu’ils se trouvent dans la même région réseau ou sur des sites réseau qui se connectent à la région sur des liens WAN sans contraintes de bande passante.</span><span class="sxs-lookup"><span data-stu-id="f527f-114">Lync clients and a Mediation Server peer must be well connected, meaning that they are either located in the same network region or at network sites that connect to the region over WAN links that have no bandwidth constraints</span></span>
+
+<div>
+
+## <a name="see-also"></a><span data-ttu-id="f527f-115">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="f527f-115">See Also</span></span>
+
+
+[<span data-ttu-id="f527f-116">Modes de déviation du trafic multimédia dans Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="f527f-116">Media bypass modes in Lync Server 2013</span></span>](lync-server-2013-media-bypass-modes.md)  
+[<span data-ttu-id="f527f-117">Déviation du trafic multimédia et contrôle d’admission des appels dans Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="f527f-117">Media bypass and call admission control in Lync Server 2013</span></span>](lync-server-2013-media-bypass-and-call-admission-control.md)  
+  
+
+<span data-ttu-id="f527f-118"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="f527f-118"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+
