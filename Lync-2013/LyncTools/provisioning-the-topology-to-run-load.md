@@ -1,0 +1,86 @@
+---
+title: Mise en service de la topologie pour exécuter le chargement
+description: Mise en service de la topologie pour exécuter le chargement.
+ms.reviewer: ''
+ms.author: serdars
+author: serdarsoysal
+f1.keywords:
+- NOCSH
+TOCTitle: Provisioning the Topology to Run Load
+ms:assetid: 6fba03df-3914-4d2a-8208-e252ad993aff
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ945598(v=OCS.15)
+ms:contentKeyID: 51541424
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: da482fde949675acc1722305433b95b7a6a6b523
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49446422"
+---
+# <a name="provisioning-the-topology-to-run-load"></a>Mise en service de la topologie pour exécuter le chargement
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**Dernière modification de la rubrique :** 2013-02-04_
+
+<div>
+
+Selon vos paramètres et la configuration de Lync Server 2013, il est possible que vous deviez apporter les modifications suivantes à votre environnement :
+
+1.  Définissez la stratégie d’exécution Windows PowerShell sur non restreinte. Pour vérifier les paramètres de stratégie d’exécution, ouvrez Lync Server Management Shell et exécutez la commande suivante :
+
+    ``` powershell
+        Get-ExecutionPolicy
+    ```        
+
+    Si cette commande n’a pas pour résultat la valeur Unrestricted, exécutez la commande suivante :
+
+    ``` powershell
+        Set-ExecutionPolicy -Unrestricted
+    ```
+
+2.  Pour configurer efficacement Lync Server 2013, vous devez :
+    
+      - Familiarisez-vous avec la topologie Lync Server 2013 (par exemple, les noms d’ordinateurs, les instances de service, les noms de sites et les stratégies).
+    
+      - Assignez certains utilisateurs qui ont été créés dans des groupes, par exemple, des groupes de recherche de Response Group (par exemple, URI SIP).
+
+3.  Pour exécuter le script à partir de la ligne de commande, vous pouvez utiliser les éléments suivants :
+
+    ``` powershell
+        Powershell.exe -file <path to the file>
+    ```
+    
+4.  En règle générale, après l’exécution de l’un des scripts de ce package, les traces obtenues à partir du script seront stockées dans un fichier dans le même chemin à partir duquel le script est appelé \<scriptname\> $h $ m $s.txt. Par exemple, l’exécution de ArchivingPolicy.ps1 à 12:15 P.M. va générer un fichier journal tel que ArchivingPolicy121500.txt.
+
+5.  Enfin, Notez que bien que nous ayons fourni des exemples de configuration du serveur, vous êtes responsable de la modification ou de la suppression de la configuration lorsque vous avez terminé d’exécuter le chargement.
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+
