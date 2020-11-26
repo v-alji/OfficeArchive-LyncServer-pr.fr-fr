@@ -1,0 +1,103 @@
+---
+title: 'Lync Server 2013 : installation des packs d’administration de Lync Server 2013'
+description: 'Lync Server 2013 : installation des packs d’administration de Lync Server 2013.'
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: nstalling the Lync Server 2013 management packs
+ms:assetid: b800d4ab-fdc8-4c72-a76a-b78932779fe3
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ205202(v=OCS.15)
+ms:contentKeyID: 48185233
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: cbb50146474211c12dbd95801ed2b20f6bbfd8c9
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49426927"
+---
+# <a name="installing-the-lync-server-2013-management-packs"></a><span data-ttu-id="3b85d-103">Installation des packs d’administration de Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="3b85d-103">Installing the Lync Server 2013 management packs</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="3b85d-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="3b85d-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="3b85d-105">_**Dernière modification de la rubrique :** 2012-10-22_</span><span class="sxs-lookup"><span data-stu-id="3b85d-105">_**Topic Last Modified:** 2012-10-22_</span></span>
+
+<span data-ttu-id="3b85d-106">Le gestionnaire des opérations de System Center a la possibilité de surveiller uniquement une petite partie du système d’exploitation Windows.</span><span class="sxs-lookup"><span data-stu-id="3b85d-106">By itself, System Center Operations Manager has the ability to monitor only a small portion of the Windows operating system.</span></span> <span data-ttu-id="3b85d-107">Toutefois, vous pouvez développer les fonctionnalités de System Center Operations Manager en installant des packages d’administration, des logiciels qui déterminent les éléments que System Center Operations Manager peut surveiller, y compris le mode de surveillance et de déclenchement des alertes.</span><span class="sxs-lookup"><span data-stu-id="3b85d-107">However, you can extend the capabilities of System Center Operations Manager by installing management packs, software that dictates which items System Center Operations Manager can monitor, including how those items should be monitored and how alerts should be triggered and reported.</span></span> <span data-ttu-id="3b85d-108">Microsoft Lync Server 2013 inclut deux packs d’administration System Center Operations Manager qui fournissent les fonctionnalités suivantes :</span><span class="sxs-lookup"><span data-stu-id="3b85d-108">Microsoft Lync Server 2013 includes two System Center Operations Manager management packs that provide the following capabilities:</span></span>
+
+  - <span data-ttu-id="3b85d-109">Le Pack de gestion des utilisateurs et des composants (Microsoft.LS.2013.Monitoring.ComponentAndUser.mp) effectue le suivi des problèmes du serveur Lync enregistrés dans les journaux d’événements, inscrits par des compteurs de performance ou enregistrés dans les bases de données d’enregistrements des détails des appels ou de la qualité de l’utilisation.</span><span class="sxs-lookup"><span data-stu-id="3b85d-109">The Component and User Management Pack (Microsoft.LS.2013.Monitoring.ComponentAndUser.mp) tracks Lync Server issues recorded in event logs, registered by performance counters, or logged in the call detail records (CDR) or the Quality of Experience (QoE) databases.</span></span> <span data-ttu-id="3b85d-110">Pour les problèmes critiques, System Center Operations Manager peut être configuré pour notifier immédiatement les administrateurs par courrier électronique, message instantané ou messagerie de courte durée de réception de messages.</span><span class="sxs-lookup"><span data-stu-id="3b85d-110">For critical problems, System Center Operations Manager can be configured to immediately notify administrators via email, instant message, or Short Message Service (SMS) messaging.</span></span> <span data-ttu-id="3b85d-111">SMS est la technologie utilisée pour envoyer des messages texte d’un appareil mobile à un autre.</span><span class="sxs-lookup"><span data-stu-id="3b85d-111">SMS is the technology used to send text messages from one mobile device to another.</span></span>
+    
+    <div>
+    
+
+    > [!NOTE]  
+    > <span data-ttu-id="3b85d-112">Pour plus d’informations sur la configuration de la notification Operations Manager, consultez la rubrique Configuration de la notification dans la bibliothèque TechNet à l’adresse <A class=uri href="https://go.microsoft.com/fwlink/p/?linkid=268785">https://go.microsoft.com/fwlink/p/?linkid=268785</A> .</span><span class="sxs-lookup"><span data-stu-id="3b85d-112">For more information on configuring Operations Manager notification, see Configuring Notification in the TechNet Library at <A class=uri href="https://go.microsoft.com/fwlink/p/?linkid=268785">https://go.microsoft.com/fwlink/p/?linkid=268785</A>.</span></span>
+
+    
+    </div>
+
+  - <span data-ttu-id="3b85d-113">Le pack d’analyse actif (Microsoft.LS.2013.Monitoring.ActiveMonitoring.mp) vérifie de manière proactive les principaux composants du serveur Lync tels que la connexion au système, l’échange de messages instantanés ou l’appel d’appels vers un téléphone qui se trouve sur le réseau téléphonique public commuté (RTC).</span><span class="sxs-lookup"><span data-stu-id="3b85d-113">The Active Monitoring Pack (Microsoft.LS.2013.Monitoring.ActiveMonitoring.mp) proactively tests key Lync Server components such as logging on to the system, exchanging instant messages, or making calls to a phone located on the public switched telephone network (PSTN).</span></span> <span data-ttu-id="3b85d-114">Ces tests sont effectués à l’aide des cmdlets de transaction synthétique de Lync Server.</span><span class="sxs-lookup"><span data-stu-id="3b85d-114">These tests are conducted using the Lync Server synthetic transaction cmdlets.</span></span> <span data-ttu-id="3b85d-115">Par exemple, l’applet de **contrôle test-CsIM** est utilisée pour simuler une conversation par messagerie instantanée entre deux utilisateurs de test.</span><span class="sxs-lookup"><span data-stu-id="3b85d-115">For example, the **Test-CsIM** cmdlet is used to simulate an instant messaging conversation between a pair of test users.</span></span> <span data-ttu-id="3b85d-116">Si cette conversation de messagerie simulée échoue, une alerte est générée.</span><span class="sxs-lookup"><span data-stu-id="3b85d-116">If this simulated messaging conversation fails an alert will be generated.</span></span>
+
+<span data-ttu-id="3b85d-117">Les deux packages d’administration inclus dans Lync Server 2013 incluent un grand nombre d’améliorations sur les packs de gestion utilisés avec Microsoft Lync Server 2010.</span><span class="sxs-lookup"><span data-stu-id="3b85d-117">The two management packs included with Lync Server 2013 include a large number of enhancements over the management packs used with Microsoft Lync Server 2010.</span></span> <span data-ttu-id="3b85d-118">Par exemple, le Pack de gestion des composants de Lync Server 2013 n’est pas limité à la surveillance de Lync Server.</span><span class="sxs-lookup"><span data-stu-id="3b85d-118">For example, the Lync Server 2013 Component Management Pack is not limited to monitoring Lync Server itself.</span></span> <span data-ttu-id="3b85d-119">Outre le suivi des journaux d’événements et des compteurs de performance pour Lync Server, le Pack de gestion des composants peut également suivre les performances des éléments cruciaux et en émettre des alertes, tels que :</span><span class="sxs-lookup"><span data-stu-id="3b85d-119">In addition to monitoring event logs and performance counters for Lync Server, the Component Management pack can also track the performance of, and issue alerts for, crucial items such as:</span></span>
+
+  - <span data-ttu-id="3b85d-120">**Internet Information Services (IIS)**   Des alertes sont émises si Internet Information Services se déconnecte.</span><span class="sxs-lookup"><span data-stu-id="3b85d-120">**Internet Information Services (IIS)**   Alerts will be issued if Internet Information Services goes offline.</span></span> <span data-ttu-id="3b85d-121">C’est important, car les services Web de Lync Server dépendent d’IIS.</span><span class="sxs-lookup"><span data-stu-id="3b85d-121">This is important, because the Lync Server web services rely on IIS.</span></span>
+
+  - <span data-ttu-id="3b85d-122">**Utilisation du processus**   Des alertes sont émises si les ressources système (par exemple, la mémoire disponible) commencent à s’exécuter faiblement.</span><span class="sxs-lookup"><span data-stu-id="3b85d-122">**Process usage**   Alerts will be issued if system resources (such as available memory) begin to run low.</span></span> <span data-ttu-id="3b85d-123">Ces alertes sont émises même si Lync Server n’est pas responsable de l’utilisation importante du système.</span><span class="sxs-lookup"><span data-stu-id="3b85d-123">These alerts will be issued even if Lync Server is not responsible for the high system usage.</span></span>
+
+  - <span data-ttu-id="3b85d-124">**Événements d’échec d’ordinateur**   Les alertes sont émises en cas de problème matériel ou logiciel qui menace la viabilité d’un serveur.</span><span class="sxs-lookup"><span data-stu-id="3b85d-124">**Computer failure events**   Alerts will be issued in case of a hardware or software issue that threatens the viability of a server.</span></span> <span data-ttu-id="3b85d-125">Par exemple, les administrateurs du serveur Lync seront avertis si un serveur semble être menacé par une défaillance de disque dur.</span><span class="sxs-lookup"><span data-stu-id="3b85d-125">For example, Lync Server administrators will be notified if a server appears to be in danger of experiencing a hard disk failure.</span></span>
+
+<span data-ttu-id="3b85d-126">Les nouveaux modules de gestion permettent également d’améliorer la création de rapports.</span><span class="sxs-lookup"><span data-stu-id="3b85d-126">The new management packs also feature enhanced reporting.</span></span> <span data-ttu-id="3b85d-127">Les nouveaux rapports pour Lync Server 2013 incluent :</span><span class="sxs-lookup"><span data-stu-id="3b85d-127">New reports for Lync Server 2013 include:</span></span>
+
+  - <span data-ttu-id="3b85d-128">**Rapport de disponibilité des scénarios de fin à fin**   Ce rapport détaille la disponibilité et la durée de fonctionnement des services clés de Lync Server tels que l’inscription ou la présence.</span><span class="sxs-lookup"><span data-stu-id="3b85d-128">**End to End Scenario Availability Report**   This report details the availability/uptime for key Lync Server services such as registration or presence.</span></span>
+
+  - <span data-ttu-id="3b85d-129">**Rapport de capacité**   À l’aide des informations des compteurs de performance, ce rapport affiche des tendances pour les composants système, tels que la disponibilité de la mémoire et l’utilisation du processeur.</span><span class="sxs-lookup"><span data-stu-id="3b85d-129">**Capacity Report**   Using performance counter information, this report shows trends for system components such as memory availability and processor usage.</span></span>
+
+  - <span data-ttu-id="3b85d-130">**Rapport de composant**   Ce rapport répertorie les principaux générateurs d’alertes regroupés par composant Lync Server.</span><span class="sxs-lookup"><span data-stu-id="3b85d-130">**Component Report**   This report lists the top alert generators grouped by Lync Server component.</span></span>
+
+<span data-ttu-id="3b85d-131">Outre ces rapports prédéfinis, les packs de gestion pour Lync Server 2013 signalent automatiquement les alertes pour la fiabilité des appels (métriques mesurées par enregistrement des détails des appels) et les États QoE (métriques mesurées par qualité d’expérimentation).</span><span class="sxs-lookup"><span data-stu-id="3b85d-131">In addition to these predesigned reports, the management packs for Lync Server 2013 automatically report alerts for both Call Reliability (metrics measured by Call Detail Recording) and QoE states (metrics measured by Quality of Experience).</span></span> <span data-ttu-id="3b85d-132">Si vous avez activé l’enregistrement des détails des appels, vous pouvez passer en revue les alertes de fiabilité des appels en effectuant les étapes suivantes à partir de la console System Center Operations Manager :</span><span class="sxs-lookup"><span data-stu-id="3b85d-132">If you have enabled Call Detail Recording, you can review Call Reliability alerts by completing the following procedure from the System Center Operations Manager console:</span></span>
+
+  - <span data-ttu-id="3b85d-133">Développez **analyse**, développez **État de Microsoft Lync Server 2013**, développez **fiabilité des appels et qualité multimédia**, puis cliquez sur **fiabilité des appels**.</span><span class="sxs-lookup"><span data-stu-id="3b85d-133">Expand **Monitoring**, expand **Microsoft Lync Server 2013 Health**, expand **Call Reliability and Media Quality**, and then click **Call Reliability**.</span></span>
+
+<span data-ttu-id="3b85d-134">Pour afficher des alertes de qualité de l’utilisation, procédez comme suit dans la console System Center Operations Manager :</span><span class="sxs-lookup"><span data-stu-id="3b85d-134">To view Quality of Experience alerts, complete this procedure from the System Center Operations Manager console:</span></span>
+
+  - <span data-ttu-id="3b85d-135">Développez **analyse**, développez **État de Microsoft Lync Server 2013**, développez **fiabilité des appels et qualité multimédia**, puis développez **qualité multimédia**.</span><span class="sxs-lookup"><span data-stu-id="3b85d-135">Expand **Monitoring**, expand **Microsoft Lync Server 2013 Health**, expand **Call Reliability and Media Quality**, and then expand **Media Quality**.</span></span>
+
+<span data-ttu-id="3b85d-136">Les packs de gestion pour Lync Server 2013 utilisent désormais une découverte au niveau de l’ordinateur au lieu du mécanisme de découverte centralisé utilisé dans Microsoft Lync Server 2010.</span><span class="sxs-lookup"><span data-stu-id="3b85d-136">The management packs for Lync Server 2013 now use machine-level discovery instead of the central discovery mechanism used in Microsoft Lync Server 2010.</span></span> <span data-ttu-id="3b85d-137">En d’autres termes, chacun de ses agents s’en charge et signale son existence au serveur de gestion central.</span><span class="sxs-lookup"><span data-stu-id="3b85d-137">This means that each System Center agent essentially discovers itself and reports its existence to the Central Management Server.</span></span> <span data-ttu-id="3b85d-138">L’utilisation de la découverte au niveau de l’ordinateur simplifie l’administration de votre infrastructure de centre système et permet également d’utiliser différentes versions des packs d’administration de Lync Server (par exemple, les packs d’administration de Lync Server 2010 et les packs de gestion pour Lync Server 2013) pour faire cohabiter.</span><span class="sxs-lookup"><span data-stu-id="3b85d-138">Using machine-level discovery simplifies administration of your System Center infrastructure and also allows different versions of the Lync Server management packs (for example, management packs for Lync Server 2010 and management packs for Lync Server 2013) to coexist.</span></span>
+
+<span data-ttu-id="3b85d-139"></div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="3b85d-139"></div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+
