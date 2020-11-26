@@ -1,0 +1,80 @@
+---
+title: 'Lync Server 2013 : Considérations techniques relatives au routage géodépendant'
+description: 'Lync Server 2013 : considérations techniques pour le routage Location-Based.'
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Technical considerations for Location-Based Routing
+ms:assetid: 2e2a9199-7c6f-48d3-9adb-3873fc4f8c4e
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ994027(v=OCS.15)
+ms:contentKeyID: 51803936
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 54a025af81ab148ad41f95d0a8cf4f900beb7e00
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49423427"
+---
+# <a name="technical-considerations-for-location-based-routing-in-lync-server-2013"></a>Considérations techniques relatives au routage géodépendant dans Lync Server 2013
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**Dernière modification de la rubrique :** 2013-03-09_
+
+Lors de la planification Location-Based le routage, vous devez prendre en compte l’impact sur les situations suivantes.
+
+<div>
+
+## <a name="disaster-recovery"></a>Récupération d’urgence
+
+Lors d’un basculement entre le pool principal et un pool de sauvegarde, ainsi que lors de la restauration d’opérations normales sur le pool principal, Location-Based le routage reste appliqué à tout moment dans le cadre d’une procédure de sinistre et de récupération.
+
+</div>
+
+<div>
+
+## <a name="survivable-branch-appliance"></a>Survivable Branch Appliance
+
+La configuration du routage Location-Based affecte la planification de l’endroit où vous déployez les passerelles associées à vos appareils distants. La passerelle associée à votre SBA doit se trouver dans le même site réseau que votre application de succursale Survivable ; dans le cas contraire, les utilisateurs hébergés sur votre unité de branchement Survivable ne sont pas autorisés à passer des appels sortants si Location-Based le routage est configuré. Lorsque la connexion WAN entre votre appareil de branchement Survivable et le site central est en panne, Location-Based restrictions de routage reste appliquées.
+
+</div>
+
+<div>
+
+## <a name="see-also"></a>Voir aussi
+
+
+[Planification du routage géodépendant dans Lync Server 2013](lync-server-2013-planning-for-location-based-routing.md)  
+  
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+
