@@ -1,0 +1,194 @@
+---
+title: 'Lync Server 2013 : Modification d’un plan de numérotation'
+description: 'Lync Server 2013 : modifier un plan de numérotation.'
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Modify a dial plan
+ms:assetid: a91f02df-cf60-40cf-82fe-e0342c118b91
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg412797(v=OCS.15)
+ms:contentKeyID: 48185099
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 9e173552970c6b1799076b3f3b05d59ed6f0719e
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49445913"
+---
+# <a name="modify-a-dial-plan-in-lync-server-2013"></a><span data-ttu-id="07db4-103">Modification d’un plan de numérotation dans Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="07db4-103">Modify a dial plan in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="07db4-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="07db4-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="07db4-105">_**Dernière modification de la rubrique :** 2012-11-01_</span><span class="sxs-lookup"><span data-stu-id="07db4-105">_**Topic Last Modified:** 2012-11-01_</span></span>
+
+<span data-ttu-id="07db4-106">Pour modifier un plan de numérotation existant, suivez les étapes de la procédure ci-dessous.</span><span class="sxs-lookup"><span data-stu-id="07db4-106">To modify an existing dial plan, perform the steps in the following procedure.</span></span> <span data-ttu-id="07db4-107">Pour créer un nouveau plan de numérotation, reportez-vous à [la rubrique créer un plan de numérotation dans Lync Server 2013](lync-server-2013-create-a-dial-plan.md).</span><span class="sxs-lookup"><span data-stu-id="07db4-107">If you want to create a new dial plan, see [Create a dial plan in Lync Server 2013](lync-server-2013-create-a-dial-plan.md).</span></span>
+
+<div>
+
+## <a name="to-modify-a-dial-plan"></a><span data-ttu-id="07db4-108">Pour modifier un plan de numérotation</span><span class="sxs-lookup"><span data-stu-id="07db4-108">To modify a dial plan</span></span>
+
+1.  <span data-ttu-id="07db4-109">Connectez-vous à l’ordinateur en tant que membre du groupe RTCUniversalServerAdmins ou en tant que membre du rôle CsVoiceAdministrator, CsServerAdministrator ou CsAdministrator.</span><span class="sxs-lookup"><span data-stu-id="07db4-109">Log on to the computer as a member of the RTCUniversalServerAdmins group, or as a member of the CsVoiceAdministrator, CsServerAdministrator, or CsAdministrator role.</span></span> <span data-ttu-id="07db4-110">Pour plus d’informations, reportez-vous à la section [délégation des autorisations de configuration dans Lync Server 2013](lync-server-2013-delegate-setup-permissions.md).</span><span class="sxs-lookup"><span data-stu-id="07db4-110">For details, see [Delegate setup permissions in Lync Server 2013](lync-server-2013-delegate-setup-permissions.md).</span></span>
+
+2.  <span data-ttu-id="07db4-111">Ouvrez une fenêtre de navigateur, puis entrez l’URL d’administration pour ouvrir le panneau de configuration de Lync Server.</span><span class="sxs-lookup"><span data-stu-id="07db4-111">Open a browser window, and then enter the Admin URL to open the Lync Server Control Panel.</span></span> <span data-ttu-id="07db4-112">Pour plus d’informations sur les différentes méthodes que vous pouvez utiliser pour démarrer le panneau de configuration de Lync Server, voir [ouvrir les outils d’administration de Lync server 2013](lync-server-2013-open-lync-server-administrative-tools.md).</span><span class="sxs-lookup"><span data-stu-id="07db4-112">For details about the different methods you can use to start Lync Server Control Panel, see [Open Lync Server 2013 administrative tools](lync-server-2013-open-lync-server-administrative-tools.md).</span></span>
+
+3.  <span data-ttu-id="07db4-113">Dans la barre de navigation de gauche, cliquez sur **Routage des communications vocales**, puis sur **Plan de numérotation**.</span><span class="sxs-lookup"><span data-stu-id="07db4-113">In the left navigation bar, click **Voice Routing** and then click **Dial Plan**.</span></span>
+
+4.  <span data-ttu-id="07db4-114">Dans la page **Plan de numérotation**, double-cliquez sur le nom d’un plan de numérotation.</span><span class="sxs-lookup"><span data-stu-id="07db4-114">On the **Dial Plan** page, double-click a dial plan name.</span></span>
+    
+    <div>
+    
+
+    > [!NOTE]  
+    > <span data-ttu-id="07db4-p104">L’étendue et le nom du plan de numérotation ont été définis lors de la création de ce plan. Ils ne peuvent pas être modifiés.</span><span class="sxs-lookup"><span data-stu-id="07db4-p104">The dial plan scope and name were set when the dial plan was created. They cannot be changed.</span></span>
+
+    
+    </div>
+
+5.  <span data-ttu-id="07db4-117">(Facultatif) Dans **Modifier un plan de numérotation**, modifiez le champ **Nom simple**, qui contient déjà le nom qui s’affiche dans le champ **Nom**, pour spécifier un nom qui reflète mieux le site, le service ou l’utilisateur auquel le plan de numérotation s’applique.</span><span class="sxs-lookup"><span data-stu-id="07db4-117">(Optional) In **Edit Dial Plan**, edit the **Simple name** field, which is prepopulated with the same name that appears in the **Name** field to specify a more descriptive name that reflects the site, service, or user to which the dial plan applies.</span></span>
+    
+    <div>
+    
+
+    > [!IMPORTANT]  
+    > <span data-ttu-id="07db4-118">Le <STRONG>nom simple</STRONG> doit être unique parmi tous les plans de numérotation dans le déploiement de Lync Server 2013.</span><span class="sxs-lookup"><span data-stu-id="07db4-118">The <STRONG>Simple name</STRONG> must be unique among all dial plans within the Lync Server 2013 deployment.</span></span> <span data-ttu-id="07db4-119">Il ne doit pas contenir plus de 256 caractères Unicode, chacun pouvant être un caractère alphabétique ou numérique, un tiret (-), un point (.), un signe plus (+) ou un caractère de soulignement (_).</span><span class="sxs-lookup"><span data-stu-id="07db4-119">It cannot exceed 256 Unicode characters, each of which can be an alphabetic or numeric character, a hyphen (-), a period (.), a plus sign (+), or an underscore (_).</span></span><BR><span data-ttu-id="07db4-120">Les espaces ne sont pas autorisés dans le champ <STRONG>Nom simple</STRONG>.</span><span class="sxs-lookup"><span data-stu-id="07db4-120">Spaces are not allowed in the <STRONG>Simple name</STRONG> field.</span></span>
+
+    
+    </div>
+
+6.  <span data-ttu-id="07db4-121">(Facultatif) Dans le champ **Description**, entrez des informations descriptives concernant le plan de numérotation.</span><span class="sxs-lookup"><span data-stu-id="07db4-121">(Optional) In the **Description** field, type descriptive information about the dial plan.</span></span>
+
+7.  <span data-ttu-id="07db4-p106">(Facultatif) Si vous souhaitez utiliser ce plan de numérotation comme une région pour des numéros d’accès entrants, spécifiez une **région de conférence rendez-vous**. Si vous ne souhaitez pas utiliser ce plan de numérotation pour des numéros d’accès entrants, laissez ce champ vide.</span><span class="sxs-lookup"><span data-stu-id="07db4-p106">(Optional) If you want to use this dial plan as a region for dial-in access numbers, specify a **Dial-in conferencing region**. If you do not want to use this dial plan for dial-in access numbers, leave this field empty.</span></span>
+    
+    <div>
+    
+
+    > [!NOTE]  
+    > <span data-ttu-id="07db4-124">Les régions de conférence rendez-vous sont nécessaires pour associer des numéros d’accès entrants à un ou plusieurs plans de numérotation.</span><span class="sxs-lookup"><span data-stu-id="07db4-124">Dial-in conferencing regions are required to associate dial-in conferencing access numbers with one or more dial plans.</span></span>
+
+    
+    </div>
+
+8.  <span data-ttu-id="07db4-125">(Facultatif) Dans le champ **Préfixe d’accès externe**, entrez une valeur uniquement si les utilisateurs doivent composer un ou plusieurs préfixes supplémentaires pour obtenir une ligne externe (le 9, par exemple).</span><span class="sxs-lookup"><span data-stu-id="07db4-125">(Optional) In the **External access prefix** field, specify a value only if users need to dial one or more additional leading digits to get an external line (for example, 9).</span></span> <span data-ttu-id="07db4-126">Vous pouvez taper une valeur de préfixe composée de quatre caractères au maximum (c’est-à-dire \# , \* et 0-9).</span><span class="sxs-lookup"><span data-stu-id="07db4-126">You can type in a prefix value of up to four characters (that is, \#, \*, and 0-9).</span></span>
+    
+    <div>
+    
+
+    > [!NOTE]  
+    > <span data-ttu-id="07db4-127">Si vous spécifiez un préfixe d’accès externe, il est inutile de créer une nouvelle règle de normalisation.</span><span class="sxs-lookup"><span data-stu-id="07db4-127">If you specify an external access prefix, you do not need to create a new normalization rule to accommodate the prefix.</span></span>
+
+    
+    </div>
+
+9.  <span data-ttu-id="07db4-128">Associez et configurez les règles de normalisation du plan de numérotation :</span><span class="sxs-lookup"><span data-stu-id="07db4-128">Associate and configure normalization rules for the dial plan:</span></span>
+    
+      - <span data-ttu-id="07db4-129">Pour sélectionner une ou plusieurs règles dans la liste de toutes les règles de normalisation disponibles dans votre déploiement voix entreprise, cliquez sur **Sélectionner**.</span><span class="sxs-lookup"><span data-stu-id="07db4-129">To choose one or more rules from a list of all normalization rules available in your Enterprise Voice deployment, click **Select**.</span></span> <span data-ttu-id="07db4-130">Dans la boîte de dialogue **Sélectionner des règles de normalisation**, sélectionnez les règles que vous voulez associer au plan de numérotation, puis cliquez sur **OK**.</span><span class="sxs-lookup"><span data-stu-id="07db4-130">In the **Select Normalization Rules** dialog box, highlight the rules that you want to associate with the dial plan and then click **OK**.</span></span>
+    
+      - <span data-ttu-id="07db4-131">Pour définir une nouvelle règle de normalisation et l’associer au plan de numérotation, cliquez sur **Nouveau**.</span><span class="sxs-lookup"><span data-stu-id="07db4-131">To define a new normalization rule and associate it with the dial plan, click **New**.</span></span> <span data-ttu-id="07db4-132">Pour plus d’informations sur la définition d’une règle, voir [définition des règles de normalisation dans Lync Server 2013](lync-server-2013-defining-normalization-rules.md).</span><span class="sxs-lookup"><span data-stu-id="07db4-132">For details about defining a new rule, see [Defining normalization rules in Lync Server 2013](lync-server-2013-defining-normalization-rules.md).</span></span>
+    
+      - <span data-ttu-id="07db4-133">Pour modifier une règle de normalisation déjà associée au plan de numérotation, mettez en surbrillance le nom de la règle et cliquez sur **Afficher les détails**.</span><span class="sxs-lookup"><span data-stu-id="07db4-133">To edit a normalization rule that is already associated with the dial plan, highlight the rule name and click **Show details**.</span></span> <span data-ttu-id="07db4-134">Pour plus d’informations sur la modification de la règle, voir [définition de règles de normalisation dans Lync Server 2013](lync-server-2013-defining-normalization-rules.md).</span><span class="sxs-lookup"><span data-stu-id="07db4-134">For details about editing the rule, see [Defining normalization rules in Lync Server 2013](lync-server-2013-defining-normalization-rules.md).</span></span>
+    
+      - <span data-ttu-id="07db4-135">Pour copier une règle de normalisation existante et l’utiliser comme base de définition d’une nouvelle règle, mettez en surbrillance le nom de la règle, cliquez sur **Copier**, puis sur **Coller**.</span><span class="sxs-lookup"><span data-stu-id="07db4-135">To copy an existing normalization rule to use as a starting point for defining a new rule, highlight the rule name and click **Copy**, and then click **Paste**.</span></span> <span data-ttu-id="07db4-136">Pour plus d’informations sur la modification de la copie, voir [définir les règles de normalisation dans Lync Server 2013](lync-server-2013-defining-normalization-rules.md).</span><span class="sxs-lookup"><span data-stu-id="07db4-136">For details about editing the copy, see [Defining normalization rules in Lync Server 2013](lync-server-2013-defining-normalization-rules.md).</span></span>
+    
+      - <span data-ttu-id="07db4-137">Pour supprimer une règle de normalisation du plan de numérotation, mettez en surbrillance le nom de la règle et cliquez sur **Supprimer**.</span><span class="sxs-lookup"><span data-stu-id="07db4-137">To remove a normalization rule from the dial plan, highlight the rule name and click **Remove**.</span></span>
+    
+    <div>
+    
+
+    > [!NOTE]  
+    > <span data-ttu-id="07db4-138">Chaque plan de numérotation doit être associé à au moins une règle de normalisation.</span><span class="sxs-lookup"><span data-stu-id="07db4-138">Each dial plan must have at least one associated normalization rule.</span></span> <span data-ttu-id="07db4-139">Pour plus d’informations sur la façon de déterminer toutes les règles de normalisation requises par un plan de numérotation, reportez-vous à la rubrique <A href="lync-server-2013-dial-plans-and-normalization-rules.md">plans de numérotation et règles de normalisation dans Lync Server 2013</A> dans la documentation de planification.</span><span class="sxs-lookup"><span data-stu-id="07db4-139">For details about how to determine all of the normalization rules a dial plan requires, see <A href="lync-server-2013-dial-plans-and-normalization-rules.md">Dial plans and normalization rules in Lync Server 2013</A> in the Planning documentation.</span></span>
+
+    
+    </div>
+
+10. <span data-ttu-id="07db4-p113">Vérifiez que les règles de normalisation du plan de numérotation sont classées dans le bon ordre. Pour déplacer une règle dans la liste, sélectionnez-la, puis cliquez sur la flèche vers le haut ou vers le bas.</span><span class="sxs-lookup"><span data-stu-id="07db4-p113">Verify that the dial plan’s normalization rules are arranged in the correct order. To change a rule’s position in the list, highlight the rule name and then click the up or down arrow.</span></span>
+    
+    <div>
+    
+
+    > [!IMPORTANT]  
+    > <span data-ttu-id="07db4-142">Lync Server parcourt la liste des règles de normalisation du haut vers le bas et utilise la première règle qui correspond au numéro numéroté.</span><span class="sxs-lookup"><span data-stu-id="07db4-142">Lync Server traverses the normalization rule list from the top down and uses the first rule that matches the dialed number.</span></span> <span data-ttu-id="07db4-143">Si vous configurez un plan de numérotation de sorte qu’un numéro composé puisse correspondre à plusieurs règles de normalisation, vérifiez que les règles plus restrictives s’affichent au-dessus des règles moins restrictives.</span><span class="sxs-lookup"><span data-stu-id="07db4-143">If you configure a dial plan so that a dialed number can match more than one normalization rule, make sure the more restrictive rules are sorted above the less restrictive ones.</span></span><BR><span data-ttu-id="07db4-144"><STRONG>Par défaut</STRONG> , la règle de normalisation <STRONG>^ (\d {11} ) $</STRONG> correspond à n’importe quel numéro à 11 chiffres.</span><span class="sxs-lookup"><span data-stu-id="07db4-144">The default <STRONG>Keep All</STRONG> normalization rule <STRONG>^(\d{11})$</STRONG> matches any 11-digit number.</span></span> <span data-ttu-id="07db4-145">Par exemple, si vous ajoutez une règle de normalisation qui correspond à des numéros à 11 chiffres commençant par 1425, assurez-vous que la valeur <STRONG>conserver tout</STRONG> est triée sous la règle plus restrictive <STRONG>^ (1425 \ d {7} ) $</STRONG> .</span><span class="sxs-lookup"><span data-stu-id="07db4-145">If, for example, you add a normalization rule that matches 11-digit numbers that start with 1425, make sure that <STRONG>Keep All</STRONG> is sorted below the more restrictive <STRONG>^(1425\d{7})$</STRONG> rule.</span></span>
+
+    
+    </div>
+
+11. <span data-ttu-id="07db4-p116">(Facultatif) Entrez un numéro pour tester le plan de numérotation, puis cliquez sur **OK**. Les résultats du test s’affichent sous **Numéro composé à tester**.</span><span class="sxs-lookup"><span data-stu-id="07db4-p116">(Optional) Enter a number to test the dial plan and then click **Go**. The test results are displayed under **Enter a number to test**.</span></span>
+    
+    <div>
+    
+
+    > [!NOTE]  
+    > <span data-ttu-id="07db4-148">Vous pouvez enregistrer un plan de numérotation n’ayant pas encore passé le test afin de le reconfigurer ultérieurement.</span><span class="sxs-lookup"><span data-stu-id="07db4-148">You can save a dial plan that does not yet pass the test and then reconfigure it later.</span></span> <span data-ttu-id="07db4-149">Pour plus d’informations, consultez <A href="lync-server-2013-test-voice-routing.md">tester le routage vocal dans Lync Server 2013</A>.</span><span class="sxs-lookup"><span data-stu-id="07db4-149">For details, see <A href="lync-server-2013-test-voice-routing.md">Test voice routing in Lync Server 2013</A>.</span></span>
+
+    
+    </div>
+
+12. <span data-ttu-id="07db4-150">Cliquez sur **OK**.</span><span class="sxs-lookup"><span data-stu-id="07db4-150">Click **OK**.</span></span>
+
+13. <span data-ttu-id="07db4-151">Dans la page **Plan de numérotation**, cliquez sur **Valider**, puis sur **Valider tout**.</span><span class="sxs-lookup"><span data-stu-id="07db4-151">On the **Dial Plan** page, click **Commit**, and then click **Commit all**.</span></span>
+    
+    <div>
+    
+
+    > [!NOTE]  
+    > <span data-ttu-id="07db4-152">Chaque fois que vous créez ou modifiez un plan de numérotation, vous devez exécuter la commande <STRONG>Valider tout</STRONG> pour publier la modification de la configuration.</span><span class="sxs-lookup"><span data-stu-id="07db4-152">Any time you create or modify a dial plan, you must run the <STRONG>Commit all</STRONG> command to publish the configuration change.</span></span> <span data-ttu-id="07db4-153">Pour plus d’informations, reportez-vous <A href="lync-server-2013-publish-pending-changes-to-the-voice-routing-configuration.md">à la rubrique publier des modifications en attente sur la configuration de l’acheminement de la voix dans Lync Server 2013</A> dans la documentation</span><span class="sxs-lookup"><span data-stu-id="07db4-153">For details, see <A href="lync-server-2013-publish-pending-changes-to-the-voice-routing-configuration.md">Publish pending changes to the voice routing configuration in Lync Server 2013</A> in the Operations documentation.</span></span>
+
+    
+    </div>
+
+</div>
+
+<div>
+
+## <a name="see-also"></a><span data-ttu-id="07db4-154">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="07db4-154">See Also</span></span>
+
+
+[<span data-ttu-id="07db4-155">Créer un plan de numérotation dans Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="07db4-155">Create a dial plan in Lync Server 2013</span></span>](lync-server-2013-create-a-dial-plan.md)  
+[<span data-ttu-id="07db4-156">Publier les modifications en attente apportées à la configuration du routage de la voix dans Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="07db4-156">Publish pending changes to the voice routing configuration in Lync Server 2013</span></span>](lync-server-2013-publish-pending-changes-to-the-voice-routing-configuration.md)  
+
+
+[<span data-ttu-id="07db4-157">Définition de règles de normalisation dans Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="07db4-157">Defining normalization rules in Lync Server 2013</span></span>](lync-server-2013-defining-normalization-rules.md)  
+  
+
+<span data-ttu-id="07db4-158"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="07db4-158"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+
