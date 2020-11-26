@@ -1,0 +1,183 @@
+---
+title: 'Lync Server 2013 : configuration de Lync Server dans un environnement local'
+description: 'Lync Server 2013 : configuration de Lync Server dans un environnement local.'
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Configuring Microsoft Lync Server 2013 in a cross-premises environment
+ms:assetid: 700639ec-5264-4449-a8a6-d7386fad8719
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ204990(v=OCS.15)
+ms:contentKeyID: 48184449
+ms.date: 02/21/2017
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: e1ec978cd8e0e34c01c1d5cabb5bba42debd16fd
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49433012"
+---
+# <a name="configuring-microsoft-lync-server-2013-in-a-cross-premises-environment"></a><span data-ttu-id="abf23-103">Configuration de Microsoft Lync Server 2013 dans un environnement local</span><span class="sxs-lookup"><span data-stu-id="abf23-103">Configuring Microsoft Lync Server 2013 in a cross-premises environment</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="abf23-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="abf23-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="abf23-105">_**Dernière modification de la rubrique :** 2017-02-21_</span><span class="sxs-lookup"><span data-stu-id="abf23-105">_**Topic Last Modified:** 2017-02-21_</span></span>
+
+<span data-ttu-id="abf23-106">Dans une configuration intersites, certains de vos utilisateurs sont hébergés sur une installation locale de Microsoft Lync Server 2013 alors que d’autres utilisateurs sont hébergés sur la version Microsoft 365 ou Office 365 de Lync Server.</span><span class="sxs-lookup"><span data-stu-id="abf23-106">In a cross-premise configuration, some of your users are homed on an on-premises installation of Microsoft Lync Server 2013 while other users are homed on the Microsoft 365 or Office 365 version of Lync Server.</span></span> <span data-ttu-id="abf23-107">Pour configurer l’authentification de serveur à serveur dans un environnement local, vous devez commencer par configurer votre installation locale de Lync Server 2013 de manière à faire confiance au serveur d’autorisation Microsoft 365.</span><span class="sxs-lookup"><span data-stu-id="abf23-107">In order to configure server-to-server authentication in a cross-premises environment, you must first configure your on-premises installation of Lync Server 2013 to trust the Microsoft 365 Authorization server.</span></span> <span data-ttu-id="abf23-108">La première étape de ce processus peut être effectuée en exécutant le script Lync Server Management Shell suivant :</span><span class="sxs-lookup"><span data-stu-id="abf23-108">The initial step in this process can be carried out by running the following Lync Server Management Shell script:</span></span>
+
+    $TenantID = (Get-CsTenant -Filter {DisplayName -eq "Fabrikam.com"}).TenantId
+    
+    $sts = Get-CsOAuthServer microsoft.sts -ErrorAction SilentlyContinue
+            
+       if ($sts -eq $null)
+          {
+             New-CsOAuthServer microsoft.sts -MetadataUrl "https://accounts.accesscontrol.windows.net/$TenantId/metadata/json/1"
+          }
+       else
+          {
+             if ($sts.MetadataUrl -ne  "https://accounts.accesscontrol.windows.net/$TenantId/metadata/json/1")
+                {
+                   Remove-CsOAuthServer microsoft.sts
+                   New-CsOAuthServer microsoft.sts -MetadataUrl "https://accounts.accesscontrol.windows.net/$TenantId/metadata/json/1"
+                }
+            }
+    
+    $exch = Get-CsPartnerApplication microsoft.exchange -ErrorAction SilentlyContinue
+            
+    if ($exch -eq $null)
+       {
+          New-CsPartnerApplication -Identity microsoft.exchange -ApplicationIdentifier 00000002-0000-0ff1-ce00-000000000000 -ApplicationTrustLevel Full -UseOAuthServer
+        }
+    else
+        {
+           if ($exch.ApplicationIdentifier -ne "00000002-0000-0ff1-ce00-000000000000")
+              {
+                 Remove-CsPartnerApplication microsoft.exchange
+                 New-CsPartnerApplication -Identity microsoft.exchange -ApplicationIdentifier 00000002-0000-0ff1-ce00-000000000000 -ApplicationTrustLevel Full -UseOAuthServer 
+              }
+           else
+              {
+                 Set-CsPartnerApplication -Identity microsoft.exchange -ApplicationTrustLevel Full -UseOAuthServer
+              }
+       }
+    
+    Set-CsOAuthConfiguration -ServiceName 00000004-0000-0ff1-ce00-000000000000
+
+<span data-ttu-id="abf23-p102">N’oubliez pas que le nom de domaine d’un client est généralement différent du nom de l’organisation. En fait, le nom de domaine est presque toujours identique à l’ID de client, donc la première ligne du script est utilisée pour renvoyer la valeur de la propriété TenantId du client spécifié (ici, fabrikam.com), puis pour attribuer ce nom à la variable $TenantId :</span><span class="sxs-lookup"><span data-stu-id="abf23-p102">Keep in mind that the realm name for a tenant is typically different than the organization name; in fact, the realm name is almost always the same as the tenant ID. Because of that, the first line in the script is used to return the value of the TenantId property for the specified tenant (in this case, fabrikam.com) and then assign that name to the variable $TenantId:</span></span>
+
+    $TenantID = (Get-CsTenant -DisplayName "Fabrikam.com").TenantId
+
+<span data-ttu-id="abf23-111">Une fois le script terminé, vous devez configurer une relation d’approbation entre Lync Server 2013 et le serveur d’autorisation, et une deuxième relation d’approbation entre Exchange 2013 et le serveur d’autorisation.</span><span class="sxs-lookup"><span data-stu-id="abf23-111">After the script completes you must then configure a trust relationship between Lync Server 2013 and the authorization server, and a second trust relationship between Exchange 2013 and the authorization server.</span></span> <span data-ttu-id="abf23-112">Vous ne pouvez le faire qu’avec des applets de commande Microsoft Online Services.</span><span class="sxs-lookup"><span data-stu-id="abf23-112">This can only be done by using the Microsoft Online Services cmdlets.</span></span>
+
+<div>
+
+
+> [!NOTE]  
+> <span data-ttu-id="abf23-113">Si vous n’avez pas installé les applets de service Microsoft Online Services, vous devez effectuer deux opérations avant de continuer.</span><span class="sxs-lookup"><span data-stu-id="abf23-113">If you have not installed the Microsoft Online Services cmdlets you will need to do two things before proceeding.</span></span> <span data-ttu-id="abf23-114">Tout d’abord, téléchargez et installez la version 64 bits de l’Assistant de connexion Microsoft Online Services.</span><span class="sxs-lookup"><span data-stu-id="abf23-114">First, download and install the 64-bit version of the Microsoft Online Services Sign-in Assistant.</span></span> <span data-ttu-id="abf23-115">Une fois l’installation terminée, téléchargez et installez la version 64 bits du module Microsoft Online Services pour Windows PowerShell.</span><span class="sxs-lookup"><span data-stu-id="abf23-115">After installation is complete, download and install the 64-bit version of the Microsoft Online Services Module for Windows PowerShell.</span></span> <span data-ttu-id="abf23-116">Pour plus d’informations sur l’installation et l’utilisation du module Microsoft Online Services, consultez le site Web Microsoft 365 ou Office 365.</span><span class="sxs-lookup"><span data-stu-id="abf23-116">Detailed information for installing and using the Microsoft Online Services Module can be found on the Microsoft 365 or Office 365 web site.</span></span> <span data-ttu-id="abf23-117">Ces instructions vous indiquent également comment configurer l’authentification unique, la Fédération et la synchronisation entre Microsoft 365 ou Office 36 et Active Directory.</span><span class="sxs-lookup"><span data-stu-id="abf23-117">These instructions will also tell you how to configure single sign-on, federation, and synchronization between Microsoft 365 or Office 36 and Active Directory.</span></span><BR><span data-ttu-id="abf23-118">Si vous n’avez pas installé ces applets de commande, votre script échouera, car l’applet de commande Get-CsTenant ne sera pas disponible.</span><span class="sxs-lookup"><span data-stu-id="abf23-118">If you have not installed these cmdlets your script will fail because the Get-CsTenant cmdlet will not be available.</span></span>
+
+
+
+</div>
+
+<span data-ttu-id="abf23-119">Après avoir configuré Microsoft 365, et après avoir créé Microsoft 365 ou les principaux services Office 365 pour Lync Server 2013 et Exchange 2013, vous devrez enregistrer vos informations d’identification avec ces principaux de service.</span><span class="sxs-lookup"><span data-stu-id="abf23-119">After you have configured Microsoft 365, and after you have created Microsoft 365 or Office 365 service principals for Lync Server 2013 and Exchange 2013, you will then need to register your credentials with these service principals.</span></span> <span data-ttu-id="abf23-120">Pour ce faire, vous devez d’abord obtenir un certificat X.509 Base64 enregistré sous forme de fichier .CER.</span><span class="sxs-lookup"><span data-stu-id="abf23-120">In order to do this, you must first obtain an X.509 Base64 saved as a .CER file.</span></span> <span data-ttu-id="abf23-121">Ce certificat est alors appliqué aux principaux services Microsoft 365 ou Office 365.</span><span class="sxs-lookup"><span data-stu-id="abf23-121">This certificate will then be applied to the Microsoft 365 or Office 365 service principals.</span></span>
+
+<span data-ttu-id="abf23-122">Lorsque vous avez obtenu le certificat X. 509, démarrez le module Microsoft Online Services (cliquez sur **Démarrer**, sur **tous les programmes**, sur **Microsoft Online Services**, puis cliquez sur **Microsoft Online Services module pour Windows PowerShell**).</span><span class="sxs-lookup"><span data-stu-id="abf23-122">When you have obtained the X.509 certificate, start the Microsoft Online Services Module (click **Start**, click **All Programs**, click **Microsoft Online Services**, and then click **Microsoft Online Services Module for Windows PowerShell**).</span></span> <span data-ttu-id="abf23-123">Lorsque le module Services s’ouvre, tapez les informations suivantes pour importer le module Microsoft Online Windows PowerShell contenant les applets de commande qui peuvent être utilisées pour gérer les principaux de service :</span><span class="sxs-lookup"><span data-stu-id="abf23-123">After the Services Module opens, type the following to import the Microsoft Online Windows PowerShell module containing the cmdlets that can be used to manage service principals:</span></span>
+
+    Import-Module MSOnlineExtended
+
+<span data-ttu-id="abf23-124">Lorsque le module a été importé, tapez la commande suivante, puis appuyez sur entrée pour vous connecter à Microsoft 365 :</span><span class="sxs-lookup"><span data-stu-id="abf23-124">When the module has been imported, type the following command and then press ENTER in order to connect to Microsoft 365:</span></span>
+
+    Connect-MsolService
+
+<span data-ttu-id="abf23-125">Après avoir appuyé sur Entrée, une boîte de dialogue d’informations d’identification s’affiche.</span><span class="sxs-lookup"><span data-stu-id="abf23-125">After you press ENTER, a credentials dialog box will appear.</span></span> <span data-ttu-id="abf23-126">Entrez votre nom d’utilisateur et votre mot de passe Microsoft 365 ou Office 365 dans la boîte de dialogue, puis cliquez sur OK.</span><span class="sxs-lookup"><span data-stu-id="abf23-126">Enter your Microsoft 365 or Office 365 user name and password in the dialog box, and then click OK.</span></span>
+
+<span data-ttu-id="abf23-127">Dès que vous êtes connecté à Microsoft 365, vous pouvez exécuter la commande suivante afin de renvoyer des informations sur vos principaux de service :</span><span class="sxs-lookup"><span data-stu-id="abf23-127">As soon as you are connected to Microsoft 365 you can then run the following command in order to return information about your service principals:</span></span>
+
+    Get-MsolServicePrincipal
+
+<span data-ttu-id="abf23-128">Vous devriez obtenir des informations similaires à celles-ci pour tous vos principaux du service :</span><span class="sxs-lookup"><span data-stu-id="abf23-128">You should get back information similar to this for all your service principals:</span></span>
+
+    ExtensionData        : System.Runtime.Serialization.ExtensionDataObject
+    AccountEnabled       : True
+    Addresses            : {}
+    AppPrincipalId       : 00000004-0000-0ff1-ce00-000000000000
+    DisplayName          : Microsoft Lync Server
+    ObjectId             : aada5fbd-c0ae-442a-8c0b-36fec40602e2
+    ServicePrincipalName : LyncServer/litwareinc.com
+    TrustedForDelegation : True
+
+<span data-ttu-id="abf23-129">L’étape suivante consiste à importer, encoder et affecter le certificat X.509.</span><span class="sxs-lookup"><span data-stu-id="abf23-129">The next step is to import, encode, and assign the X.509 certificate.</span></span> <span data-ttu-id="abf23-130">Pour importer et coder le certificat, utilisez les commandes Windows PowerShell suivantes, en veillant à spécifier le chemin d’accès complet au fichier. Fichier CER lorsque vous appelez la méthode d’importation :</span><span class="sxs-lookup"><span data-stu-id="abf23-130">To import and encode the certificate, use the following Windows PowerShell commands, being sure to specify the complete file path to your .CER file when you call the Import method:</span></span>
+
+    $certificate = New-Object System.Security.Cryptography.X509Certificates.X509Certificate
+    $certificate.Import("C:\Certificates\Office365.cer")
+    $binaryValue = $certificate.GetRawCertData()
+    $credentialsValue = [System.Convert]::ToBase64String($binaryValue)
+
+<span data-ttu-id="abf23-131">Une fois que le certificat a été importé et encodé, vous pouvez attribuer le certificat aux principaux de votre service Microsoft 365.</span><span class="sxs-lookup"><span data-stu-id="abf23-131">After the certificate has been imported and encoded, you can then assign the certificate to your Microsoft 365 service principals.</span></span> <span data-ttu-id="abf23-132">Pour ce faire, vous devez d’abord utiliser l' Get-MsolServicePrincipal pour récupérer la valeur de la propriété paramètre appprincipalid que pour le serveur Lync et les principaux de service Microsoft Exchange. la valeur de la propriété paramètre appprincipalid que est utilisée pour identifier le principal de service affecté au certificat.</span><span class="sxs-lookup"><span data-stu-id="abf23-132">To do that, first use the Get-MsolServicePrincipal to retrieve the value of the AppPrincipalId property for both the Lync Server and the Microsoft Exchange service principals; the value of the AppPrincipalId property will be used to identify the service principal being assigned the certificate.</span></span> <span data-ttu-id="abf23-133">La valeur de la propriété paramètre appprincipalid que de Lync Server 2013 étant disponible, utilisez la commande suivante pour affecter le certificat à la version Microsoft 365 de Lync Server (les propriétés StartDate et DateFin doivent correspondre à la période de validité du certificat) :</span><span class="sxs-lookup"><span data-stu-id="abf23-133">With the AppPrincipalId property value for Lync Server 2013 in hand, use the following command to assign the certificate to the Microsoft 365 version of Lync Server (the StartDate and EndDate properties should correspond to the validity period for the certificate):</span></span>
+
+    New-MsolServicePrincipalCredential -AppPrincipalId 00000004-0000-0ff1-ce00-000000000000 -Type Asymmetric -Usage Verify -Value $credentialsValue -StartDate 6/1/2012 -EndDate 5/31/2013
+
+<span data-ttu-id="abf23-134">Vous devez alors répéter la commande à l’aide de la valeur de propriété paramètre appprincipalid que pour Exchange 2013.</span><span class="sxs-lookup"><span data-stu-id="abf23-134">You should then repeat the command, this time using the AppPrincipalId property value for Exchange 2013.</span></span>
+
+<span data-ttu-id="abf23-135">Si vous avez besoin de supprimer ce certificat ultérieurement, vous pouvez le faire en extrayant la propriété KeyId du certificat au préalable :</span><span class="sxs-lookup"><span data-stu-id="abf23-135">If you later need to delete that certificate, you can do so by first retrieving the KeyId for the certificate:</span></span>
+
+    Get-MsolServicePrincipalCredential -AppPrincipalId 00000004-0000-0ff1-ce00-000000000000
+
+<span data-ttu-id="abf23-136">Cette commande renvoie des données comme les suivantes :</span><span class="sxs-lookup"><span data-stu-id="abf23-136">That command will return data like this one:</span></span>
+
+    Type      : Asymmetric
+    Value     : 
+    KeyId     : bc2795f3-2387-4543-a95d-f92c85c7a1b0
+    StartDate : 6/1/2012 8:00:00 AM
+    EndDate   : 5/31/2013 8:00:00 AM
+    Usage     : Verify
+
+<span data-ttu-id="abf23-137">Vous pouvez ensuite supprimer le certificat à l’aide d’une commande comme celle-ci :</span><span class="sxs-lookup"><span data-stu-id="abf23-137">You can then delete the certificate by using a command similar to this:</span></span>
+
+    Remove-MsolServicePrincipalCredential -AppPrincipalId 00000004-0000-0ff1-ce00-000000000000 -KeyId bc2795f3-2387-4543-a95d-f92c85c7a1b0
+
+<span data-ttu-id="abf23-138">Outre l’attribution d’un certificat, vous devez également configurer le principal de service Microsoft 365 pour Exchange Online en ajoutant le nom de principal du serveur pour votre version locale de Lync Server 2013.</span><span class="sxs-lookup"><span data-stu-id="abf23-138">In addition to assigning a certificate you must also configure the Microsoft 365 Service Principal for Exchange Online by adding the Server Principal Name for your on-premise version of Lync Server 2013.</span></span> <span data-ttu-id="abf23-139">Pour ce faire, vous pouvez exécuter les quatre lignes suivantes dans une session PowerShell Microsoft Online Services :</span><span class="sxs-lookup"><span data-stu-id="abf23-139">This can be done by running the following four lines in a Microsoft Online Services PowerShell session:</span></span>
+
+    Set-MSOLServicePrincipal -AppPrincipalID 00000002-0000-0ff1-ce00-000000000000 -AccountEnabled $true
+    
+    $lyncSP = Get-MSOLServicePrincipal -AppPrincipalID 00000004-0000-0ff1-ce00-000000000000
+    $lyncSP.ServicePrincipalNames.Add("00000004-0000-0ff1-ce00-000000000000/lync.contoso.com")
+    Set-MSOLServicePrincipal -AppPrincipalID 00000004-0000-0ff1-ce00-000000000000 -ServicePrincipalNames $lyncSP.ServicePrincipalNames
+
+<span data-ttu-id="abf23-140"></div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="abf23-140"></div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+

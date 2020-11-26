@@ -1,0 +1,114 @@
+---
+title: 'Lync Server 2013 : configuration des options d’archivage au niveau global'
+description: 'Lync Server 2013 : configuration des options d’archivage au niveau global.'
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Configuring Archiving options at the global level
+ms:assetid: bfe415f7-2abf-41ee-a1cb-cf48b2d59c0c
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ205233(v=OCS.15)
+ms:contentKeyID: 48185303
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 44b8939ec95d00afa2aa7632f4555bc6fef89834
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49433338"
+---
+# <a name="configuring-archiving-options-at-the-global-level-in-lync-server-2013"></a><span data-ttu-id="5942d-103">Configuration des options d’archivage au niveau global dans Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="5942d-103">Configuring Archiving options at the global level in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="5942d-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="5942d-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="5942d-105">_**Dernière modification de la rubrique :** 2012-10-10_</span><span class="sxs-lookup"><span data-stu-id="5942d-105">_**Topic Last Modified:** 2012-10-10_</span></span>
+
+<span data-ttu-id="5942d-106">Lorsque vous ajoutez l’archivage à votre topologie et publiez la topologie, Lync Server crée une configuration globale pour l’archivage.</span><span class="sxs-lookup"><span data-stu-id="5942d-106">When you add Archiving to your topology and publish the topology, Lync Server creates a global configuration for Archiving.</span></span> <span data-ttu-id="5942d-107">Par défaut, aucune option d’archivage n’est activée dans la configuration globale.</span><span class="sxs-lookup"><span data-stu-id="5942d-107">By default, no Archiving options are enabled in the global configuration.</span></span> <span data-ttu-id="5942d-108">La configuration globale détermine quelles options sont activées pour votre déploiement complet, sauf si vous configurez des configurations de site ou de pool qui remplacent la configuration globale.</span><span class="sxs-lookup"><span data-stu-id="5942d-108">The global configuration controls which options are enabled for your entire deployment, unless you set up site or pool configurations, which override the global configuration.</span></span>
+
+<span data-ttu-id="5942d-109">Pour plus d’informations sur le fonctionnement des configurations d’archivage, y compris la hiérarchie des configurations globales, de site et de pool, voir fonctionnement [de l’archivage dans Lync Server 2013](lync-server-2013-how-archiving-works.md) dans la documentation de planification, la documentation de déploiement ou la documentation des opérations.</span><span class="sxs-lookup"><span data-stu-id="5942d-109">For details about how Archiving configurations work, including the hierarchy for global, site, and pool configurations, see [How Archiving works in Lync Server 2013](lync-server-2013-how-archiving-works.md) in the Planning documentation, Deployment documentation, or Operations documentation.</span></span>
+
+<div>
+
+
+> [!NOTE]  
+> <span data-ttu-id="5942d-110">Vous devez spécifier toutes les options appropriées dans les configurations d’archivage avant de procéder à l’archivage.</span><span class="sxs-lookup"><span data-stu-id="5942d-110">You should specify all appropriate options in the Archiving configurations before enabling Archiving.</span></span>
+
+
+
+</div>
+
+<div>
+
+## <a name="to-configure-archiving-options-at-the-global-level"></a><span data-ttu-id="5942d-111">Pour configurer les options d’archivage au niveau global</span><span class="sxs-lookup"><span data-stu-id="5942d-111">To configure archiving options at the global level</span></span>
+
+1.  <span data-ttu-id="5942d-112">À partir d’un compte d’utilisateur auquel est affecté un des rôles CsArchivingAdministrator ou CsAdministrator, ouvrez une session sur un ordinateur de votre déploiement interne.</span><span class="sxs-lookup"><span data-stu-id="5942d-112">From a user account that is assigned to the CsArchivingAdministrator or CsAdministrator role, log on to any computer in your internal deployment.</span></span>
+
+2.  <span data-ttu-id="5942d-113">Ouvrez une fenêtre de navigateur, puis entrez l’URL d’administration pour ouvrir le panneau de configuration de Lync Server 2013.</span><span class="sxs-lookup"><span data-stu-id="5942d-113">Open a browser window, and then enter the Admin URL to open the Lync Server 2013 Control Panel.</span></span> <span data-ttu-id="5942d-114">Pour plus d’informations sur les différentes méthodes que vous pouvez utiliser pour démarrer le panneau de configuration de Lync Server 2013, voir [ouvrir les outils d’administration de Lync server 2013](lync-server-2013-open-lync-server-administrative-tools.md).</span><span class="sxs-lookup"><span data-stu-id="5942d-114">For details about the different methods that you can use to start Lync Server 2013 Control Panel, see [Open Lync Server 2013 administrative tools](lync-server-2013-open-lync-server-administrative-tools.md).</span></span>
+
+3.  <span data-ttu-id="5942d-115">Dans la barre de navigation gauche, cliquez sur **surveillance et archivage**, puis cliquez sur **configuration de l’archivage**.</span><span class="sxs-lookup"><span data-stu-id="5942d-115">In the left navigation bar, click **Monitoring and Archiving**, and then click **Archiving Configuration**.</span></span>
+
+4.  <span data-ttu-id="5942d-116">Sur la page **Configuration de l’archivage**, cliquez sur **Global**, sur **Modifier**, puis sur **Afficher les détails**.</span><span class="sxs-lookup"><span data-stu-id="5942d-116">On the **Archiving Configuration** page, click **Global**, click **Edit**, and then click **Show details**.</span></span>
+
+5.  <span data-ttu-id="5942d-117">Dans **Modifier le paramètre d’archivage - Global**, dans la zone de liste déroulante **Paramètre d’archivage**, sélectionnez l’une des options suivantes :</span><span class="sxs-lookup"><span data-stu-id="5942d-117">In **Edit Archiving Setting - Global**, in the **Archiving setting** drop-down list, select one of the following archiving options:</span></span>
+    
+      - <span data-ttu-id="5942d-118">**Désactiver l’archivage**</span><span class="sxs-lookup"><span data-stu-id="5942d-118">**Disable archiving**</span></span>
+    
+      - <span data-ttu-id="5942d-119">**Archiver les sessions de messagerie instantanée**</span><span class="sxs-lookup"><span data-stu-id="5942d-119">**Archive IM sessions**</span></span>
+    
+      - <span data-ttu-id="5942d-120">**Archiver les sessions de messagerie instantanée et de conférence web**</span><span class="sxs-lookup"><span data-stu-id="5942d-120">**Archive IM and web conferencing sessions**</span></span>
+
+6.  <span data-ttu-id="5942d-121">Sur la page **Modifier le paramètre d’archivage - Global**, effectuez également les opérations suivantes :</span><span class="sxs-lookup"><span data-stu-id="5942d-121">Also on the **Edit Archiving Setting – Global** page, do the following:</span></span>
+    
+      - <span data-ttu-id="5942d-122">Pour bloquer toute activité si l’archivage n’est pas disponible, cochez la case **Bloquer les sessions de messagerie instantanée ou de conférence Web en cas d’échec de l’archivage**.</span><span class="sxs-lookup"><span data-stu-id="5942d-122">To block activity when archiving is not available, select the **Block instant messaging (IM) or web conferencing sessions if archiving fails** check box.</span></span>
+    
+      - <span data-ttu-id="5942d-123">Pour utiliser Microsoft Exchange Server pour stocker des données d’archivage, activez la case à cocher **intégration Microsoft Exchange** .</span><span class="sxs-lookup"><span data-stu-id="5942d-123">To use Microsoft Exchange Server to store archiving data, click the **Microsoft Exchange integration** check box.</span></span>
+    
+      - <span data-ttu-id="5942d-124">Pour activer la fonctionnalité de vidage des données, cochez la case **Activer le vidage des données d’archivage**, puis effectuez l’une des opérations suivantes :</span><span class="sxs-lookup"><span data-stu-id="5942d-124">To enable data purging, select the **Enable purging of archiving data** check box, and then do one of the following:</span></span>
+        
+          - <span data-ttu-id="5942d-125">Pour planifier le vidage après un nombre précis de jours, cliquez sur **Vider les données d’archivage exportées et enregistrées après un délai maximal (jours)**, puis indiquez le nombre de jours.</span><span class="sxs-lookup"><span data-stu-id="5942d-125">To specify purging after a specific number of days, click **Purge exported archiving data and stored archiving data after maximum duration (days)**, and then specify the number of days.</span></span>
+        
+          - <span data-ttu-id="5942d-126">Pour limiter le vidage aux données d’archivage exportées, cliquez sur **Vider uniquement les données d’archivage exportées**.</span><span class="sxs-lookup"><span data-stu-id="5942d-126">To limit purging to archiving data that has been exported, click **Purge exported archiving data only**.</span></span>
+
+7.  <span data-ttu-id="5942d-127">Cliquez sur **Valider**.</span><span class="sxs-lookup"><span data-stu-id="5942d-127">Click **Commit**.</span></span>
+
+<span data-ttu-id="5942d-128"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="5942d-128"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+

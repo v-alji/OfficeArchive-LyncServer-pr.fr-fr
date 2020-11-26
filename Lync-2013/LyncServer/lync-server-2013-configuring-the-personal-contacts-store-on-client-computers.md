@@ -1,0 +1,82 @@
+---
+title: 'Lync Server 2013 : configuration du magasin de contacts personnels sur les ordinateurs clients'
+description: 'Lync Server 2013 : configuration du magasin de contacts personnels sur les ordinateurs clients.'
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Configuring the personal contacts store on client computers
+ms:assetid: ec69a6cb-07f2-4057-9544-55035f83eeae
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ721922(v=OCS.15)
+ms:contentKeyID: 49733857
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: c1040b3eb9aa38e3e0c537d690b9292ab8f1ead2
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49432519"
+---
+# <a name="configuring-the-personal-contacts-store-on-client-computers-for-lync-server-2013"></a><span data-ttu-id="09331-103">Configuration du magasin de contacts personnels sur les ordinateurs clients pour Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="09331-103">Configuring the personal contacts store on client computers for Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="09331-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="09331-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="09331-105">_**Dernière modification de la rubrique :** 2014-02-05_</span><span class="sxs-lookup"><span data-stu-id="09331-105">_**Topic Last Modified:** 2014-02-05_</span></span>
+
+<span data-ttu-id="09331-106">Si vous intégrez Microsoft Lync Server 2013 et Microsoft Exchange Server 2013, il est recommandé de configurer le magasin de contacts personnels sur les ordinateurs clients exécutant Microsoft Lync 2010.</span><span class="sxs-lookup"><span data-stu-id="09331-106">If you are integrating Microsoft Lync Server 2013 and Microsoft Exchange Server 2013 then it is recommended that you configure the personal contact store on any client computers running Microsoft Lync 2010.</span></span> <span data-ttu-id="09331-107">En particulier, vous devez configurer Lync pour qu’il utilise Exchange en tant que magasin de contacts personnel et, en même temps, veiller à ce que les utilisateurs ne puissent pas ignorer cette décision.</span><span class="sxs-lookup"><span data-stu-id="09331-107">In particular, you should configure Lync to use Exchange as the personal contact store, and, at the same time, ensure that users are not able to override that decision.</span></span> <span data-ttu-id="09331-108">Vous pouvez faire cela en créant et en configurant une valeur Registre sur chaque ordinateur client.</span><span class="sxs-lookup"><span data-stu-id="09331-108">This can be done by creating and configuring a Registry value on each client computer.</span></span>
+
+<span data-ttu-id="09331-109">Notez que cela n’est pas requis sur les ordinateurs exécutant Lync 2013.</span><span class="sxs-lookup"><span data-stu-id="09331-109">Note that this is not required on computers running Lync 2013.</span></span>
+
+<span data-ttu-id="09331-110">Pour configurer cette valeur sur un ordinateur unique, procédez comme suit :</span><span class="sxs-lookup"><span data-stu-id="09331-110">To configure this value on a single computer, complete the following procedure:</span></span>
+
+1.  <span data-ttu-id="09331-111">Sur l’ordinateur client, cliquez sur **Démarrer**, puis sur **Exécuter**.</span><span class="sxs-lookup"><span data-stu-id="09331-111">On the client computer, click **Start** and then click **Run**.</span></span>
+
+2.  <span data-ttu-id="09331-112">Dans la boîte de dialogue **Exécuter** tapez regedit, puis appuyez sur Entrée.</span><span class="sxs-lookup"><span data-stu-id="09331-112">In the **Run** dialog box, type regedit and then press ENTER.</span></span>
+
+3.  <span data-ttu-id="09331-113">Dans l’éditeur du Registre, développez l’application **HKEY \_ local \_**, développez **logiciel**, développez **stratégies**, développez **Microsoft**, puis développez **Communicator**.</span><span class="sxs-lookup"><span data-stu-id="09331-113">In Registry Editor, expand **HKEY\_LOCAL\_MACHINE**, expand **Software**, expand **Policies**, expand **Microsoft**, and then expand **Communicator**.</span></span>
+
+4.  <span data-ttu-id="09331-114">Cliquez avec le bouton droit sur **Communicator**, pointez sur **Nouveau**, puis cliquez sur **Valeur DWORD (32 bits)**.</span><span class="sxs-lookup"><span data-stu-id="09331-114">Right-click **Communicator**, point to **New**, and then click **DWORD (32-bit) Value**.</span></span>
+
+5.  <span data-ttu-id="09331-115">Une fois la nouvelle valeur créée, tapez **PersonalContactStoreOverride**, puis appuyez sur Entrée pour renommer la valeur.</span><span class="sxs-lookup"><span data-stu-id="09331-115">After the new value is created, type **PersonalContactStoreOverride** and then press ENTER to rename the value.</span></span>
+
+6.  <span data-ttu-id="09331-116">Vérifiez que la valeur de PersonalContactStoreOverride est définie sur 0, puis fermez l’Éditeur du Registre.</span><span class="sxs-lookup"><span data-stu-id="09331-116">Verify that the value of PersonalContactStoreOverride is set to 0 and then close Registry Editor.</span></span>
+
+<span data-ttu-id="09331-117">Si vous devez effectuer le même changement sur plusieurs ordinateurs, vous pouvez le faire en créant un objet Stratégie de groupe personnalisé.</span><span class="sxs-lookup"><span data-stu-id="09331-117">If you need to make this same change on multiple computers you can do so by creating a custom Group Policy object.</span></span> <span data-ttu-id="09331-118">Pour plus d’informations, consultez la documentation relative à la stratégie de groupe à l’adresse [https://go.microsoft.com/fwlink/p/?LinkId=268543](https://go.microsoft.com/fwlink/p/?linkid=268543) .</span><span class="sxs-lookup"><span data-stu-id="09331-118">For details, see the Group Policy documentation at [https://go.microsoft.com/fwlink/p/?LinkId=268543](https://go.microsoft.com/fwlink/p/?linkid=268543).</span></span>
+
+<span data-ttu-id="09331-119"></div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="09331-119"></div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+

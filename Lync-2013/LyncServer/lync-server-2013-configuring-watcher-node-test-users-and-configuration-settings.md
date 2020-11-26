@@ -1,0 +1,273 @@
+---
+title: Configuration des utilisateurs et des paramètres de configuration du nœud FileSystemWatcher
+description: Configuration des utilisateurs et des paramètres de configuration du nœud FileSystemWatcher.
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Configuring watcher node test users and configuration settings
+ms:assetid: ab00e9cb-f539-4aa6-bcb4-5533fbe7bc44
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ205152(v=OCS.15)
+ms:contentKeyID: 48185048
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: e39a35d3db6ed80c715c706f4b5766e4b684e39e
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49432330"
+---
+# <a name="configuring-watcher-node-test-users-and-configuration-settings-in-lync-server-2013"></a><span data-ttu-id="5c750-103">Configuration des utilisateurs et des paramètres de configuration du nœud FileSystemWatcher dans Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="5c750-103">Configuring watcher node test users and configuration settings in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="5c750-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="5c750-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="5c750-105">_**Dernière modification de la rubrique :** 2013-07-29_</span><span class="sxs-lookup"><span data-stu-id="5c750-105">_**Topic Last Modified:** 2013-07-29_</span></span>
+
+<span data-ttu-id="5c750-106">Après avoir configuré l’ordinateur qui jouera le rôle de nœud observateur, vous devez :</span><span class="sxs-lookup"><span data-stu-id="5c750-106">After configuring the computer that will act as a watcher node, you must:</span></span>
+
+1.  <span data-ttu-id="5c750-107">Créez les comptes de test à utiliser par ces nœuds d’observation.</span><span class="sxs-lookup"><span data-stu-id="5c750-107">Create the test accounts to be used by these watcher nodes.</span></span> <span data-ttu-id="5c750-108">Si vous utilisez la méthode d’authentification Negotiate, vous devez également utiliser l’applet de commande [Set-CsTestUserCredential](https://technet.microsoft.com/library/JJ205341(v=OCS.15)) pour activer ces comptes pour une utilisation sur le nœud observateur.</span><span class="sxs-lookup"><span data-stu-id="5c750-108">If you are using the Negotiate authentication method, you must also use the [Set-CsTestUserCredential](https://technet.microsoft.com/library/JJ205341(v=OCS.15)) cmdlet to enable these test accounts for use on the watcher node.</span></span>
+
+2.  <span data-ttu-id="5c750-109">Mettre à jour les paramètres de configuration du nœud observateur.</span><span class="sxs-lookup"><span data-stu-id="5c750-109">Update the watcher node configuration settings.</span></span>
+
+<span data-ttu-id="5c750-110">Cette section comprend les éléments suivants :</span><span class="sxs-lookup"><span data-stu-id="5c750-110">This section covers:</span></span>
+
+  - <span data-ttu-id="5c750-111">Configuration des comptes d’utilisateurs test</span><span class="sxs-lookup"><span data-stu-id="5c750-111">Configuring Test User Accounts</span></span>
+
+  - <span data-ttu-id="5c750-112">Configuration d’un nœud d’observateur de base avec les transactions synthétiques par défaut</span><span class="sxs-lookup"><span data-stu-id="5c750-112">Configuring a Basic Watcher Node with the Default Synthetic Transactions</span></span>
+
+  - <span data-ttu-id="5c750-113">Configuration de tests étendus</span><span class="sxs-lookup"><span data-stu-id="5c750-113">Configuring Extended Tests</span></span>
+
+  - <span data-ttu-id="5c750-114">Ajout et suppression de transactions synthétiques</span><span class="sxs-lookup"><span data-stu-id="5c750-114">Adding and Removing Synthetic Transactions</span></span>
+
+  - <span data-ttu-id="5c750-115">Affichage et test de la configuration du nœud observateur</span><span class="sxs-lookup"><span data-stu-id="5c750-115">Viewing and Testing the Watcher Node Configuration</span></span>
+
+<div>
+
+## <a name="configuring-test-user-accounts"></a><span data-ttu-id="5c750-116">Configuration des comptes d’utilisateurs test</span><span class="sxs-lookup"><span data-stu-id="5c750-116">Configuring Test User Accounts</span></span>
+
+<span data-ttu-id="5c750-117">Les utilisateurs test n’ont pas besoin de représenter des personnes réelles, mais ils doivent être des comptes de services de domaine Active Directory valides. de plus, ces comptes doivent être activés pour Lync Server 2013, ils doivent disposer d’adresses SIP valides, et ils doivent être activés pour Enterprise Voice (pour utiliser le Test-CsPstnPeerToPeerCall transaction synthétique).</span><span class="sxs-lookup"><span data-stu-id="5c750-117">Test users do not need to represent actual people, but they must be valid Active Directory Domain Services accounts; in addition, these accounts must be enabled for Lync Server 2013, they must have valid SIP addresses, and they should be enabled for Enterprise Voice (to use the Test-CsPstnPeerToPeerCall synthetic transaction).</span></span> <span data-ttu-id="5c750-118">Si vous utilisez la méthode d’authentification TrustedServer, il vous suffit de vérifier qu’il existe des comptes et qu’ils ont été configurés comme indiqué ici.</span><span class="sxs-lookup"><span data-stu-id="5c750-118">If you use the TrustedServer authentication method, then all you need to do is to make sure that these accounts exist and have been configured as specified here.</span></span> <span data-ttu-id="5c750-119">Vous devez assigner au moins trois utilisateurs tests pour chaque pool que vous souhaitez tester.</span><span class="sxs-lookup"><span data-stu-id="5c750-119">You should assign at least three test users for each pool that you want to test.</span></span>
+
+<span data-ttu-id="5c750-120">Si vous utilisez la méthode d’authentification Negotiate, vous devez également utiliser l’applet de contrôle **Set-CsTestUserCredential** et Lync Server Management Shell pour permettre à ces comptes de test d’utiliser les transactions synthétiques.</span><span class="sxs-lookup"><span data-stu-id="5c750-120">If you are using the Negotiate authentication method, you must also use the **Set-CsTestUserCredential** cmdlet and the Lync Server Management Shell to enable these test accounts to work with the synthetic transactions.</span></span> <span data-ttu-id="5c750-121">Pour cela, vous pouvez exécuter une commande semblable à la suivante.</span><span class="sxs-lookup"><span data-stu-id="5c750-121">You can do this by running a command similar to the following.</span></span> <span data-ttu-id="5c750-122">(Ces commandes présupposent que les trois comptes d’utilisateurs Active Directory ont déjà été créés et que ces comptes ont été activés pour Lync Server 2013) :</span><span class="sxs-lookup"><span data-stu-id="5c750-122">(These commands assume that the three Active Directory user accounts have already been created and that those accounts have been enabled for Lync Server 2013.):</span></span>
+
+    Set-CsTestUserCredential -SipAddress "sip:watcher1@litwareinc.com" -UserName "litwareinc\watcher1" -Password "P@ssw0rd"
+    Set-CsTestUserCredential -SipAddress "sip:watcher2@litwareinc.com" -UserName "litwareinc\watcher2" -Password "P@ssw0rd"
+    Set-CsTestUserCredential -SipAddress "sip:watcher3@litwareinc.com" -UserName "litwareinc\watcher3" -Password "P@ssw0rd"
+
+<span data-ttu-id="5c750-123">Notez que vous devez inclure la seule adresse SIP mais également le nom d’utilisateur et le mot de passe.</span><span class="sxs-lookup"><span data-stu-id="5c750-123">Note that you must include not only the SIP address but also the user name and password.</span></span> <span data-ttu-id="5c750-124">Si vous n’incluez pas le mot de passe Set-CsTestUserCredential êtes invité à entrer ces informations.</span><span class="sxs-lookup"><span data-stu-id="5c750-124">If you do not include the password Set-CsTestUserCredential will prompt you to enter that information.</span></span> <span data-ttu-id="5c750-125">Le nom d’utilisateur peut être spécifié en utilisant le format de nom d’utilisateur de nom de domaine \\ indiqué ci-dessus, ou en utilisant le nom de la Name@domain de nom de l’utilisateur, par exemple :</span><span class="sxs-lookup"><span data-stu-id="5c750-125">The user name can be specified using the domain name\\user name format shown above, or by using the format user name@domain name; for example:</span></span>
+
+    -UserName "watcher3@litwareinc.com"
+
+<span data-ttu-id="5c750-126">Pour vérifier que les informations d’identification de l’utilisateur ont été créées, exécutez les commandes suivantes dans Lync Server Management Shell, procédez comme suit :</span><span class="sxs-lookup"><span data-stu-id="5c750-126">To verify that the test user credentials were created, run these commands from within the Lync Server Management Shell:</span></span>
+
+    Get-CsTestUserCredential -SipAddress "sip:watcher1@litwareinc.com"
+    Get-CsTestUserCredential -SipAddress "sip:watcher2@litwareinc.com"
+    Get-CsTestUserCredential -SipAddress "sip:watcher3@litwareinc.com"
+
+<span data-ttu-id="5c750-127">Des informations similaires doivent être renvoyées pour chaque utilisateur :</span><span class="sxs-lookup"><span data-stu-id="5c750-127">Information similar to this should be returned for each user:</span></span>
+
+    UserName                        Password
+    --------                        --------
+    Litwareinc\watcher1              System.Security.SecureString
+
+</div>
+
+<div>
+
+## <a name="configuring-a-basic-watcher-node-with-the-default-synthetic-transactions"></a><span data-ttu-id="5c750-128">Configuration d’un nœud d’observateur de base avec les transactions synthétiques par défaut</span><span class="sxs-lookup"><span data-stu-id="5c750-128">Configuring a Basic Watcher Node with the Default Synthetic Transactions</span></span>
+
+<span data-ttu-id="5c750-129">Après la création des utilisateurs de test, vous pouvez créer un nœud FileSystemWatcher à l’aide d’une commande similaire à celle-ci :</span><span class="sxs-lookup"><span data-stu-id="5c750-129">After the test users have been created you can then create a watcher node by using a command similar to this:</span></span>
+
+    New-CsWatcherNodeConfiguration -TargetFqdn "atl-cs-001.litwareinc.com" -PortNumber 5061 -TestUsers @{Add= "sip:watcher1@litwareinc.com","sip:watcher2@litwareinc.com", "sip:watcher3@litwareinc.com"}
+
+<span data-ttu-id="5c750-130">Cette commande crée un nœud observateur qui utilise les paramètres par défaut et exécute le jeu de transactions synthétiques par défaut.</span><span class="sxs-lookup"><span data-stu-id="5c750-130">This command creates a new watcher node that uses the default settings and runs the default set of synthetic transactions.</span></span> <span data-ttu-id="5c750-131">Le nouveau nœud observateur utilise également les utilisateurs tests watcher1@litwareinc.com, watcher2@litwareinc.com et watcher3@litwareinc.com.</span><span class="sxs-lookup"><span data-stu-id="5c750-131">The new watcher node also uses the test users watcher1@litwareinc.com, watcher2@litwareinc.com, and watcher3@litwareinc.com.</span></span> <span data-ttu-id="5c750-132">Si le nœud de l’observateur d’observation utilise l’authentification TrustedServer, les trois comptes de test peuvent être tout compte d’utilisateur valide activé pour Active Directory et Lync Server.</span><span class="sxs-lookup"><span data-stu-id="5c750-132">If the watcher node is using TrustedServer authentication, the three test accounts can be any valid user accounts enabled for Active Directory and Lync Server.</span></span> <span data-ttu-id="5c750-133">Si le nœud d’observation utilise la méthode d’authentification Negotiate, vous devez également activer ces comptes d’utilisateurs pour le nœud de l’observateur à l’aide de l’applet de passe **Set-CsTestUserCredential** .</span><span class="sxs-lookup"><span data-stu-id="5c750-133">If the watcher node is using the Negotiate authentication method, you must also enable these user accounts for watcher node by using the **Set-CsTestUserCredential** cmdlet.</span></span>
+
+</div>
+
+<div>
+
+## <a name="configuring-extended-tests"></a><span data-ttu-id="5c750-134">Configuration de tests étendus</span><span class="sxs-lookup"><span data-stu-id="5c750-134">Configuring Extended Tests</span></span>
+
+<span data-ttu-id="5c750-135">Si vous voulez activer le réseau téléphonique commuté (RTC) qui vérifie la connectivité avec le réseau téléphonique public commuté, vous devez effectuer une configuration supplémentaire lors de la configuration du nœud d’observation.</span><span class="sxs-lookup"><span data-stu-id="5c750-135">If you want to enable the public switched telephone network (PSTN test), which verifies connectivity with the public switched telephone network, you will need to do some additional configuration when setting up the watcher node.</span></span> <span data-ttu-id="5c750-136">Tout d’abord, vous devez associer vos utilisateurs de test au type de test PSTN.</span><span class="sxs-lookup"><span data-stu-id="5c750-136">First, you need to associate your test users with the PSTN test type.</span></span> <span data-ttu-id="5c750-137">Pour cela, exécutez une commande similaire à celle-ci à partir de Lync Server Management Shell :</span><span class="sxs-lookup"><span data-stu-id="5c750-137">To do that, run a command similar to this from within the Lync Server Management Shell:</span></span>
+
+    $pstnTest = New-CsExtendedTest -TestUsers "sip:watcher1@litwareinc.com", "sip:watcher2@litwareinc.com", "sip:watcher3@litwareinc.com"  -Name "Contoso Provider Test" -TestType PSTN
+
+<span data-ttu-id="5c750-138">Notez que les résultats de cette commande doivent être stockés dans une variable.</span><span class="sxs-lookup"><span data-stu-id="5c750-138">Note that the results of this command must be stored in a variable.</span></span> <span data-ttu-id="5c750-139">Dans cet exemple, il s’agit d’une variable nommée $pstnTest.</span><span class="sxs-lookup"><span data-stu-id="5c750-139">In this example, that's a variable named $pstnTest.</span></span>
+
+<span data-ttu-id="5c750-140">À ce stade, vous pouvez utiliser l’applet de contrôle **New-CsWatcherNodeConfiguration** pour associer le type de test (stocké dans le $pstnTest variable) à un pool Lync Server 2013.</span><span class="sxs-lookup"><span data-stu-id="5c750-140">At this point, you can use the **New-CsWatcherNodeConfiguration** cmdlet to associate the test type (stored in the variable $pstnTest) to a Lync Server 2013 pool.</span></span> <span data-ttu-id="5c750-141">Par exemple, la commande suivante crée une nouvelle configuration de nœud d’observation pour le pool atl-cs-001.litwareinc.com, en ajoutant les trois utilisateurs de test précédemment créés et en ajoutant également le type de test PSTN :</span><span class="sxs-lookup"><span data-stu-id="5c750-141">For example, the following command creates a new watcher node configuration for the pool atl-cs-001.litwareinc.com, adding the three test users that were created previously, and also adding the PSTN test type:</span></span>
+
+    New-CsWatcherNodeConfiguration -TargetFqdn "atl-cs-001.litwareinc.com" -PortNumber 5061 -TestUsers @{Add= "sip:watcher1@litwareinc.com","sip:watcher2@litwareinc.com", "sip:watcher3@litwareinc.com"} -ExtendedTests @{Add=$pstnTest}
+
+<span data-ttu-id="5c750-142">Notez que la commande précédente échoue si vous n’avez pas installé les fichiers principaux de Lync Server et la base de données RTCLocal sur l’ordinateur de nœud d’observation.</span><span class="sxs-lookup"><span data-stu-id="5c750-142">Note that the preceding command will fail if you have not installed the Lync Server core files and the RTCLocal database on the watcher node computer.</span></span>
+
+<span data-ttu-id="5c750-143">Pour tester plusieurs stratégies vocales, vous devez créer un test étendu pour chaque stratégie à l’aide de l’applet **de contrôle New-CsExtendedTest** .</span><span class="sxs-lookup"><span data-stu-id="5c750-143">To test multiple voice policies, you need to create an extended test for each policy by using the **New-CsExtendedTest** cmdlet.</span></span> <span data-ttu-id="5c750-144">Les utilisateurs affectés à ce test doivent être configurés avec les politiques vocales désirées.</span><span class="sxs-lookup"><span data-stu-id="5c750-144">The users assigned to this test should be configured with the desired voice policies.</span></span> <span data-ttu-id="5c750-145">Les tests étendus sont ensuite passés à l’applet **de commande New-CsWatcherNodeConfiguration** à l’aide d’une commande similaire à ce qui suit :</span><span class="sxs-lookup"><span data-stu-id="5c750-145">The extended tests are then passed to the **New-CsWatcherNodeConfiguration** cmdlet by using a command similar to the following:</span></span>
+
+    -ExtendedTests @{Add=$pstnTest1,$pstnTest2,$pstnTest3}
+
+<span data-ttu-id="5c750-146">Si New-CsWatcherNodeConfiguration est appelé sans utiliser le paramètre tests, cela signifie que seules les transactions synthétiques par défaut (et la transaction synthétique étendue spécifiée) seront activées pour le nouveau nœud d’observation.</span><span class="sxs-lookup"><span data-stu-id="5c750-146">If New-CsWatcherNodeConfiguration is called without using the Tests parameter, that means that only the Default synthetic transactions (and the specified extended synthetic transaction) will be enabled for the new watcher node.</span></span> <span data-ttu-id="5c750-147">Cela signifie que le nœud Watcher testera les composants suivants :</span><span class="sxs-lookup"><span data-stu-id="5c750-147">This means that the watcher node will test the following components:</span></span>
+
+  - <span data-ttu-id="5c750-148">Enregistrement</span><span class="sxs-lookup"><span data-stu-id="5c750-148">Registration</span></span>
+
+  - <span data-ttu-id="5c750-149">IM</span><span class="sxs-lookup"><span data-stu-id="5c750-149">IM</span></span>
+
+  - <span data-ttu-id="5c750-150">GroupIM (messagerie instantanée de groupe)</span><span class="sxs-lookup"><span data-stu-id="5c750-150">GroupIM</span></span>
+
+  - <span data-ttu-id="5c750-151">P2PAV (sessions audio/vidéo d’égal à égal)</span><span class="sxs-lookup"><span data-stu-id="5c750-151">P2PAV (peer-to-peer audio/video sessions)</span></span>
+
+  - <span data-ttu-id="5c750-152">AvConference (audioconférence)</span><span class="sxs-lookup"><span data-stu-id="5c750-152">AvConference (audio/conferencing)</span></span>
+
+  - <span data-ttu-id="5c750-153">Presence</span><span class="sxs-lookup"><span data-stu-id="5c750-153">Presence</span></span>
+
+  - <span data-ttu-id="5c750-154">ABS (Service de carnet d’adresses)</span><span class="sxs-lookup"><span data-stu-id="5c750-154">ABS (Address Book service)</span></span>
+
+  - <span data-ttu-id="5c750-155">ABWQ (Service web de carnet d’adresses)</span><span class="sxs-lookup"><span data-stu-id="5c750-155">ABWQ (Address Book web service)</span></span>
+
+  - <span data-ttu-id="5c750-156">Appels RTC (RTC passerelle), spécifiés en tant que test étendu.</span><span class="sxs-lookup"><span data-stu-id="5c750-156">PSTN (PSTN gateway calls, specified as an extended test.</span></span> <span data-ttu-id="5c750-157">Par défaut, le RTC est désactivé.</span><span class="sxs-lookup"><span data-stu-id="5c750-157">By default, PSTN is disabled.</span></span> <span data-ttu-id="5c750-158">Le test est activé uniquement dans ce cas, car la commande a activé PSTN à l’aide du paramètre ExtendedTests.)</span><span class="sxs-lookup"><span data-stu-id="5c750-158">The test is enabled in this case only because the command enabled PSTN by using the ExtendedTests parameter.)</span></span>
+
+<span data-ttu-id="5c750-159">Cela signifie également que les composants suivants ne seront pas testés par défaut :</span><span class="sxs-lookup"><span data-stu-id="5c750-159">This also means that the following components will not be tested by default:</span></span>
+
+  - <span data-ttu-id="5c750-160">AVEdgeConnectivity</span><span class="sxs-lookup"><span data-stu-id="5c750-160">AVEdgeConnectivity</span></span>
+
+  - <span data-ttu-id="5c750-161">MCXP2PIM (messagerie instantanée d’appareils mobiles)</span><span class="sxs-lookup"><span data-stu-id="5c750-161">MCXP2PIM (mobile device instant messaging)</span></span>
+
+  - <span data-ttu-id="5c750-162">ExumConnectivity (Messagerie unifiée Exchange)</span><span class="sxs-lookup"><span data-stu-id="5c750-162">ExumConnectivity (Exchange Unified Messaging)</span></span>
+
+  - <span data-ttu-id="5c750-163">JoinLauncher</span><span class="sxs-lookup"><span data-stu-id="5c750-163">JoinLauncher</span></span>
+
+  - <span data-ttu-id="5c750-164">PersistentChatMessage</span><span class="sxs-lookup"><span data-stu-id="5c750-164">PersistentChatMessage</span></span>
+
+  - <span data-ttu-id="5c750-165">DataConference</span><span class="sxs-lookup"><span data-stu-id="5c750-165">DataConference</span></span>
+
+  - <span data-ttu-id="5c750-166">XmppIM</span><span class="sxs-lookup"><span data-stu-id="5c750-166">XmppIM</span></span>
+
+  - <span data-ttu-id="5c750-167">UnifiedContactStore</span><span class="sxs-lookup"><span data-stu-id="5c750-167">UnifiedContactStore</span></span>
+
+</div>
+
+<div>
+
+## <a name="adding-and-removing-synthetic-transactions"></a><span data-ttu-id="5c750-168">Ajout et suppression de transactions synthétiques</span><span class="sxs-lookup"><span data-stu-id="5c750-168">Adding and Removing Synthetic Transactions</span></span>
+
+<span data-ttu-id="5c750-169">Après avoir configuré un nœud FileSystemWatcher, vous pouvez utiliser l’applet de cmdlet **Set-CsWatcherNodeConfiguration** pour ajouter ou supprimer des transactions synthétiques du nœud.</span><span class="sxs-lookup"><span data-stu-id="5c750-169">After a watcher node has been configured, you can use the **Set-CsWatcherNodeConfiguration** cmdlet to add or remove synthetic transactions from the node.</span></span> <span data-ttu-id="5c750-170">Par exemple, pour ajouter le test PersistentChatMessage au nœud observateur, utilisez la méthode Add et une commande semblable à la suivante :</span><span class="sxs-lookup"><span data-stu-id="5c750-170">For example, to add the PersistentChatMessage test to the watcher node, use the Add method and a command similar to this:</span></span>
+
+    Set-CsWatcherNodeConfiguration -Identity "atl-cs-001.litwareinc.com" -Tests @{Add="PersistentChatMessage"}
+
+<span data-ttu-id="5c750-171">Plusieurs tests peuvent être ajoutés en séparant leur nom par des virgules.</span><span class="sxs-lookup"><span data-stu-id="5c750-171">Multiple tests can be added by separating the test names by using commas.</span></span> <span data-ttu-id="5c750-172">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="5c750-172">For example:</span></span>
+
+    Set-CsWatcherNodeConfiguration -Identity "atl-cs-001.litwareinc.com" -Tests @{Add="PersistentChatMessage","DataConference","UnifiedContactStore"}
+
+<span data-ttu-id="5c750-173">Notez qu’une erreur se produit lorsqu’un ou plusieurs de ces tests (par exemple, DataConference) ont déjà été activés sur le nœud d’observateur.</span><span class="sxs-lookup"><span data-stu-id="5c750-173">Note that an error will occur if one or more of these tests (for example, DataConference) has already been enabled on the watcher node.</span></span> <span data-ttu-id="5c750-174">Dans ce cas, vous recevez un message d’erreur semblable au suivant :</span><span class="sxs-lookup"><span data-stu-id="5c750-174">In this case, you will receive an error message similar to the following:</span></span>
+
+    Set-CsWatcherNodeConfiguration : There is a duplicate key sequence 'DataConference' for the 'urn:schema:Microsoft.Rtc.Management.Settings.WatcherNode.2010:TestName' key or unique identity constraint.
+
+<span data-ttu-id="5c750-175">Lorsque cette erreur se produit, aucune modification n’est appliquée.</span><span class="sxs-lookup"><span data-stu-id="5c750-175">When this error occurs, no changes will be applied.</span></span> <span data-ttu-id="5c750-176">La commande doit être réexécutée avec le test dupliqué supprimé.</span><span class="sxs-lookup"><span data-stu-id="5c750-176">The command should be rerun with the duplicate test removed.</span></span>
+
+<span data-ttu-id="5c750-177">Pour supprimer une transaction synthétique d’un nœud d’observation, utilisez la méthode Remove à la place de la méthode Add.</span><span class="sxs-lookup"><span data-stu-id="5c750-177">To remove a synthetic transaction from a watcher node, use the Remove method instead of the Add method.</span></span> <span data-ttu-id="5c750-178">Par exemple, la commande suivante supprime le test ABWQ d’un nœud observateur :</span><span class="sxs-lookup"><span data-stu-id="5c750-178">For example, this command removes the ABWQ test from a watcher node:</span></span>
+
+    Set-CsWatcherNodeConfiguration -Identity "atl-cs-001.litwareinc.com" -Tests @{Remove="ABWQ"}
+
+<span data-ttu-id="5c750-179">Vous pouvez également utiliser la méthode Replace pour remplacer tous les tests actuellement activés par un ou plusieurs nouveaux tests.</span><span class="sxs-lookup"><span data-stu-id="5c750-179">You can also use the Replace method to replace all the currently-enabled tests with one or more new tests.</span></span> <span data-ttu-id="5c750-180">Par exemple, si vous souhaitez qu’un nœud d’observation ne exécute que le test de messagerie instantanée, vous pouvez le configurer en utilisant la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="5c750-180">For example, if you only want a watcher node to run the IM test, you can configure that by using this command:</span></span>
+
+    Set-CsWatcherNodeConfiguration -Identity "atl-cs-001.litwareinc.com" -Tests @{Replace="IM"}
+
+<span data-ttu-id="5c750-181">Lors de l’exécution de la commande ci-dessus, toutes les transactions synthétiques sur le nœud d’observateur spécifié seront désactivées sauf pour les messages instantanés.</span><span class="sxs-lookup"><span data-stu-id="5c750-181">When you run the preceding command, all synthetic transactions on the specified watcher node will be disabled except for IM.</span></span>
+
+</div>
+
+<div>
+
+## <a name="viewing-and-testing-the-watcher-node-configuration"></a><span data-ttu-id="5c750-182">Affichage et test de la configuration du nœud observateur</span><span class="sxs-lookup"><span data-stu-id="5c750-182">Viewing and Testing the Watcher Node Configuration</span></span>
+
+<span data-ttu-id="5c750-183">Si vous souhaitez afficher les tests qui ont été assignés à un nœud observateur, exécutez une commande semblable à la suivante :</span><span class="sxs-lookup"><span data-stu-id="5c750-183">If you want to view the tests that have been assigned to a watcher node, use a command similar to this:</span></span>
+
+    Get-CsWatcherNodeConfiguration -Identity "atl-cs-001.litwareinc.com" | Select-Object -ExpandProperty Tests
+
+<span data-ttu-id="5c750-184">La commande précédente renverra des informations similaires à ce qui suit, en fonction des transactions de synthèse affectées au nœud :</span><span class="sxs-lookup"><span data-stu-id="5c750-184">The preceding command will return information similar to this, depending on the synthetic transactions that have been assigned to the node:</span></span>
+
+    Registration
+    IM
+    GroupIM
+    P2PAV
+    AvConference
+    Presence
+    PersistentChatMessage
+    DataConference
+
+<div>
+
+
+> [!TIP]
+> <span data-ttu-id="5c750-185">Pour afficher les transactions synthétiques par ordre alphabétique, exécutez plutôt la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="5c750-185">To view the synthetic transactions in alphabetical order, use this command instead:</span></span><BR><span data-ttu-id="5c750-186">Get-CsWatcherNodeConfiguration-identité « atl-cs-001.litwareinc.com » | Select-Object – tests ExpandProperty | Sort-Object</span><span class="sxs-lookup"><span data-stu-id="5c750-186">Get-CsWatcherNodeConfiguration –Identity "atl-cs-001.litwareinc.com" | Select-Object –ExpandProperty Tests | Sort-Object</span></span>
+
+
+
+</div>
+
+<span data-ttu-id="5c750-187">Pour vérifier qu’un nœud d’observateur a été créé, tapez la commande suivante à partir de Lync Server Management Shell :</span><span class="sxs-lookup"><span data-stu-id="5c750-187">To verify that a watcher node has been created, type the following command from within the Lync Server Management Shell:</span></span>
+
+    Get-CsWatcherNodeConfiguration
+
+<span data-ttu-id="5c750-188">Vous recevrez des informations similaires à ce qui suit :</span><span class="sxs-lookup"><span data-stu-id="5c750-188">You will receive information similar to this:</span></span>
+
+    Identity      : atl-cs-001.litwareinc.com
+    TestUsers     : {sip:watcher1@litwareinc.com, sip:watcher2@litwareinc.com ...}
+    ExtendedTests : {TestUsers=IList<System.String>;Name=PSTN Test; Te...}
+    TargetFqdn    : atl-cs-001.litwareinc.com
+    PortNumber    : 5061
+
+<span data-ttu-id="5c750-189">Pour vérifier que le nœud d’observateur a été correctement configuré, tapez la commande suivante à partir de Lync Server Management Shell :</span><span class="sxs-lookup"><span data-stu-id="5c750-189">To verify that the watcher node has been configured correctly, type the following command from within the Lync Server Management Shell:</span></span>
+
+    Test-CsWatcherNodeConfiguration
+
+<span data-ttu-id="5c750-190">La commande précédente testera chaque nœud d’observateur dans votre déploiement et vous fournira les informations suivantes :</span><span class="sxs-lookup"><span data-stu-id="5c750-190">The preceding command will test each watcher node in your deployment and tell you information, such as whether:</span></span>
+
+  - <span data-ttu-id="5c750-191">Le rôle de bureau d’enregistrement requis a été installé.</span><span class="sxs-lookup"><span data-stu-id="5c750-191">The required Registrar role been installed.</span></span>
+
+  - <span data-ttu-id="5c750-192">La clé de registre requise a été créée pour vous lorsque vous avez exécuté Set-CsWatcherNodeConfiguration.</span><span class="sxs-lookup"><span data-stu-id="5c750-192">The required registry key was created for you when you ran Set-CsWatcherNodeConfiguration.</span></span>
+
+  - <span data-ttu-id="5c750-193">Vos serveurs exécutent la version appropriée de Lync Server.</span><span class="sxs-lookup"><span data-stu-id="5c750-193">Your servers are running the correct version of Lync Server.</span></span>
+
+  - <span data-ttu-id="5c750-194">Vos ports sont correctement configurés.</span><span class="sxs-lookup"><span data-stu-id="5c750-194">Your ports been configured correctly.</span></span>
+
+  - <span data-ttu-id="5c750-195">Les informations d’identification requises pour vos utilisateurs de tests sont obligatoires.</span><span class="sxs-lookup"><span data-stu-id="5c750-195">Your assigned test users have the required credentials.</span></span>
+
+<span data-ttu-id="5c750-196"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="5c750-196"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+
