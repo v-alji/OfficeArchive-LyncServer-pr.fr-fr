@@ -1,0 +1,66 @@
+---
+title: 'Lync Server 2013 : sauvegarde de bases de données d’archivage et de surveillance'
+description: 'Lync Server 2013 : sauvegarde de bases de données d’archivage et de surveillance.'
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Backing up Archiving and Monitoring databases
+ms:assetid: c120db81-b02c-4a4c-90cd-8aca6cff64f9
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Hh202188(v=OCS.15)
+ms:contentKeyID: 51541515
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 49b4fa194bffa27a52f32d61a729eeaa31cc0ad3
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49438119"
+---
+# <a name="backing-up-archiving-and-monitoring-databases-in-lync-server-2013"></a>Sauvegarde de bases de données d’archivage et de surveillance dans Lync Server 2013
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**Dernière modification de la rubrique :** 2013-02-17_
+
+Si vous avez déployé l’archivage ou le contrôle, vous devez sauvegarder ces bases de données en fonction de la stratégie de sauvegarde SQL Server de votre organisation.
+
+<div>
+
+
+> [!NOTE]  
+> Les paramètres d’archivage et de surveillance sont sauvegardés lorsque vous sauvegardez le magasin central de gestion. Pour plus d’informations, reportez-vous à la rubrique <A href="lync-server-2013-backing-up-core-data-and-settings.md">sauvegarde de données principales et de paramètres dans Lync Server 2013</A>.
+
+
+
+</div>
+
+Dans le cadre de l’archivage et de la surveillance, vous pouvez utiliser un outil SQL Server tel que SQL Server Management Studio pour effectuer une sauvegarde manuelle, ou vous pouvez utiliser les outils de gestion SQL Server pour planifier des sauvegardes régulières et automatiques.
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+
