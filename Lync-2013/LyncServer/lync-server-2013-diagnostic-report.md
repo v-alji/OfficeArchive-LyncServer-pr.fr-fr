@@ -1,0 +1,178 @@
+---
+title: 'Rapport de diagnostic Lync Server 2013 :'
+description: 'Rapport de diagnostic Lync Server 2013 :'
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Diagnostic Report
+ms:assetid: b389dbd9-f2e8-4184-93d0-2e504796ac16
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg615445(v=OCS.15)
+ms:contentKeyID: 48185159
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 198b836437285b464ba9172e59c9a60ed0a53b65
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49429303"
+---
+# <a name="diagnostic-report-in-lync-server-2013"></a><span data-ttu-id="343b4-103">Rapport de diagnostic dans Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="343b4-103">Diagnostic Report in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="343b4-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="343b4-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="343b4-105">_**Dernière modification de la rubrique :** 2014-02-07_</span><span class="sxs-lookup"><span data-stu-id="343b4-105">_**Topic Last Modified:** 2014-02-07_</span></span>
+
+<span data-ttu-id="343b4-106">Le Rapport de diagnostic fournit des informations de diagnostic et d’identification et de résolution des problèmes pour les sessions ayant échoué.</span><span class="sxs-lookup"><span data-stu-id="343b4-106">The Diagnostic Report provides diagnostic and troubleshooting information for a failed session.</span></span> <span data-ttu-id="343b4-107">Ces informations incluent à la fois l’ID de diagnostic et l’en-tête de diagnostic qui ont été signalés lorsque la session a échoué.</span><span class="sxs-lookup"><span data-stu-id="343b4-107">This information includes both the Diagnostic ID and the Diagnostic header that were reported when the session failed.</span></span> <span data-ttu-id="343b4-108">L’ID de diagnostic est un identificateur unique (sous la forme d’un en-tête ms-diagnostics) qui est joint à un message SIP, tandis que l’en-tête de diagnostic fournit une description d’accompagnement pour l’ID de diagnostic.</span><span class="sxs-lookup"><span data-stu-id="343b4-108">The Diagnostic ID is a unique identifier (in the form of an ms-diagnostics header) that gets attached to a SIP message, while the Diagnostic header provides an accompanying description for the Diagnostic ID.</span></span> <span data-ttu-id="343b4-109">Ce rapport peut également contenir des informations d’identification et de résolution des problèmes précieuses qui sont connues par le composant de rapport.</span><span class="sxs-lookup"><span data-stu-id="343b4-109">The report might also contain valuable troubleshooting details that are known by the reporting component.</span></span> <span data-ttu-id="343b4-110">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="343b4-110">For example:</span></span>
+
+  - <span data-ttu-id="343b4-p102">Code de motif fourni par la passerelle RTC qui a généré la défaillance. Quand un appel sortant échoue sur le réseau téléphonique commuté, un code de motif de la « partie Usager RNIS » (ISUP) est automatiquement généré. Par exemple, une passerelle RTC peut renvoyer le code de motif 34, indiquant ainsi qu’aucun circuit ou canal n’était disponible pour terminer l’appel.</span><span class="sxs-lookup"><span data-stu-id="343b4-p102">The cause code provided by the PSTN gateway that generated the failure. When an outgoing call fails on the PSTN network, an ISDN User Part (ISUP) cause code is automatically generated. For example, a PSTN gateway might send cause code 34 to indicate that no circuit or channel was available for completing the call.</span></span>
+
+  - <span data-ttu-id="343b4-114">Nom de domaine complet (FQDN), port et erreurs Winsock de l’homologue pour les échecs de connectivité.</span><span class="sxs-lookup"><span data-stu-id="343b4-114">Peer FQDN, port, and Winsock errors for connectivity failures.</span></span>
+
+  - <span data-ttu-id="343b4-p103">Noms recherchés pour les échecs de résolution DNS. La résolution DNS a lieu chaque fois qu’un client contacte un serveur de noms et demande l’adresse IP correspondant au nom du périphérique spécifié</span><span class="sxs-lookup"><span data-stu-id="343b4-p103">Names being looked up for DNS resolution failures. DNS resolution takes place any time a client contacts a name server and requests the IP address that corresponds to specified device name.</span></span>
+
+<div>
+
+## <a name="accessing-the-diagnostic-report"></a><span data-ttu-id="343b4-117">Accès au Rapport de diagnostic</span><span class="sxs-lookup"><span data-stu-id="343b4-117">Accessing the Diagnostic Report</span></span>
+
+<span data-ttu-id="343b4-118">Le rapport de diagnostic est accessible en cliquant sur la métrique du rapport de diagnostic (détail) sur le [rapport détaillé de la session d’égal à égal dans Lync Server 2013](lync-server-2013-peer-to-peer-session-detail-report.md) ou le rapport de détails de la Conférence.</span><span class="sxs-lookup"><span data-stu-id="343b4-118">The Diagnostic Report can be accessed by clicking the Diagnostic Report (Detail) metric on either the [Peer-to-Peer Session Detail Report in Lync Server 2013](lync-server-2013-peer-to-peer-session-detail-report.md) or the Conference Detail Report.</span></span>
+
+</div>
+
+<div>
+
+## <a name="filters"></a><span data-ttu-id="343b4-119">Filtres</span><span class="sxs-lookup"><span data-stu-id="343b4-119">Filters</span></span>
+
+<span data-ttu-id="343b4-p104">Aucun. Il est impossible de filtrer le rapport de diagnostic.</span><span class="sxs-lookup"><span data-stu-id="343b4-p104">None. You cannot filter the Diagnostic Report.</span></span>
+
+</div>
+
+<div>
+
+## <a name="metrics"></a><span data-ttu-id="343b4-122">Mesures</span><span class="sxs-lookup"><span data-stu-id="343b4-122">Metrics</span></span>
+
+<span data-ttu-id="343b4-123">Le tableau qui suit répertorie les informations fournies dans le rapport de diagnostic pour chaque session.</span><span class="sxs-lookup"><span data-stu-id="343b4-123">The following table lists the information provided in the Diagnostic Report for each session.</span></span>
+
+### <a name="diagnostic-report-metrics"></a><span data-ttu-id="343b4-124">Mesures du rapport de diagnostic</span><span class="sxs-lookup"><span data-stu-id="343b4-124">Diagnostic Report Metrics</span></span>
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span data-ttu-id="343b4-125">Nom</span><span class="sxs-lookup"><span data-stu-id="343b4-125">Name</span></span></th>
+<th><span data-ttu-id="343b4-126">Est-il possible d’effectuer un tri sur cet élément ?</span><span class="sxs-lookup"><span data-stu-id="343b4-126">Can you sort on this item?</span></span></th>
+<th><span data-ttu-id="343b4-127">Description</span><span class="sxs-lookup"><span data-stu-id="343b4-127">Description</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><span data-ttu-id="343b4-128"><strong>Heure du rapport</strong></span><span class="sxs-lookup"><span data-stu-id="343b4-128"><strong>Report time</strong></span></span></p></td>
+<td><p><span data-ttu-id="343b4-129">Non</span><span class="sxs-lookup"><span data-stu-id="343b4-129">No</span></span></p></td>
+<td><p><span data-ttu-id="343b4-130">Date et heure d’enregistrement du rapport.</span><span class="sxs-lookup"><span data-stu-id="343b4-130">Date and time that the report was recorded.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="343b4-131"><strong>Code de réponse</strong></span><span class="sxs-lookup"><span data-stu-id="343b4-131"><strong>Response code</strong></span></span></p></td>
+<td><p><span data-ttu-id="343b4-132">Non</span><span class="sxs-lookup"><span data-stu-id="343b4-132">No</span></span></p></td>
+<td><p><span data-ttu-id="343b4-133">Code de réponse SIP envoyé lors de l’échec de session.</span><span class="sxs-lookup"><span data-stu-id="343b4-133">SIP response code sent when the session failed.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="343b4-134"><strong>Type de demande</strong></span><span class="sxs-lookup"><span data-stu-id="343b4-134"><strong>Request type</strong></span></span></p></td>
+<td><p><span data-ttu-id="343b4-135">Non</span><span class="sxs-lookup"><span data-stu-id="343b4-135">No</span></span></p></td>
+<td><p><span data-ttu-id="343b4-p105">Type de demande SIP ayant échoué. Par exemple, INVITE, BYE ou SERVICE.</span><span class="sxs-lookup"><span data-stu-id="343b4-p105">SIP request type that failed. For example, INVITE, BYE, or SERVICE.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="343b4-138"><strong>Source</strong></span><span class="sxs-lookup"><span data-stu-id="343b4-138"><strong>Source</strong></span></span></p></td>
+<td><p><span data-ttu-id="343b4-139">Non</span><span class="sxs-lookup"><span data-stu-id="343b4-139">No</span></span></p></td>
+<td><p><span data-ttu-id="343b4-140">Source de l’erreur.</span><span class="sxs-lookup"><span data-stu-id="343b4-140">Source of the error.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="343b4-141"><strong>URI de l’utilisateur d’origine</strong></span><span class="sxs-lookup"><span data-stu-id="343b4-141"><strong>From user URI</strong></span></span></p></td>
+<td><p><span data-ttu-id="343b4-142">Non</span><span class="sxs-lookup"><span data-stu-id="343b4-142">No</span></span></p></td>
+<td><p><span data-ttu-id="343b4-143">Adresse SIP de l’utilisateur ayant initié la session.</span><span class="sxs-lookup"><span data-stu-id="343b4-143">SIP address of the user who initiated the session.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="343b4-144"><strong>Agent utilisateur d’origine</strong></span><span class="sxs-lookup"><span data-stu-id="343b4-144"><strong>From user agent</strong></span></span></p></td>
+<td><p><span data-ttu-id="343b4-145">Non</span><span class="sxs-lookup"><span data-stu-id="343b4-145">No</span></span></p></td>
+<td><p><span data-ttu-id="343b4-146">Logiciel utilisé par le point de terminaison de l’utilisateur ayant initié la session.</span><span class="sxs-lookup"><span data-stu-id="343b4-146">Software used by the endpoint of the user who initiated the session.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="343b4-147"><strong>ID de diagnostic</strong></span><span class="sxs-lookup"><span data-stu-id="343b4-147"><strong>Diagnostic ID</strong></span></span></p></td>
+<td><p><span data-ttu-id="343b4-148">Non</span><span class="sxs-lookup"><span data-stu-id="343b4-148">No</span></span></p></td>
+<td><p><span data-ttu-id="343b4-149">Identificateur unique (sous la forme d’un en-tête ms-diagnostics) attaché à un message SIP qui fournit souvent des informations utiles pour résoudre des erreurs.</span><span class="sxs-lookup"><span data-stu-id="343b4-149">Unique identifier (in the form of an ms-diagnostics header) attached to a SIP message that often provides information useful in troubleshooting errors.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="343b4-150"><strong>Type de contenu</strong></span><span class="sxs-lookup"><span data-stu-id="343b4-150"><strong>Content type</strong></span></span></p></td>
+<td><p><span data-ttu-id="343b4-151">Non</span><span class="sxs-lookup"><span data-stu-id="343b4-151">No</span></span></p></td>
+<td><p><span data-ttu-id="343b4-p106">Type de contenu multimédia ayant échoué. Par exemple, un type de contenu courant est Application/sdp. Session Description Protocol (SDP) est un protocole Internet standard utilisé pour les annonces de session, les invitations de session et autres formes d’initiation de session multimédia.</span><span class="sxs-lookup"><span data-stu-id="343b4-p106">Type of media content that failed. For example, a common content type is Application/sdp. Session Description Protocol (SDP) is a standard Internet protocol used for session announcements, session invitations, and other forms of multimedia session initiation.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="343b4-155"><strong>Application</strong></span><span class="sxs-lookup"><span data-stu-id="343b4-155"><strong>Application</strong></span></span></p></td>
+<td><p><span data-ttu-id="343b4-156">Non</span><span class="sxs-lookup"><span data-stu-id="343b4-156">No</span></span></p></td>
+<td><p><span data-ttu-id="343b4-157">Application impliquée dans l’erreur.</span><span class="sxs-lookup"><span data-stu-id="343b4-157">Application involved in the error.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="343b4-158"><strong>URI de l’utilisateur de destination</strong></span><span class="sxs-lookup"><span data-stu-id="343b4-158"><strong>To user URI</strong></span></span></p></td>
+<td><p><span data-ttu-id="343b4-159">Non</span><span class="sxs-lookup"><span data-stu-id="343b4-159">No</span></span></p></td>
+<td><p><span data-ttu-id="343b4-160">Adresse IP de l’utilisateur ayant été invité à participer à la session.</span><span class="sxs-lookup"><span data-stu-id="343b4-160">SIP address of the user who was invited to the session.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="343b4-161">Temps de connexion à la conférence (ms)</span><span class="sxs-lookup"><span data-stu-id="343b4-161">Conference join times (ms)</span></span></p></td>
+<td><p><span data-ttu-id="343b4-162">Non</span><span class="sxs-lookup"><span data-stu-id="343b4-162">No</span></span></p></td>
+<td><p><span data-ttu-id="343b4-163">Temps (en millisecondes) utilisé pour que l’utilisateur rejoigne la conférence.</span><span class="sxs-lookup"><span data-stu-id="343b4-163">Amount of time (in milliseconds) it took for the user to join the conference.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="343b4-164"><strong>En-tête de diagnostic</strong></span><span class="sxs-lookup"><span data-stu-id="343b4-164"><strong>Diagnostic header</strong></span></span></p></td>
+<td><p><span data-ttu-id="343b4-165">Non</span><span class="sxs-lookup"><span data-stu-id="343b4-165">No</span></span></p></td>
+<td><p><span data-ttu-id="343b4-166">Description de l’ID de diagnostic.</span><span class="sxs-lookup"><span data-stu-id="343b4-166">Diagnostic ID description.</span></span></p></td>
+</tr>
+</tbody>
+</table>
+
+
+<span data-ttu-id="343b4-167">La liste des erreurs de diagnostic est disponible sur la [page d’en-tête MS-Diagnostics](https://msdn.microsoft.com/library/gg132446\(v=office.12\).aspx).</span><span class="sxs-lookup"><span data-stu-id="343b4-167">A list of diagnostic errors can be found on the [Ms-Diagnostics Header page](https://msdn.microsoft.com/library/gg132446\(v=office.12\).aspx).</span></span>
+
+<span data-ttu-id="343b4-168"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="343b4-168"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+
