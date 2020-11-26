@@ -1,0 +1,70 @@
+---
+title: 'Lync Server 2013 : ajout d’un lien personnalisé à des messages d’erreur Lync'
+description: 'Lync Server 2013 : ajout d’un lien personnalisé aux messages d’erreur Lync.'
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Adding a custom link to Lync error messages
+ms:assetid: de756088-fcc3-4e47-bde8-4fa4cc852fd1
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg398979(v=OCS.15)
+ms:contentKeyID: 48185607
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: a5d333b6f27e10e5092de23fcdf1d37fd75e75a5
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49439281"
+---
+# <a name="adding-a-custom-link-to-lync-error-messages-in-lync-server-2013"></a><span data-ttu-id="25c31-103">Ajout d’un lien personnalisé à des messages d’erreur Lync dans Lync Server 2013</span><span class="sxs-lookup"><span data-stu-id="25c31-103">Adding a custom link to Lync error messages in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="25c31-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="25c31-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="25c31-105">_**Dernière modification de la rubrique :** 2013-02-20_</span><span class="sxs-lookup"><span data-stu-id="25c31-105">_**Topic Last Modified:** 2013-02-20_</span></span>
+
+<span data-ttu-id="25c31-106">Personnalisez les messages d’erreur de Lync 2013 en ajoutant un lien vers votre propre dépannage ou les informations de votre support technique.</span><span class="sxs-lookup"><span data-stu-id="25c31-106">Customize Lync 2013 error messages by adding a link to your own troubleshooting or help desk information.</span></span> <span data-ttu-id="25c31-107">Pour ce faire, utilisez les applets de applet **nouvelle-CSClientPolicy** ou **Set-CSClientPolicy** Lync Server Management Shell avec le paramètre CustomLinkInErrorMessages.</span><span class="sxs-lookup"><span data-stu-id="25c31-107">To do this, use the **New-CSClientPolicy** or **Set-CSClientPolicy** Lync Server Management Shell cmdlets with the CustomLinkInErrorMessages parameter.</span></span> <span data-ttu-id="25c31-108">Le texte du lien personnalisé est « cliquer ici pour afficher les rubriques d’aide de votre administrateur » et ne peut pas être personnalisé.</span><span class="sxs-lookup"><span data-stu-id="25c31-108">The text of the custom link is "Click here for support topics from your administrator," and it cannot be customized.</span></span>
+
+<span data-ttu-id="25c31-109">Par exemple, la commande suivante entraîne l’affichage du lien personnalisé dans la zone de note de bas de page de chaque message d’erreur Lync 2013 et définit la destination du lien sur http://contoso.com/help/LyncHelpDesk.aspx:</span><span class="sxs-lookup"><span data-stu-id="25c31-109">For example, the following command causes the custom link to appear in the footnote area of every Lync 2013 error message and sets the link destination to http://contoso.com/help/LyncHelpDesk.aspx:</span></span>
+
+    New-CsClientPolicy -Identity LyncErrorLink -CustomLinkInErrorMessages "http://contoso/help/LyncHelpDesk.aspx"
+
+<span data-ttu-id="25c31-110">Utilisez **Grant-CSClientPolicy** pour affecter cette nouvelle stratégie aux utilisateurs.</span><span class="sxs-lookup"><span data-stu-id="25c31-110">Use **Grant-CSClientPolicy** to assign this new policy to users.</span></span> <span data-ttu-id="25c31-111">Pour plus d’informations, reportez-vous à **New-CSClientPolicy** et **Grant-CSClientPolicy** dans la documentation Lync Server Management Shell.</span><span class="sxs-lookup"><span data-stu-id="25c31-111">For details, see **New-CSClientPolicy** and **Grant-CSClientPolicy** in the Lync Server Management Shell documentation.</span></span>
+
+<span data-ttu-id="25c31-112"></div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="25c31-112"></div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+
