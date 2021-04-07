@@ -1,6 +1,6 @@
 ---
-title: 'Lync Server 2013 : configuration requise pour DNS pour les serveurs Standard Edition Server'
-description: 'Lync Server 2013 : configuration DNS requise pour les serveurs Standard Edition Server.'
+title: 'Lync Server 2013 : exigences DNS pour les serveurs Standard Edition'
+description: 'Lync Server 2013 : exigences DNS pour les serveurs Standard Edition.'
 ms.reviewer: ''
 ms.author: v-lanac
 author: lanachin
@@ -20,7 +20,7 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 11/24/2020
 ms.locfileid: "49393984"
 ---
-# <a name="dns-requirements-for-standard-edition-servers-in-lync-server-2013"></a>Configuration DNS requise pour les serveurs Standard Edition Server dans Lync Server 2013
+# <a name="dns-requirements-for-standard-edition-servers-in-lync-server-2013"></a>Conditions DNS requises pour les serveurs Standard Edition dans Lync Server 2013
 
 <div data-xmlns="http://www.w3.org/1999/xhtml">
 
@@ -38,17 +38,17 @@ ms.locfileid: "49393984"
 
 <span> </span>
 
-_**Dernière modification de la rubrique :** 2012-06-19_
+_**Rubrique dernière modification :** 19/06/2012_
 
 Cette section décrit les enregistrements DNS (Domain Name System) requis pour le déploiement de serveurs Standard Edition.
 
 <div>
 
-## <a name="dns-records-for-standard-edition-servers"></a>Enregistrements DNS pour les serveurs Standard Edition Server
+## <a name="dns-records-for-standard-edition-servers"></a>Enregistrements DNS pour les serveurs Standard Edition
 
-Le tableau suivant indique les exigences DNS pour le déploiement de Lync Server 2013 Standard Edition Server.
+Le tableau suivant spécifie les exigences DNS requises pour le déploiement de serveur Lync Server 2013 Standard Edition.
 
-### <a name="dns-requirements-for-a-standard-edition-server"></a>Configuration DNS requise pour un serveur Standard Edition Server
+### <a name="dns-requirements-for-a-standard-edition-server"></a>Conditions DNS requises pour un serveur Standard Edition Server
 
 <table>
 <colgroup>
@@ -67,16 +67,16 @@ Le tableau suivant indique les exigences DNS pour le déploiement de Lync Server
 <td><p>Un enregistrement interne A qui associe le nom de domaine complet (FQDN) du serveur à son adresse IP.</p></td>
 </tr>
 <tr class="even">
-<td><p>Connexion automatique au client</p></td>
-<td><p>Pour chaque domaine SIP pris en charge, un enregistrement SRV pour _sipinternaltls. _ TCP. domaine &gt; sur le port 5061 qui correspond au nom de domaine complet du serveur Standard Edition qui authentifie et redirige les demandes de connexion du client. Pour plus d’informations, voir <a href="lync-server-2013-dns-requirements-for-automatic-client-sign-in.md">configuration DNS requise pour la connexion automatique au client dans Lync Server 2013</a>.</p></td>
+<td><p>Connectez-vous automatique au client</p></td>
+<td><p>Pour chaque domaine SIP pris en charge, un enregistrement SRV pour _sipinternaltls._tcp. &lt; domaine sur le port 5061 qui masique le nom de domaine (FQDN) du serveur Standard Edition qui authentifier et redirige les demandes de client pour &gt; la authentification. Pour plus d’informations, consultez la exigences DNS pour la signature automatique du client dans <a href="lync-server-2013-dns-requirements-for-automatic-client-sign-in.md">Lync Server 2013.</a></p></td>
 </tr>
 <tr class="odd">
-<td><p>Découverte du service Web de mise à jour d’appareil par des appareils de communications unifiées (UC)</p></td>
-<td><p>Un enregistrement A interne du nom ucupdates-r2. &lt; Domaine SIP résolu &gt; sur l’adresse IP du service Web de mise à jour des appareils d’hébergement Standard Edition Server. Dans le cas où un périphérique UC est activé, mais qu’aucun utilisateur ne s’est connecté à l’appareil, l’enregistrement A permet à l’appareil de détecter le service Web de mise à jour de l’appareil d’hébergement du serveur et d’obtenir les mises à jour. Les périphériques peuvent autrement se procurer ces informations via une mise en service de la bande entrante la première fois qu’un utilisateur se connecte.</p></td>
+<td><p>Découverte du service web de mise à jour des appareils par les appareils de communications unifiées</p></td>
+<td><p>Enregistrement A interne avec le nom ucupdates-r2. &lt; Domaine SIP résolu à l’adresse IP du service web de mise à jour d’appareil du serveur &gt; Standard Edition. Dans la situation où un appareil de UC est allumé, mais qu’un utilisateur ne s’est jamais connecté à l’appareil, l’enregistrement A permet à l’appareil de découvrir le service web de mise à jour de l’appareil hébergeant le serveur et d’obtenir des mises à jour. Les périphériques peuvent autrement se procurer ces informations via une mise en service de la bande entrante la première fois qu’un utilisateur se connecte.</p></td>
 </tr>
 <tr class="even">
-<td><p>Proxy inverse pour la prise en charge du trafic HTTP</p></td>
-<td><p>Un enregistrement A externe qui résout le nom de domaine complet de la batterie de serveurs Web externe à l’adresse IP externe du proxy inverse. Les clients et les appareils UC utilisent cet enregistrement pour se connecter au proxy inverse. Pour plus d’informations, reportez-vous à la rubrique <a href="lync-server-2013-determine-dns-requirements.md">déterminer les exigences DNS pour Lync Server 2013</a> dans la documentation de planification.</p></td>
+<td><p>Proxy inverse pour prendre en charge le trafic HTTP</p></td>
+<td><p>Enregistrement A externe qui résout le FQDN de la batterie de serveurs web externe sur l’adresse IP externe du proxy inverse. Les clients et appareils de lauc utilisent cet enregistrement pour se connecter au proxy inverse. Pour plus d’informations, voir <a href="lync-server-2013-determine-dns-requirements.md">Déterminer les exigences DNS pour Lync Server 2013</a> dans la documentation de planification.</p></td>
 </tr>
 </tbody>
 </table>
